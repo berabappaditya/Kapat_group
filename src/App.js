@@ -11,6 +11,7 @@ import Publication from "./components/Publication";
 import Group from "./components/Group";
 import GroupGallery from "./components/GroupGallery";
 import Facilities from "./components/Facilities";
+import GroupImg from "./components/GroupImg";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/publication" element={<Publication />} />
 
           <Route path="/group" element={<Group />} />
+          <Route path="/groupImg" element={<GroupImg />} />
 
           <Route path="/groupGallery" element={<GroupGallery />} />
 

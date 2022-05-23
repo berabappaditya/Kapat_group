@@ -3,18 +3,20 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   const footMain = {
-    backgroundColor: "#edf5e1",
+    backgroundColor: "black",
     padding: "0.5rem 1rem",
     textAlign: "center",
-    fontSize: "1.2vw",
+    fontSize: "1.5vw",
     fontWeight: "480",
-    color: "#333",
+    color: "white",
+    padding: "3vh 0 5vh 0",
   };
   return (
     <footer style={footMain}>
       {" "}
-      Contact Us
-      <br />
+      <p style={{ color: "#008BFF", fontSize: "2rem", fontWeight: "500" }}>
+        Contact Us
+      </p>
       Shiv Nadar University-School of Natural Science-Department of Chemistry-NH
       - 91, Tehsil Dadri
       <br />

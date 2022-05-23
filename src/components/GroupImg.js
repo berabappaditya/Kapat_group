@@ -1,7 +1,6 @@
 import React from "react";
-import "./GroupGal.css";
 
-function GroupGallery() {
+function GroupImg() {
   return (
     <div className="home body">
       <div className="home-main body-child"></div>
@@ -9,4 +8,4 @@ function GroupGallery() {
   );
 }
 
-export default GroupGallery;
+export default GroupImg;

@@ -1,6 +1,94 @@
-.nav-menue {
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;500&display=swap");
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #2b00aa;
+  height: 5.3vw;
+  color: white;
+}
+.kapat_logo {
+  font-family: "Roboto", sans-serif;
+  margin-left: 8vw;
+  color: white;
+}
+
+.kapat_logo_subtitle {
+  font-size: 0.1rem;
+
+  margin-left: 100px;
+}
+.kapat_logo {
+  font-size: 3vw;
   font-weight: 500;
-  color: #000000;
-  background-color: #5cdb95;
-  margin: 0 0.2vw;
+  margin-bottom: -12px;
+}
+
+.nav-right {
+  height: 100%;
+}
+ul {
+  list-style-type: none;
+  height: 100%;
+}
+
+li {
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 1vw;
+}
+
+.menu-bar {
+  display: none;
+}
+.menu-bar-icon {
+  position: absolute;
+  right: 3vw;
+  top: 2.6vw;
+  color: white;
+  font-size: 2vh;
+
+  cursor: pointer;
+}
+.mob-menu {
+  z-index: 8;
+  display: block;
+  width: 100vw;
+  margin: 0;
+  position: absolute;
+  top: 5.3vw;
+  left: 0;
+  right: 0;
+  background-color: #acd9dee8;
+  text-align: center;
+}
+
+@media only screen and (max-width: 800px) {
+  .nav-right {
+    display: none;
+  }
+
+  .menu-bar {
+    display: block;
+  }
+
+  nav {
+    height: 7vw;
+  }
+  .nav-left p {
+    font-size: 3.5vw;
+  }
+  .mob-menu {
+    top: 7vw;
+  }
+}
+
+@media only screen and (min-width: 801px) {
+  .mob-menu {
+    display: none;
+  }
 }

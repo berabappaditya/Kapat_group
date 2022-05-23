@@ -1,0 +1,20 @@
+export const research = [
+  {
+    title: "a) Natural Product Based Drug Design:",
+    details:
+      "Current major concern in the modern human society is the emergence of more life-threatening disease. To provide environmentally friendly and economically sustainable solution to this problem, it is absolutely essential to design new molecules which can be either natural product based or computer-based design. Furthermore, rapid and streamline synthesis of complex organic molecules with very high enantiomeric excess is still a long-standing problem in organic synthesis. Part of my research program will be dedicated to the development of new biomimetic approach for the synthesis of biologically active natural products and their biological activity will be studied in collaboration with the leading expert in this field.",
+    img: "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744750/Assym_Cat-AK.001_spdfsi.jpg",
+  },
+  {
+    title: "b) Asymmetric Catalysis:",
+    details:
+      "According to the FDA guidelines every newly synthesized drug should be enantiopure. To address this issue, we are developing new chiral ligands and catalytic methods by which we can induce chirality in desired fashion with very high efficiency. We are working in the interface of organocatalysis, transition-metal catalysis and metalloradical catalysis.",
+    img: "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744725/MCR-AK.001_umym2n.jpg",
+  },
+  {
+    title: "c) Radical Chemistry & Metalloradical Catalysis:",
+    details:
+      "Since the historical report on “Triphenylmethyl: An Instance of Trivalent Carbon” by Gomberg, the field of radical chemistry has advanced significantly. Due to the mild reaction conditions, high functional group tolerance and high chemoselectivity radical reactions are becoming viable alternative to it’s ionic counterpart. However, taming organic radicals in required extent is still a challenging task. Part of my research group will be working on the development of new metalloradical promoted catalytic stereoselective radical reactions and understanding the reaction mechanism utilizing both modern synthetic techniques and computational tools.",
+    img: "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744750/Assym_Cat-AK.001_spdfsi.jpg",
+  },
+];

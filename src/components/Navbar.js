@@ -1,50 +1,124 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { CgMenu } from "react-icons/cg";
+import { GrClose } from "react-icons/gr";
 
 function Navbar() {
+  const [show, setShow] = useState(false);
+  console.log(show);
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
+    <nav className="row nav-main">
+      <div className="col nav-left">
+        <p className="kapat_logo">Kapat Research Group</p>
+        <p
+          style={{ marginLeft: "16%", fontSize: "12px" }}
+          ClassName="kapat_logo_subtitle"
+        >
+          The Radical Chemistry and Catalysis Laboratory
+        </p>
+        {/* <Link className="nav-logo" path="/home">
+          
+        </Link> */}
+      </div>
+      <div className="col menu-bar">
+        {!show && (
+          <CgMenu
+            onClick={() => setShow(true)}
+            className="menu-bar-icon"
+            id="menu-bar"
+          />
+        )}
+        {show && (
+          <GrClose
+            onClick={() => setShow(false)}
+            className="menu-bar-icon"
+            id="menu-bar"
+          />
+        )}
+      </div>
 
       <div
-        className="collapse navbar-collapse justify-content-center"
-        id="navbarNavAltMarkup"
+        onClick={() => setShow(false)}
+        className="col nav-right"
+        id="navbar-menu-l"
       >
-        <div className="navbar-nav">
-          <Link className="nav-item nav-link nolink nav-menue" to="/home">
-            Home
-          </Link>
-          <Link className="nav-item nav-link nolink nav-menue" to="/aboutPI">
-            AboutPI
-          </Link>
-          <Link className="nav-item nav-link nolink nav-menue" to="/research">
-            Research
-          </Link>
-          <Link
-            className="nav-item nav-link nolink nav-menue"
-            to="/publication"
-          >
-            Publication
-          </Link>
-          <Link className="nav-item nav-link nolink nav-menue" to="/group">
-            Group
-          </Link>
-          <Link className="nav-item nav-link nolink nav-menue" to="/facilities">
-            Facilities
-          </Link>
-        </div>
+        <ul className="d-flex">
+          <li>
+            <Link className="nolink nav-menu" to="/home">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link className="nolink nav-menu" to="/aboutPI">
+              AboutPI
+            </Link>
+          </li>
+          <li>
+            <Link className=" nolink nav-menu" to="/research">
+              Research
+            </Link>
+          </li>
+          <li>
+            <Link className=" nolink nav-menu" to="/publication">
+              Publication
+            </Link>
+          </li>
+          <li>
+            <Link className=" nolink nav-menu" to="/group">
+              Group
+            </Link>
+          </li>
+          <li>
+            <Link className=" nolink nav-menu" to="/groupImg">
+              Group Photos
+            </Link>
+          </li>
+          <li>
+            <Link className=" nolink nav-menu" to="/facilities">
+              Facilities
+            </Link>
+          </li>
+        </ul>
       </div>
+
+      {show && (
+        <div className="mob-menu">
+          <ul>
+            <li>
+              <Link className="nolink nav-menu" to="/home">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link className="nolink nav-menu" to="/aboutPI">
+                AboutPI
+              </Link>
+            </li>
+            <li>
+              <Link className=" nolink nav-menu" to="/research">
+                Research
+              </Link>
+            </li>
+            <li>
+              <Link className=" nolink nav-menu" to="/publication">
+                Publication
+              </Link>
+            </li>
+            <li>
+              <Link className=" nolink nav-menu" to="/group">
+                Group
+              </Link>
+            </li>
+
+            <li>
+              <Link className=" nolink nav-menu" to="/facilities">
+                Facilities
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 }
