@@ -6,9 +6,9 @@ function Research() {
     <div className="home body">
       <div className="home-main body-child">
         <div className="research-main" style={{ margin: "10vh 0 10vh 0" }}>
-          {research.map((item) => {
+          {research.map((item, index) => {
             return (
-              <div className="research-sec m-5">
+              <div className="research-sec m-5" key={index}>
                 <p>
                   <b>{item.title}</b>
                   &nbsp;{item.details}
@@ -17,6 +17,7 @@ function Research() {
                   <img
                     src={item.img}
                     style={{ height: "30vh", width: "auto" }}
+                    alt="..."
                   />
                 </div>
               </div>

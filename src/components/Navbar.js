@@ -6,14 +6,14 @@ import { GrClose } from "react-icons/gr";
 
 function Navbar() {
   const [show, setShow] = useState(false);
-  console.log(show);
+
   return (
     <nav className="row nav-main">
       <div className="col nav-left">
         <p className="kapat_logo">Kapat Research Group</p>
         <p
           style={{ marginLeft: "16%", fontSize: "12px" }}
-          ClassName="kapat_logo_subtitle"
+          className="kapat_logo_subtitle"
         >
           The Radical Chemistry and Catalysis Laboratory
         </p>
