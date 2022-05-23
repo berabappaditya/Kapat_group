@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "./Carousel";
 import { news } from "../Data/HomeData";
-
+import { Link } from "react-router-dom";
 function Home() {
   return (
     <div className="home body">
@@ -58,7 +58,10 @@ function Home() {
             asymmetric catalysis, cascade catalysis & metalloradical catalysis,
             interested candidates are requested to send their updated CV with
             short research summary directly to Dr. Ajoy Kapat (
-            <a herf="ajoy.kapat@snu.edu.in">ajoy.kapat@snu.edu.in</a>).{" "}
+            <Link to={{ pathname: "ajoy.kapat@snu.edu.in" }} target="_blank">
+              ajoy.kapat@snu.edu.in
+            </Link>
+            ).{" "}
           </p>
           <h4 style={{ margin: "5vh 0 5vh 1vw" }}>Post-Doc Position:</h4>
           <p style={{ marginLeft: "2vw" }}>
@@ -68,15 +71,26 @@ function Home() {
             following fellowships.
             <br />
             I.National Post Doctoral Fellowship (
-            <a href="https://www.serbonline.in/SERB/npdf?HomePage=New">
+            <Link
+              to={{
+                pathname: "https://www.serbonline.in/SERB/npdf?HomePage=New",
+              }}
+              target="_blank"
+            >
               https://www.serbonline.in/SERB/npdf?HomePage=New
-            </a>{" "}
+            </Link>{" "}
             )
             <br />
             II. Research Associates (
-            <a href="https://csirhrdg.res.in/Home/Index/1/Default/2186/56">
+            <Link
+              to={{
+                pathname:
+                  "https://csirhrdg.res.in/Home/Index/1/Default/2186/56",
+              }}
+              target="_blank"
+            >
               https://csirhrdg.res.in/Home/Index/1/Default/2186/56
-            </a>
+            </Link>
             )
             <br />
             All the eligible candidates are requested to send their updated CV,
@@ -91,7 +105,10 @@ function Home() {
           <p style={{ marginLeft: "2vw" }}>
             Candidates are requested to send their updated CV directly to Dr.
             Ajoy Kapat (
-            <a herf="ajoy.kapat@snu.edu.in">ajoy.kapat@snu.edu.in</a>).
+            <Link to={{ pathname: "ajoy.kapat@snu.edu.in" }} target="_blank">
+              ajoy.kapat@snu.edu.in
+            </Link>
+            ).
           </p>
         </div>
       </div>

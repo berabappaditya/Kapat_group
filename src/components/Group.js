@@ -18,7 +18,7 @@ function Group() {
                     textAlign: "center",
                   }}
                 >
-                  <img style={{ height: "80%" }} src={item.imgl} />
+                  <img style={{ height: "80%" }} src={item.imgl} alt="..." />
                   <div style={{ textAlign: "center" }}>
                     <p>{item.name}</p>
                   </div>

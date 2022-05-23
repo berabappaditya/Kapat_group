@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   const footMain = {
     backgroundColor: "black",
-    padding: "0.5rem 1rem",
     textAlign: "center",
     fontSize: "1.5vw",
     fontWeight: "480",

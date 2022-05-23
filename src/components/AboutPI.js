@@ -13,6 +13,7 @@ function AboutPI() {
             <img
               style={{ width: "50%", height: "auto" }}
               src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744626/Dr._Ajoy_Kapat_mdps0i.jpg"
+              alt="..."
             />
           </div>
 
