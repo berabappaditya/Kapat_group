@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;1,200&family=Roboto:wght@100;300;500&display=swap");
+
 .home {
   z-index: 0;
 }
@@ -18,7 +20,7 @@
   color: white;
 }
 .nolink:hover {
-  color: #008bff;
+  color: #52e5ff;
 }
 
 .body {
@@ -32,15 +34,6 @@
   padding: 0 3vw 20vh 3vw;
 }
 
-.publication-banner {
-  height: 70vh;
-  width: 100%;
-  background-image: url(https://ik.imagekit.io/1gfxel0p4/istockphoto-1000158336-612x612_cHB7c2H1G.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1653311604214);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
 .carousel-indicators [data-bs-target] {
   margin-left: 1vw;
   margin-right: 1vw;
@@ -52,3 +45,62 @@
 
   background-image: linear-gradient(to bottom, #3142ff44, #1528f52f);
 }
+
+.publication-banner {
+  height: 80vh;
+  width: 100%;
+  background-image: url(https://ik.imagekit.io/1gfxel0p4/istockphoto-1000158336-612x612_cHB7c2H1G.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1653311604214);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin: 5vh 0 10vh 0;
+}
+
+.publication-banner h1 {
+  margin: 0 0 5vh 2vw;
+  font-size: 4.5vw;
+  color: rgb(255, 255, 255);
+  text-shadow: rgb(1, 40, 45) 1px 0 10px;
+}
+
+footer {
+  font-family: "Roboto", sans-serif;
+  width: 84%;
+}
+
+@media only screen and (max-width: 800px) {
+  footer {
+    width: 100%;
+  }
+  .body-child {
+    width: 100%;
+  }
+}
+/* .groupPara {
+  font-family: "Poppins", sans-serif;
+  font-size: 1vw;
+  font-weight: 400;
+  color: rgb(21, 16, 73);
+} */
+/*Footer Animation*/
+footer p {
+  animation-duration: 3s;
+  animation-name: slideUp;
+  animation-delay: 3s;
+}
+
+@keyframes slideUp {
+  from {
+    margin-top: 100px;
+    opacity: 0;
+  }
+
+  to {
+    margin-top: 0px;
+    opacity: 1;
+  }
+}
+/*Footer Animation end*/

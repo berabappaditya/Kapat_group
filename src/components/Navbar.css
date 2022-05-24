@@ -1,12 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;500&display=swap");
-
 nav {
   display: flex;
   justify-content: space-between;
-  background-color: #2b00aa;
-  height: 5.3vw;
+  background-image: linear-gradient(to right, #2b00aa, rgb(3, 0, 54));
+  height: 6vw;
   color: white;
+  /* background-image: url(https://res.cloudinary.com/aditya-college-of-engineering-technology/image/upload/v1653376671/a8b2807ab8f7eb54a8ab0b9adad8a247_hdxffr.jpg);
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat; */
 }
 .kapat_logo {
   font-family: "Roboto", sans-serif;
@@ -28,6 +29,11 @@ nav {
 .nav-right {
   height: 100%;
 }
+
+.nav-menu {
+  font-size: 1.04vw;
+}
+
 ul {
   list-style-type: none;
   height: 100%;
@@ -63,11 +69,11 @@ li {
   top: 5.3vw;
   left: 0;
   right: 0;
-  background-color: #acd9dee8;
+  background-color: #1516459a;
   text-align: center;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1020px) {
   .nav-right {
     display: none;
   }
@@ -87,7 +93,7 @@ li {
   }
 }
 
-@media only screen and (min-width: 801px) {
+@media only screen and (min-width: 1021px) {
   .mob-menu {
     display: none;
   }

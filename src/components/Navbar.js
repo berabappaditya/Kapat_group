@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { CgMenu } from "react-icons/cg";
-import { GrClose } from "react-icons/gr";
+import { MdClose } from "react-icons/md";
 
 function Navbar() {
   const [show, setShow] = useState(false);
@@ -12,7 +12,7 @@ function Navbar() {
       <div className="col nav-left">
         <p className="kapat_logo">Kapat Research Group</p>
         <p
-          style={{ marginLeft: "16%", fontSize: "12px" }}
+          style={{ margin: "1vh 0 0 8vw", fontSize: "0.9vw" }}
           className="kapat_logo_subtitle"
         >
           The Radical Chemistry and Catalysis Laboratory
@@ -30,11 +30,14 @@ function Navbar() {
           />
         )}
         {show && (
-          <GrClose
+          <MdClose
             onClick={() => setShow(false)}
-            className="menu-bar-icon"
+            className="fa-solid fa-x menu-bar-icon"
             id="menu-bar"
-          />
+            style={{ color: "white" }}
+          >
+            x
+          </MdClose>
         )}
       </div>
 
@@ -43,7 +46,7 @@ function Navbar() {
         className="col nav-right"
         id="navbar-menu-l"
       >
-        <ul className="d-flex">
+        <ul className="d-flex justify-content-start">
           <li>
             <Link className="nolink nav-menu" to="/home">
               Home
@@ -86,33 +89,33 @@ function Navbar() {
         <div className="mob-menu">
           <ul>
             <li>
-              <Link className="nolink nav-menu" to="/home">
+              <Link className="nolink nav-menu-mob" to="/home">
                 Home
               </Link>
             </li>
             <li>
-              <Link className="nolink nav-menu" to="/aboutPI">
+              <Link className="nolink nav-menu-mob" to="/aboutPI">
                 AboutPI
               </Link>
             </li>
             <li>
-              <Link className=" nolink nav-menu" to="/research">
+              <Link className=" nolink nav-menu-mob" to="/research">
                 Research
               </Link>
             </li>
             <li>
-              <Link className=" nolink nav-menu" to="/publication">
+              <Link className=" nolink nav-menu-mob" to="/publication">
                 Publication
               </Link>
             </li>
             <li>
-              <Link className=" nolink nav-menu" to="/group">
+              <Link className=" nolink nav-menu-mob" to="/group">
                 Group
               </Link>
             </li>
 
             <li>
-              <Link className=" nolink nav-menu" to="/facilities">
+              <Link className=" nolink nav-menu-mob" to="/facilities">
                 Facilities
               </Link>
             </li>

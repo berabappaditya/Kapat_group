@@ -7,11 +7,11 @@ function AboutPI() {
       <div className="home-main body-child">
         <div
           className="aboutPI_edu row"
-          style={{ paddingLeft: "3vw", marginTop: "5vh" }}
+          style={{ paddingLeft: "3vw", marginTop: "10vh" }}
         >
-          <div className="col-md-3">
+          <div className="col-md-3 d-flex justify-content-center align-items-center">
             <img
-              style={{ width: "50%", height: "auto" }}
+              style={{ width: "60%", height: "auto", borderRadius: "5px" }}
               src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744626/Dr._Ajoy_Kapat_mdps0i.jpg"
               alt="..."
             />
@@ -33,8 +33,19 @@ function AboutPI() {
         <div
           div
           className="about-exp"
-          style={{ paddingLeft: "3vw", marginTop: "10vh" }}
+          style={{ paddingLeft: "4vw", marginTop: "20vh" }}
         >
+          <div
+            style={{
+              marginLeft: "5px",
+              marginBottom: "2vh",
+              height: "3px",
+              width: "11vw",
+              backgroundColor: "#008BFF",
+              borderRadius: "1px",
+            }}
+          ></div>
+
           <h2 style={{ marginBottom: "3vh" }}>Professional Experience:</h2>
           <p style={{ paddingLeft: "2vw" }}>
             07/2019 – ongoing Assistant Professor, Department of Chemistry,
@@ -55,8 +66,18 @@ function AboutPI() {
         <div
           div
           className="about-exp"
-          style={{ paddingLeft: "3vw", marginTop: "10vh" }}
+          style={{ paddingLeft: "4vw", marginTop: "20vh" }}
         >
+          <div
+            style={{
+              marginLeft: "5px",
+              marginBottom: "2vh",
+              height: "3px",
+              width: "12vw",
+              backgroundColor: "#008BFF",
+              borderRadius: "1px",
+            }}
+          ></div>
           <h2 style={{ marginBottom: "3vh" }}>
             National and International Recognition:
           </h2>

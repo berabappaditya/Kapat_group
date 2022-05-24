@@ -22,10 +22,10 @@ function Home() {
             }}
           ></div>
           <h1 style={{ margin: "1vh 0 5vh 0" }}>Group News</h1>
-          {news.map((item) => {
+          {news.map((item, index) => {
             return (
               <p
-                p
+                key={index}
                 style={{
                   marginLeft: "1vw",
                   fontSize: "1rem",

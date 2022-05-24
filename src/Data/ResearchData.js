@@ -18,3 +18,51 @@ export const research = [
     img: "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744750/Assym_Cat-AK.001_spdfsi.jpg",
   },
 ];
+
+export const facilitiesData = [
+  {
+    name: "GS Glove box (ALFA-Line)",
+    imgSrc:
+      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744671/GB-4_blydte.jpg",
+  },
+  {
+    name: "GC-MS",
+    imgSrc:
+      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744671/GC-MS_n0nuze.png",
+  },
+  {
+    name: "Solvent Purification System",
+    imgSrc:
+      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744672/SPS-Mbraun_edrrqg.jpg",
+  },
+  {
+    name: "NMR Spectrometer (400 MHz)",
+    imgSrc:
+      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744671/400MHz-NMR-SONS-ANNEX-GF_0_v0vvba.jpg",
+  },
+  {
+    name: "The Mass Spectrometry",
+    imgSrc:
+      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744672/LCMS_Picture_lgg5sl.jpg",
+  },
+  {
+    name: "Flash Column Chromatography",
+    imgSrc:
+      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744671/Flash-Chromatography_vwuxqi.jpg",
+  },
+  {
+    name: "Analytical HPLC (Waters)",
+    imgSrc:
+      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744672/Analytical_HPLC_hr8diy.jpg",
+  },
+  {
+    name: "EPR Spectrometer (JES – X320)",
+    imgSrc:
+      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744674/Prep_HPLC_ceburx.jpg",
+  },
+  {
+    name: "Lab Equipments",
+    imgSrc:
+      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653302510/IMG_20220523_145141_bx7pgr.jpg",
+  },
+];

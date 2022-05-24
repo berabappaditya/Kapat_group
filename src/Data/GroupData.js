@@ -17,7 +17,7 @@ export const groupMem = [
     name: "Garvisha Mittal",
     details:
       "Garvisha Mittal is an undergraduate student majoring in chemistry. She has always been interested in science since her school days and so decided to go for research in chemical sciences. She joined the group in monsoon 20201 as our student and currently working the area of photo-induced radical polymerisation. She experienced that there is no single approach that works for everyone, so she continues to educate herself on emerging scientific trends. If in one part of her brain runs science then in another runs literary arts. She is a great enthusiast of poetry and prose. She has received the honor of getting published in quite a few anthologies as a co-author. Other hobbies of hers include dancing, sketching, learning new languages and cooking. In the near future, she wants to see herself standing on a path of being a scientist and an author.",
-    imgl: "",
+    imgl: "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744626/Garvisha_Mittal_unwckf.jpg",
   },
   {
     name: "Abhay Dixit(OUR)",
