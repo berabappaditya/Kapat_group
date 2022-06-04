@@ -9,13 +9,13 @@ export const research = [
     title: "b) Asymmetric Catalysis:",
     details:
       "According to the FDA guidelines every newly synthesized drug should be enantiopure. To address this issue, we are developing new chiral ligands and catalytic methods by which we can induce chirality in desired fashion with very high efficiency. We are working in the interface of organocatalysis, transition-metal catalysis and metalloradical catalysis.",
-    img: "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744725/MCR-AK.001_umym2n.jpg",
+    img: "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653557612/Asym_Cat-AK.001_wessku.jpg",
   },
   {
     title: "c) Radical Chemistry & Metalloradical Catalysis:",
     details:
       "Since the historical report on “Triphenylmethyl: An Instance of Trivalent Carbon” by Gomberg, the field of radical chemistry has advanced significantly. Due to the mild reaction conditions, high functional group tolerance and high chemoselectivity radical reactions are becoming viable alternative to it’s ionic counterpart. However, taming organic radicals in required extent is still a challenging task. Part of my research group will be working on the development of new metalloradical promoted catalytic stereoselective radical reactions and understanding the reaction mechanism utilizing both modern synthetic techniques and computational tools.",
-    img: "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744750/Assym_Cat-AK.001_spdfsi.jpg",
+    img: "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744712/Asym_Cat-AK.002_qeaz38.jpg",
   },
 ];
 

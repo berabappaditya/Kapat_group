@@ -27,7 +27,7 @@ function Publication() {
             {publication.reverse().map((item, index) => {
               return (
                 <p style={{ marginLeft: "1vw" }}>
-                  <b>{index + 1}.</b>&nbsp;
+                  <b>{publication.length - index}.</b>&nbsp;
                   {item.details}
                   {item.link}
                 </p>

@@ -7,7 +7,7 @@ export const groupMem = [
   },
 
   {
-    name: "Prashant Sing(JRF)",
+    name: "Prashant Sing",
     details:
       "His interest in organic synthesis developed in his undergraduate final semester 2019 where he had the opportunity to attend the workshop conducted by BARC, Mumbai. His postgraduate specialization was in organic chemistry from K.J.Somaiya College, Mumbai. His postgraduate project was based on molecular docking studies in association with IIT Bombay. He had also worked as a Subject Matter Expert with companies like Chegg India, Kunduz Technologies, Softusvista. He joined the group as a junior research fellow supported by SERB-SRG grant in monsoon 2021. Currently, he is working in the area of transition metal catalysed cascade reaction.  He like to spend his spare time playing basketball, listening to podcast and workout in gym.",
     imgl: "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744626/Prashant_Singh_ddbxyy.jpg",
@@ -20,7 +20,7 @@ export const groupMem = [
     imgl: "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744626/Garvisha_Mittal_unwckf.jpg",
   },
   {
-    name: "Abhay Dixit(OUR)",
+    name: "Abhay Dixit",
     details:
       "“A neutron walks into a bar and asks how much for a drink. The bartender replies, ‘For you, No charge’.” Chemistry is always fun until you realize it.He started to like chemistry from his secondary school until then it was just any other subject. After completion of his higher secondary education as Science major, he became very much fascinated about the science and decided to make career in Natural Science. Currently, he is pursuing his B.Sc. (Research) in Chemistry. He joined the group in monsoon 2021 and currently working in the area of “Total Synthesis of Alkaloids”. Well, he is a fitness freak too. In his spare time he likes to indulge in physical activities like running, playing Football, etc.",
     imgl: "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744626/Abhay_Dixit_yvz8hj.jpg",

@@ -19,14 +19,14 @@ function Group() {
                     height: "27vh",
                     width: "90%",
                     textAlign: "center",
-                    borderRadius: "10px",
+                    borderRadius: "2px",
                     boxShadow: "0px 0px 10px 0 gray",
                     padding: ".5vw",
                   }}
                 >
                   <img
                     style={{
-                      borderRadius: "10px",
+                      borderRadius: "2px",
                       height: "80%",
                       maxWidth: "100%",
                       maxHeight: "82%",

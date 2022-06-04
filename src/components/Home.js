@@ -32,7 +32,7 @@ function Home() {
                   fontWeight: "500",
                 }}
               >
-                - {item.detail}
+                - {item.detail}.
               </p>
             );
           })}
@@ -70,6 +70,7 @@ function Home() {
             all the interested candidates, who are willing to apply for the
             following fellowships.
             <br />
+            <br />
             I.National Post Doctoral Fellowship (
             <Link
               to={{
@@ -80,6 +81,7 @@ function Home() {
               https://www.serbonline.in/SERB/npdf?HomePage=New
             </Link>{" "}
             )
+            <br />
             <br />
             II. Research Associates (
             <Link
@@ -92,6 +94,7 @@ function Home() {
               https://csirhrdg.res.in/Home/Index/1/Default/2186/56
             </Link>
             )
+            <br />
             <br />
             All the eligible candidates are requested to send their updated CV,
             two letters of recommendation with short research summary directly

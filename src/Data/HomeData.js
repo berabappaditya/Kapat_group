@@ -39,4 +39,16 @@ export const news = [
     detail:
       "Dr. Garima Singh joined  the group as a Post-Doctoral student in Spring 2020, welcome to the group",
   },
+  {
+    detail:
+      "Asrar successfully completed his candidacy and comprehensive examination",
+  },
+  {
+    detail:
+      "Umashankar joined the group as a summer intern student supported by SRG grant from DST-SERB, welcome to the group",
+  },
+  {
+    detail:
+      "Department of Chemistry successfully organized the Chemistry Fair 2022 in association with the American Chemical Society. Many thanks to Asrar, Garvisha and Abhay for your assistance",
+  },
 ];
