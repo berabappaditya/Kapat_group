@@ -9,29 +9,32 @@ function GroupImg() {
           <h2 style={{ margin: "8vh 0 5vh 0" }}>Group Photo</h2>
           <div className="gallery">
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-sm-4 text-center">
                 <img
                   src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1651168509/IMG_20200717_141734_tpbw7v.jpg"
                   className="rounded col-sm-4"
                   alt="..."
                   style={{ width: "100%" }}
                 />
+                <h5>Group Photo-2020</h5>
               </div>
-              <div class="col-sm-4">
+              <div class="col-sm-4 text-center">
                 <img
                   src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1651168543/IMG_20211216_213420_vtssk0.jpg"
                   className="rounded col-sm-4"
                   alt="..."
                   style={{ width: "100%" }}
                 />
+                <h5>Group Photo-2021</h5>
               </div>
-              <div class="col-sm-4">
+              <div class="col-sm-4 text-center">
                 <img
                   src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1653040948/IMG_5924_zwqc8h.jpg"
                   className="rounded col-sm-4"
                   alt="..."
                   style={{ width: "100%" }}
                 />
+                <h5>Group Photo-2022</h5>
               </div>
             </div>
 

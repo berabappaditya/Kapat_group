@@ -33,7 +33,7 @@ export const facilitiesData = [
   {
     name: "Solvent Purification System",
     imgSrc:
-      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744672/SPS-Mbraun_edrrqg.jpg",
+      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653560794/IMG_20220526_150847__01_ruujkz.jpg",
   },
   {
     name: "NMR Spectrometer (400 MHz)",
@@ -48,7 +48,7 @@ export const facilitiesData = [
   {
     name: "Flash Column Chromatography",
     imgSrc:
-      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744671/Flash-Chromatography_vwuxqi.jpg",
+      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653560808/IMG_20220526_151913__01_unrykk.jpg",
   },
   {
     name: "Analytical HPLC (Waters)",
@@ -56,9 +56,9 @@ export const facilitiesData = [
       "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744672/Analytical_HPLC_hr8diy.jpg",
   },
   {
-    name: "EPR Spectrometer (JES – X320)",
+    name: "Preparative HPLC",
     imgSrc:
-      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744674/Prep_HPLC_ceburx.jpg",
+      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653560776/EPR-JEOL_X320_vlixlk.jpg",
   },
   {
     name: "Lab Equipments",
