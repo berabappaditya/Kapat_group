@@ -2,7 +2,7 @@ export const groupMem = [
   {
     name: "Asrar Ahmad",
     details:
-      "Asrar was born in Deoria, Uttar Pradesh. After completing his primary education, he took admission at Aligarh Muslim University for his undergraduate education. He became very much interested about chemistry and he further continued his post-graduate education in Chemistry with specialization in inorganic in the Department of Chemistry at Aligarh Muslim University. As part of his master thesis work, he was working on synthesis of RNA-targeted Copper-based therapeutic drug entity. After completing M.Sc., he Joined the group to pursue his doctoral  study in Spring 2020. Currently, he is working in the area of Asymmetric Catalysis and Metalloradical Chemistry. He loves to watch fiction drama and likes to play cricket.",
+      "Asrar was born in Deoria, Uttar Pradesh. After completion of his schooling, he took admission at Aligarh Muslim University for his undergraduate education. He became very much interested about chemistry and he further continued his post-graduate education in Chemistry with specialization in inorganic in the Department of Chemistry at Aligarh Muslim University. As part of his master thesis work, he was working on synthesis of RNA-targeted Copper-based therapeutic drug entity. After completing M.Sc., he Joined the group to pursue his doctoral  study in Spring 2020. Currently, he is working in the area of Asymmetric Catalysis and Metalloradical Chemistry. He loves to watch fiction drama and likes to play cricket.",
     imgl: "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744626/Asrar_Ahmad_rqk2v4.jpg",
   },
 

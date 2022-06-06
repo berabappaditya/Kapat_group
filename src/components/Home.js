@@ -58,9 +58,13 @@ function Home() {
             asymmetric catalysis, cascade catalysis & metalloradical catalysis,
             interested candidates are requested to send their updated CV with
             short research summary directly to Dr. Ajoy Kapat (
-            <Link to={{ pathname: "ajoy.kapat@snu.edu.in" }} target="_blank">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="mailto:ajoy.kapat@snu.edu.in"
+            >
               ajoy.kapat@snu.edu.in
-            </Link>
+            </a>
             ).{" "}
           </p>
           <h4 style={{ margin: "5vh 0 5vh 1vw" }}>Post-Doc Position:</h4>
@@ -71,28 +75,24 @@ function Home() {
             following fellowships.
             <br />
             <br />
-            I.National Post Doctoral Fellowship (
-            <Link
-              to={{
-                pathname: "https://www.serbonline.in/SERB/npdf?HomePage=New",
-              }}
+            I.National Post Doctoral Fellowship
+            <a
               target="_blank"
+              rel="noreferrer"
+              href="https://www.serbonline.in/SERB/npdf?HomePage=New"
             >
               https://www.serbonline.in/SERB/npdf?HomePage=New
-            </Link>{" "}
-            )
+            </a>{" "}
             <br />
             <br />
             II. Research Associates (
-            <Link
-              to={{
-                pathname:
-                  "https://csirhrdg.res.in/Home/Index/1/Default/2186/56",
-              }}
+            <a
               target="_blank"
+              rel="noreferrer"
+              href="https://csirhrdg.res.in/Home/Index/1/Default/2186/56"
             >
               https://csirhrdg.res.in/Home/Index/1/Default/2186/56
-            </Link>
+            </a>
             )
             <br />
             <br />
@@ -108,9 +108,13 @@ function Home() {
           <p style={{ marginLeft: "2vw" }}>
             Candidates are requested to send their updated CV directly to Dr.
             Ajoy Kapat (
-            <Link to={{ pathname: "ajoy.kapat@snu.edu.in" }} target="_blank">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="mailto:ajoy.kapat@snu.edu.in"
+            >
               ajoy.kapat@snu.edu.in
-            </Link>
+            </a>
             ).
           </p>
         </div>

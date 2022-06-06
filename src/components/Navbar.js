@@ -54,7 +54,7 @@ function Navbar() {
           </li>
           <li>
             <Link className="nolink nav-menu" to="/aboutPI">
-              AboutPI
+              About PI
             </Link>
           </li>
           <li>

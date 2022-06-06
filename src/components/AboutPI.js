@@ -48,18 +48,19 @@ function AboutPI() {
 
           <h2 style={{ marginBottom: "3vh" }}>Professional Experience:</h2>
           <p style={{ paddingLeft: "2vw" }}>
-            07/2019 – ongoing Assistant Professor, Department of Chemistry,
-            School of Natural Science, Shiv Nadar University, India.
-            <br /> <br /> 04/2019 - 06/2019 Visiting Research Scientist,
+            07/2019 – ongoing :&nbsp;Assistant Professor, Department of
+            Chemistry, School of Natural Science, Shiv Nadar University, India.
+            <br /> <br /> 04/2019 - 06/2019:&nbsp; Visiting Research Scientist,
             Institute of Organic Chemistry, RWTH Aachen University, Germany.
-            <br /> <br /> 11/2014 - 03/2019 Postdoctoral fellow, Institute of
-            Organic Chemistry, RWTH Aachen University, Germany. <br />
+            <br /> <br /> 11/2014 - 03/2019:&nbsp; Postdoctoral fellow,
+            Institute of Organic Chemistry, RWTH Aachen University, Germany.{" "}
             <br />
-            05/2014 - 10/2014 Research Associate-I, Department of Organic
+            <br />
+            05/2014 - 10/2014:&nbsp; Research Associate-I, Department of Organic
             Chemistry, Indian Association for the Cultivation of Science, India.
-            <br /> <br /> 08/2012 – 01/2014 Postdoctoral fellow, Frick Chemistry
-            Laboratory, Princeton University, USA.
-            <br /> <br /> 09/2011 – 03/2012 Assistant –I, Department of
+            <br /> <br /> 08/2012 – 01/2014:&nbsp; Postdoctoral fellow, Frick
+            Chemistry Laboratory, Princeton University, USA.
+            <br /> <br /> 09/2011 – 03/2012:&nbsp; Assistant –I, Department of
             Chemistry and Biochemistry at University of Bern, Switzerland.
           </p>
         </div>

@@ -58,11 +58,11 @@ export const facilitiesData = [
   {
     name: "Preparative HPLC",
     imgSrc:
-      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653560776/EPR-JEOL_X320_vlixlk.jpg",
+      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744674/Prep_HPLC_ceburx.jpg",
   },
   {
-    name: "Lab Equipments",
+    name: "EPR Spectrometer (JES – X320)",
     imgSrc:
-      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653302510/IMG_20220523_145141_bx7pgr.jpg",
+      "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653560776/EPR-JEOL_X320_vlixlk.jpg",
   },
 ];

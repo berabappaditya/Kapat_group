@@ -39,6 +39,14 @@ function Carousel() {
             className="d-flex justify-content-center"
             aria-label="Slide 4"
           ></li>
+
+          <li
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to={4}
+            className="d-flex justify-content-center"
+            aria-label="Slide 5"
+          ></li>
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active" data-bs-interval="1000">
@@ -50,7 +58,7 @@ function Carousel() {
           </div>
           <div className="carousel-item" data-bs-interval="1000">
             <img
-              src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744725/MCR-AK.001_umym2n.jpg"
+              src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744712/Asym_Cat-AK.002_qeaz38.jpg"
               className="d-block w-100"
               alt="..."
             />
@@ -65,6 +73,13 @@ function Carousel() {
           <div className="carousel-item">
             <img
               src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1653559786/Lab_A221.002_sdwixa.jpg"
+              className="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1653040970/IMG_5951_j1xbfv.jpg"
               className="d-block w-100"
               alt="..."
             />
