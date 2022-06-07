@@ -61,7 +61,7 @@ function Home() {
             <a
               target="_blank"
               rel="noreferrer"
-              href="mailto:ajoy.kapat@snu.edu.in"
+              href="mailtoajoy.kapat@snu.edu.in"
             >
               ajoy.kapat@snu.edu.in
             </a>
