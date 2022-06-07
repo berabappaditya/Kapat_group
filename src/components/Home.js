@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "./Carousel";
 import { news } from "../Data/HomeData";
-import { Link } from "react-router-dom";
+
 function Home() {
   return (
     <div className="home body">
