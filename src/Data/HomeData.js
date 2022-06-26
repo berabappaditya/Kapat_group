@@ -25,7 +25,7 @@ export const news = [
   },
   {
     detail:
-      "Garvisa Mittal joined  the group as a OUR student in Monsoon 2021, welcome to the group",
+      "Garvisha Mittal joined  the group as a OUR student in Monsoon 2021, welcome to the group",
   },
   {
     detail:
