@@ -7,7 +7,7 @@ export const groupMem = [
   },
 
   {
-    name: "Prashant Sing",
+    name: "Prashant Singh",
     details:
       "His interest in organic synthesis developed in his undergraduate final semester 2019 where he had the opportunity to attend the workshop conducted by BARC, Mumbai. His postgraduate specialization was in organic chemistry from K.J.Somaiya College, Mumbai. His postgraduate project was based on molecular docking studies in association with IIT Bombay. He had also worked as a Subject Matter Expert with companies like Chegg India, Kunduz Technologies, Softusvista. He joined the group as a junior research fellow supported by SERB-SRG grant in monsoon 2021. Currently, he is working in the area of transition metal catalysed cascade reaction.  He like to spend his spare time playing basketball, listening to podcast and workout in gym.",
     imgl: "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744626/Prashant_Singh_ddbxyy.jpg",

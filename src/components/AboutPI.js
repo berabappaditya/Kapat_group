@@ -10,11 +10,25 @@ function AboutPI() {
           style={{ paddingLeft: "3vw", marginTop: "10vh" }}
         >
           <div className="col-md-3 d-flex justify-content-center align-items-center">
-            <img
-              style={{ width: "60%", height: "auto", borderRadius: "5px" }}
-              src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744626/Dr._Ajoy_Kapat_mdps0i.jpg"
-              alt="..."
-            />
+            <div
+              className="piImager text-center "
+              style={{
+                textAlign: "center",
+                borderRadius: "2px",
+                boxShadow: "0px 0px 10px 0 gray",
+                padding: "10px",
+              }}
+            >
+              <img
+                style={{ width: "60%", height: "auto", borderRadius: "5px" }}
+                src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744626/Dr._Ajoy_Kapat_mdps0i.jpg"
+                alt="..."
+              />
+              <br />
+              <h5>
+                <b>Dr. Ajoy Kapat</b>
+              </h5>
+            </div>
           </div>
 
           <div div className="col-md-9">

@@ -61,7 +61,7 @@ export const facilitiesData = [
       "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744674/Prep_HPLC_ceburx.jpg",
   },
   {
-    name: "EPR Spectrometer (JES – X320)",
+    name: "EPR Spectrometer (JES – X320: arriving)",
     imgSrc:
       "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653560776/EPR-JEOL_X320_vlixlk.jpg",
   },

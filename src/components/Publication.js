@@ -24,7 +24,7 @@ function Publication() {
             <h3 style={{ marginBottom: "5vh" }}>
               Publication Before Joining SNU
             </h3>
-            {publication.reverse().map((item, index) => {
+            {publication.map((item, index) => {
               return (
                 <p style={{ marginLeft: "1vw" }}>
                   <b>{publication.length - index}.</b>&nbsp;
