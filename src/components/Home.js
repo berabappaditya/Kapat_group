@@ -54,10 +54,10 @@ function Home() {
           <h1 style={{ margin: "1vh 0 5vh 0" }}>Open Position</h1>
           <h4 style={{ margin: "5vh 0 5vh 1vw" }}>PhD Position:</h4>
           <p style={{ marginLeft: "2vw" }}>
-            Currently, there are three opening for doctoral study in the area of
-            asymmetric catalysis, cascade catalysis & metalloradical catalysis,
-            interested candidates are requested to send their updated CV with
-            short research summary directly to Dr. Ajoy Kapat (
+            Currently, there are three openings for doctoral study in the area
+            of asymmetric catalysis, cascade catalysis & metalloradical
+            catalysis, interested candidates are requested to send their updated
+            CV with short research summary directly to Dr. Ajoy Kapat (
             <a
               target="_blank"
               rel="noreferrer"
