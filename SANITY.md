@@ -77,13 +77,13 @@ Notes:
 1. In Netlify: **Site settings → Environment variables**, add
    - `REACT_APP_SANITY_PROJECT_ID` = `vtabhoqf`
    - `REACT_APP_SANITY_DATASET` = `production`
-   - `SANITY_STUDIO_PROJECT_ID` = `vtabhoqf` (for the /studio build)
-   - `SANITY_STUDIO_DATASET` = `production`
-   (`.env` files are gitignored, so Netlify must have its own copies.)
-2. Build command `npm run build`, publish directory `build`. The
-   `postbuild` hook builds the Studio into `build/studio` automatically,
-   and `public/_redirects` routes both the site's react-router pages and
-   `/studio/*` correctly.
+   (`.env` files are gitignored, so Netlify must have its own copies.
+   The `SANITY_STUDIO_*` pair and the Node version are already committed
+   in `netlify.toml` — the Studio build requires Node 20+, pinned to 22.)
+2. Build command `npm run build`, publish directory `build` (both also set
+   in `netlify.toml`). The `postbuild` hook builds the Studio into
+   `build/studio` automatically, and `public/_redirects` routes both the
+   site's react-router pages and `/studio/*` correctly.
 3. After the first deploy, allow the site's origin to call the Sanity API —
    **with credentials**, so the embedded Studio's login works:
    ```bash
