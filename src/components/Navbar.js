@@ -1,124 +1,72 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
-import { CgMenu } from "react-icons/cg";
-import { MdClose } from "react-icons/md";
+import { NavCollapseIcon, MenuIcon, CloseIcon } from "./Icons";
+import site from "../content/site.json";
+import { useContent } from "../lib/useContent";
+
+const BRAND_QUERY = `*[_id == "siteSettings"][0]{title, subtitle}`;
 
 function Navbar() {
   const [show, setShow] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
+  const brand = useContent(BRAND_QUERY, site.brand);
+
+  const navClass = ({ isActive }) => (isActive ? "active" : undefined);
 
   return (
-    <nav className="row nav-main">
-      <div className="col nav-left">
-        <p className="kapat_logo">Kapat Research Group</p>
-        <p
-          style={{ margin: "1vh 0 0 8vw", fontSize: "0.9vw" }}
-          className="kapat_logo_subtitle"
-        >
-          The Radical Chemistry and Catalysis Laboratory
-        </p>
-        {/* <Link className="nav-logo" path="/home">
-          
-        </Link> */}
-      </div>
-      <div className="col menu-bar">
-        {!show && (
-          <CgMenu
-            onClick={() => setShow(true)}
-            className="menu-bar-icon"
-            id="menu-bar"
-          />
-        )}
-        {show && (
-          <MdClose
-            onClick={() => setShow(false)}
-            className="fa-solid fa-x menu-bar-icon"
-            id="menu-bar"
-            style={{ color: "white" }}
-          >
-            x
-          </MdClose>
-        )}
-      </div>
+    <nav className="site-nav">
+      <Link to="/home" className="brand">
+        <span className="brand-name">{brand.title}</span>
+        <span className="brand-sub">{brand.subtitle}</span>
+      </Link>
 
-      <div
-        onClick={() => setShow(false)}
-        className="col nav-right"
-        id="navbar-menu-l"
-      >
-        <ul className="d-flex justify-content-start">
-          <li>
-            <Link className="nolink nav-menu" to="/home">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link className="nolink nav-menu" to="/aboutPI">
-              About PI
-            </Link>
-          </li>
-          <li>
-            <Link className=" nolink nav-menu" to="/research">
-              Research
-            </Link>
-          </li>
-          <li>
-            <Link className=" nolink nav-menu" to="/publication">
-              Publication
-            </Link>
-          </li>
-          <li>
-            <Link className=" nolink nav-menu" to="/group">
-              Group
-            </Link>
-          </li>
-          <li>
-            <Link className=" nolink nav-menu" to="/groupImg">
-              Group Photos
-            </Link>
-          </li>
-          <li>
-            <Link className=" nolink nav-menu" to="/facilities">
-              Facilities
-            </Link>
-          </li>
+      <div className="nav-right">
+        <ul className={collapsed ? "nav-links is-collapsed" : "nav-links"}>
+          {site.nav.map((item) => (
+            <li key={item.path}>
+              <NavLink className={navClass} to={item.path}>
+                {item.label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
+
+        <button
+          type="button"
+          className={
+            collapsed
+              ? "nav-collapse-toggle is-collapsed"
+              : "nav-collapse-toggle"
+          }
+          aria-label={collapsed ? "Expand navigation" : "Collapse navigation"}
+          aria-expanded={!collapsed}
+          onClick={() => setCollapsed(!collapsed)}
+        >
+          <NavCollapseIcon />
+        </button>
+
+        <button
+          type="button"
+          className="nav-toggle"
+          aria-label={show ? "Close menu" : "Open menu"}
+          aria-expanded={show}
+          onClick={() => setShow(!show)}
+        >
+          {show ? <CloseIcon /> : <MenuIcon />}
+        </button>
       </div>
 
       {show && (
-        <div className="mob-menu">
+        <div className="mob-menu" onClick={() => setShow(false)}>
           <ul>
-            <li>
-              <Link className="nolink nav-menu-mob" to="/home">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link className="nolink nav-menu-mob" to="/aboutPI">
-                AboutPI
-              </Link>
-            </li>
-            <li>
-              <Link className=" nolink nav-menu-mob" to="/research">
-                Research
-              </Link>
-            </li>
-            <li>
-              <Link className=" nolink nav-menu-mob" to="/publication">
-                Publication
-              </Link>
-            </li>
-            <li>
-              <Link className=" nolink nav-menu-mob" to="/group">
-                Group
-              </Link>
-            </li>
-
-            <li>
-              <Link className=" nolink nav-menu-mob" to="/facilities">
-                Facilities
-              </Link>
-            </li>
+            {site.nav.map((item) => (
+              <li key={item.path}>
+                <NavLink className={navClass} to={item.path}>
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
       )}

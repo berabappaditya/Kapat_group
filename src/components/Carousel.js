@@ -1,123 +1,47 @@
-import React from "react";
-import { IoChevronForwardCircle, IoChevronBackCircle } from "react-icons/io5";
+import React, { useEffect, useState } from "react";
+import home from "../content/home.json";
+import { useContent } from "../lib/useContent";
+
+const SLIDE_MS = 6000;
+const SLIDES_QUERY = `*[_id == "homePage"][0].slides[]{"img": imageUrl}`;
 
 function Carousel() {
-  return (
-    <div id="home_carousel" style={{ margin: "0 -3vw" }}>
-      <div
-        id="carouselExampleIndicators"
-        className="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <div className="carousel-indicators" style={{ color: "red" }}>
-          <li
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to={0}
-            className="active d-flex justify-content-center"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></li>
-          <li
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to={1}
-            aria-label="Slide 2"
-            className="d-flex justify-content-center"
-          ></li>
-          <li
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to={2}
-            className="d-flex justify-content-center"
-            aria-label="Slide 3"
-          ></li>
-          <li
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to={3}
-            className="d-flex justify-content-center"
-            aria-label="Slide 4"
-          ></li>
+  const slides = useContent(SLIDES_QUERY, home.carousel);
+  const [active, setActive] = useState(0);
 
-          <li
+  // Keep the index valid if the slide list changes size (e.g. CMS data lands)
+  const current = active % slides.length;
+
+  // Auto-advance; picking a dot restarts the full interval.
+  useEffect(() => {
+    const timer = setTimeout(
+      () => setActive((current + 1) % slides.length),
+      SLIDE_MS
+    );
+    return () => clearTimeout(timer);
+  }, [current, slides.length]);
+
+  return (
+    <div className="hero-carousel">
+      {slides.map((slide, index) => (
+        <div
+          key={slide.img}
+          className={index === current ? "hero-slide is-active" : "hero-slide"}
+        >
+          <img src={slide.img} alt={`Research highlight ${index + 1}`} />
+        </div>
+      ))}
+      <div className="hero-slide-dots">
+        {slides.map((_, index) => (
+          <button
+            key={index}
             type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to={4}
-            className="d-flex justify-content-center"
-            aria-label="Slide 5"
-          ></li>
-        </div>
-        <div className="carousel-inner">
-          <div className="carousel-item active" data-bs-interval="1000">
-            <img
-              src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744750/Assym_Cat-AK.001_spdfsi.jpg"
-              className="d-block w-100"
-              alt="..."
-            />
-          </div>
-          <div className="carousel-item" data-bs-interval="1000">
-            <img
-              src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744712/Asym_Cat-AK.002_qeaz38.jpg"
-              className="d-block w-100"
-              alt="..."
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1653557612/Asym_Cat-AK.001_wessku.jpg"
-              className="d-block w-100"
-              alt="..."
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1653559786/Lab_A221.002_sdwixa.jpg"
-              className="d-block w-100"
-              alt="..."
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1653040970/IMG_5951_j1xbfv.jpg"
-              className="d-block w-100"
-              alt="..."
-            />
-          </div>
-        </div>
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev"
-        >
-          {/* <GrPrevious style={{ fontWeight: "500" }} /> */}
-          {/* <span className="carousel-control-prev-icon" aria-hidden="true" /> */}
-          <IoChevronBackCircle
-            style={{
-              fontWeight: "bold",
-              color: "#3143ff",
-              fontSize: "1.5rem",
-            }}
-          />
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next"
-        >
-          <IoChevronForwardCircle
-            style={{
-              fontWeight: "bold",
-              color: "#3143ff",
-              fontSize: "1.5rem",
-            }}
-          />
-          {/* <span className="carousel-control-next-icon" aria-hidden="true" /> */}
-          <span className="visually-hidden">Next</span>
-        </button>
+            className={index === current ? "is-active" : undefined}
+            aria-label={`Show slide ${index + 1}`}
+            aria-current={index === current}
+            onClick={() => setActive(index)}
+          ></button>
+        ))}
       </div>
     </div>
   );

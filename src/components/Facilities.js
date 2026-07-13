@@ -1,33 +1,30 @@
 import React from "react";
-import { facilitiesData } from "../Data/ResearchData";
+import facilitiesFallback from "../content/facilities.json";
+import { useContent } from "../lib/useContent";
+
+const FACILITIES_QUERY = `*[_type == "facility"] | order(order asc){
+  name, "img": imageUrl
+}`;
 
 function Facilities() {
+  const facilities = useContent(FACILITIES_QUERY, facilitiesFallback);
   return (
-    <div className="home body">
-      <div className="home-main body-child">
-        <div className="container-fluid">
-          <div className="row" style={{ margin: "10vh 1vw 10vh 1vw" }}>
-            {facilitiesData.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  className="col-sm-4"
-                  style={{
-                    height: "34vh",
-                    margin: "3vh  0 3vh 0",
-                    textAlign: "center",
-                  }}
-                >
-                  <img
-                    src={item.imgSrc}
-                    alt="..."
-                    style={{ height: "90%", maxWidth: "100%" }}
-                  />
-                  <p style={{ fontWeight: "500" }}>{item.name}</p>
-                </div>
-              );
-            })}
-          </div>
+    <div className="page">
+      <header className="page-head">
+        <div className="container">
+          <p className="eyebrow">Infrastructure</p>
+          <h1 className="display">Facilities</h1>
+        </div>
+      </header>
+
+      <div className="container">
+        <div className="facility-grid">
+          {facilities.map((item) => (
+            <div className="facility-card" key={item.name} data-reveal>
+              <img src={item.img} alt={item.name} />
+              <p>{item.name}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
