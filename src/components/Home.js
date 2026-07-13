@@ -1,124 +1,103 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Carousel from "./Carousel";
-import { news } from "../Data/HomeData";
+import home from "../content/home.json";
+import site from "../content/site.json";
+import { useContent } from "../lib/useContent";
+
+const QUICK_LINK_PATHS = ["/research", "/publication", "/group", "/facilities"];
+
+const HERO_QUERY = `*[_id == "homePage"][0]{"lede": heroLede}`;
+const NEWS_QUERY = `*[_type == "newsItem"] | order(order asc)[].text`;
+const POSITIONS_QUERY = `*[_id == "homePage"][0]{phd, postdoc, internship}`;
 
 function Home() {
+  const hero = useContent(HERO_QUERY, home.hero);
+  const news = useContent(NEWS_QUERY, home.news);
+  const openPositions = useContent(POSITIONS_QUERY, home.openPositions);
+  const { phd, postdoc, internship } = openPositions;
+  const quickLinks = site.nav.filter((item) =>
+    QUICK_LINK_PATHS.includes(item.path)
+  );
+
   return (
-    <div className="home body">
-      <div className="home-main body-child">
-        <Carousel />
-        <div
-          className="home-news"
-          style={{ padding: "15vh 0 3vh 4vw", margin: "10vh 0 0 0" }}
-        >
-          <div
-            style={{
-              marginLeft: "5px",
-              marginBottom: "2vh",
-              height: "5px",
-              width: "210px",
-              backgroundColor: "#008BFF",
-              borderRadius: "1px",
-            }}
-          ></div>
-          <h1 style={{ margin: "1vh 0 5vh 0" }}>Group News</h1>
-          {news.map((item, index) => {
-            return (
-              <p
-                key={index}
-                style={{
-                  marginLeft: "1vw",
-                  fontSize: "1rem",
-                  fontWeight: "500",
-                }}
-              >
-                - {item.detail}.
-              </p>
-            );
-          })}
+    <div className="page">
+      <section className="home-hero">
+        <div className="home-hero-bg">
+          <Carousel />
         </div>
-        <div
-          className="home-open-position"
-          style={{ padding: "10vh 4vw 3vh 4vw", margin: "10vh 0 0 0" }}
-        >
-          <div
-            style={{
-              marginLeft: "4px",
-              marginBottom: "2vh",
-              height: "5px",
-              width: "250px",
-              backgroundColor: "#008BFF",
-              borderRadius: "1px",
-            }}
-          ></div>
-          <h1 style={{ margin: "1vh 0 5vh 0" }}>Open Position</h1>
-          <h4 style={{ margin: "5vh 0 5vh 1vw" }}>PhD Position:</h4>
-          <p style={{ marginLeft: "2vw" }}>
-            Currently, there are three openings for doctoral study in the area
-            of asymmetric catalysis, cascade catalysis & metalloradical
-            catalysis, interested candidates are requested to send their updated
-            CV with short research summary directly to Dr. Ajoy Kapat (
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="mailto:ajoy.kapat@snu.edu.in"
-            >
-              ajoy.kapat@snu.edu.in
-            </a>
-            ).{" "}
-          </p>
-          <h4 style={{ margin: "5vh 0 5vh 1vw" }}>Post-Doc Position:</h4>
-          <p style={{ marginLeft: "2vw" }}>
-            Currently, no funded post-doctoral positions are available. However,
-            group support with the research proposal and supporting letter to
-            all the interested candidates, who are willing to apply for the
-            following fellowships.
-            <br />
-            <br />
-            I.National Post Doctoral Fellowship
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.serbonline.in/SERB/npdf?HomePage=New"
-            >
-              https://www.serbonline.in/SERB/npdf?HomePage=New
-            </a>{" "}
-            <br />
-            <br />
-            II. Research Associates (
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://csirhrdg.res.in/Home/Index/1/Default/2186/56"
-            >
-              https://csirhrdg.res.in/Home/Index/1/Default/2186/56
-            </a>
-            )
-            <br />
-            <br />
-            All the eligible candidates are requested to send their updated CV,
-            two letters of recommendation with short research summary directly
-            to Dr. Ajoy Kapat (ajoy.kapat@snu.edu.in).
-          </p>
+        <div className="home-hero-scrim" aria-hidden="true"></div>
+        <div className="container home-hero-inner">
+          <div className="home-hero-text">
+            <p className="eyebrow">{site.brand.subtitle}</p>
+            <h1 className="display">{site.brand.title}</h1>
+            <div className="tick-rule">
+              <span className="tick"></span>
+              <span className="line"></span>
+            </div>
+            <p className="hero-lede">{hero.lede}</p>
+          </div>
         </div>
-        <div className="home-short" style={{ padding: "2vh 4vw 3vh 4vw" }}>
-          <h4 style={{ margin: "3vh 0 5vh 1vw" }}>
-            Short Term Research Internship Position:
-          </h4>
-          <p style={{ marginLeft: "2vw" }}>
-            Candidates are requested to send their updated CV directly to Dr.
-            Ajoy Kapat (
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="mailto:ajoy.kapat@snu.edu.in"
-            >
-              ajoy.kapat@snu.edu.in
-            </a>
-            ).
-          </p>
+      </section>
+
+      <section className="container">
+        <div className="quick-strip" data-reveal>
+          {quickLinks.map((item) => (
+            <Link key={item.path} to={item.path} className="quick-card">
+              <h3>{item.label}</h3>
+              <span className="view-tag">View</span>
+            </Link>
+          ))}
         </div>
-      </div>
+      </section>
+
+      <section className="container home-cols">
+        <div data-reveal>
+          <div className="section-head">
+            <h2>Group News</h2>
+            <span className="head-tag">Latest first</span>
+          </div>
+          <ul className="news-list">
+            {news.map((item, index) => (
+              <li key={index}>{item}.</li>
+            ))}
+          </ul>
+        </div>
+
+        <aside className="positions-wrap" data-reveal>
+          <div className="positions-panel">
+            <h2>Open Positions</h2>
+
+            <h3>{phd.heading}</h3>
+            <p>
+              {phd.text} (
+              <a href={`mailto:${phd.email}`}>{phd.email}</a>
+              ).
+            </p>
+
+            <h3>{postdoc.heading}</h3>
+            <p>{postdoc.intro}</p>
+            <ul className="fellowship-list">
+              {postdoc.fellowships.map((fellowship) => (
+                <li key={fellowship.url}>
+                  {fellowship.label} —{" "}
+                  <a target="_blank" rel="noreferrer" href={fellowship.url}>
+                    apply here
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p>{postdoc.closing}</p>
+
+            <h3>{internship.heading}</h3>
+            <p>
+              {internship.text} (
+              <a href={`mailto:${internship.email}`}>{internship.email}</a>
+              ).
+            </p>
+          </div>
+        </aside>
+      </section>
     </div>
   );
 }

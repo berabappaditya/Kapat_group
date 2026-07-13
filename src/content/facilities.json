@@ -1,0 +1,38 @@
+[
+  {
+    "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744671/GB-4_blydte.jpg",
+    "name": "GS Glove box (ALFA-Line)"
+  },
+  {
+    "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744671/GC-MS_n0nuze.png",
+    "name": "GC-MS"
+  },
+  {
+    "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653560794/IMG_20220526_150847__01_ruujkz.jpg",
+    "name": "Solvent Purification System"
+  },
+  {
+    "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744671/400MHz-NMR-SONS-ANNEX-GF_0_v0vvba.jpg",
+    "name": "NMR Spectrometer (400 MHz)"
+  },
+  {
+    "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744672/LCMS_Picture_lgg5sl.jpg",
+    "name": "The Mass Spectrometry"
+  },
+  {
+    "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653560808/IMG_20220526_151913__01_unrykk.jpg",
+    "name": "Flash Column Chromatography"
+  },
+  {
+    "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744672/Analytical_HPLC_hr8diy.jpg",
+    "name": "Analytical HPLC (Waters)"
+  },
+  {
+    "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744674/Prep_HPLC_ceburx.jpg",
+    "name": "Preparative HPLC"
+  },
+  {
+    "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653560776/EPR-JEOL_X320_vlixlk.jpg",
+    "name": "EPR Spectrometer (JES – X320: arriving)"
+  }
+]

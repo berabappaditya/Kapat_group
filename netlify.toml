@@ -1,0 +1,15 @@
+# Netlify build configuration.
+# NODE_VERSION: the Sanity Studio build (Vite 6) needs Node 20+; we pin 22
+# to match local development.
+# SANITY_STUDIO_*: used by the /studio build (postbuild step). The project
+# ID is public (it ships in the client bundle), so committing it is safe.
+# REACT_APP_SANITY_* are set in the Netlify UI.
+
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "22"
+  SANITY_STUDIO_PROJECT_ID = "vtabhoqf"
+  SANITY_STUDIO_DATASET = "production"

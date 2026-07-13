@@ -1,0 +1,39 @@
+{
+  "brand": {
+    "subtitle": "The Radical Chemistry and Catalysis Laboratory",
+    "title": "Kapat Research Group"
+  },
+  "nav": [
+    {
+      "label": "Home",
+      "path": "/home"
+    },
+    {
+      "label": "About PI",
+      "path": "/aboutPI"
+    },
+    {
+      "label": "Research",
+      "path": "/research"
+    },
+    {
+      "label": "Publication",
+      "path": "/publication"
+    },
+    {
+      "label": "Group",
+      "path": "/group"
+    },
+    {
+      "label": "Facilities",
+      "path": "/facilities"
+    }
+  ],
+  "footer": {
+    "addressLine1": "Shiv Nadar University-School of Natural Science-Department of Chemistry-NH - 91, Tehsil Dadri",
+    "addressLine2": "Gautam Buddha Nagar-Uttar Pradesh - 201314-India",
+    "email": "ajoy.kapat@snu.edu.in",
+    "heading": "Contact Us",
+    "phone": "9599626674"
+  }
+}

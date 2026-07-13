@@ -1,0 +1,64 @@
+{
+  "hero": {
+    "lede": "We develop asymmetric, cascade and metalloradical catalysis for the streamlined synthesis of complex molecules — at the Department of Chemistry, Shiv Nadar University."
+  },
+  "carousel": [
+    {
+      "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744750/Assym_Cat-AK.001_spdfsi.jpg"
+    },
+    {
+      "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744712/Asym_Cat-AK.002_qeaz38.jpg"
+    },
+    {
+      "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653557612/Asym_Cat-AK.001_wessku.jpg"
+    },
+    {
+      "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653559786/Lab_A221.002_sdwixa.jpg"
+    },
+    {
+      "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653040970/IMG_5951_j1xbfv.jpg"
+    }
+  ],
+  "news": [
+    "Asrar successfully completed his candidacy and comprehensive examination",
+    "Umashankar joined the group as a summer intern student supported by SRG grant from DST-SERB, welcome to the group",
+    "Department of Chemistry successfully organized the Chemistry Fair 2022 in association with the American Chemical Society. Many thanks to Asrar, Garvisha and Abhay for your assistance",
+    "Saumya Singh joined the group as a research intern student in Spring 2022, welcome to the group",
+    "Mr. Prashant Singh joined the group as a JRF student in Monsoon 2021, welcome to the group",
+    "The group says farewell to Oindrila, wish her all the best for the future",
+    "Garvisha Mittal joined the group as a OUR student in Monsoon 2021, welcome to the group",
+    "Abhay Dixit joined the group as a OUR student in Monsoon 2021, warm welcome to the group",
+    "The group says farewell to Dr. Garima Singh, wish her all the best for her next position",
+    "Ms. Oindrila Adhikari joined the group as a JRF student in Spring 2021, welcome to the group",
+    "The group received first research grant from DST-SERB in December 2020, many congratulation",
+    "Mr. Asrar Ahmad joined the group as PhD student in Spring 2020, welcome to the group and good luck for your thesis work",
+    "Dr. Garima Singh joined the group as a Post-Doctoral student in Spring 2020, welcome to the group"
+  ],
+  "openPositions": {
+    "internship": {
+      "email": "ajoy.kapat@snu.edu.in",
+      "heading": "Short Term Research Internship Position:",
+      "text": "Candidates are requested to send their updated CV directly to Dr. Ajoy Kapat"
+    },
+    "phd": {
+      "email": "ajoy.kapat@snu.edu.in",
+      "heading": "PhD Position:",
+      "text": "Currently, there are three openings for doctoral study in the area of asymmetric catalysis, cascade catalysis & metalloradical catalysis, interested candidates are requested to send their updated CV with short research summary directly to Dr. Ajoy Kapat"
+    },
+    "postdoc": {
+      "closing": "All the eligible candidates are requested to send their updated CV, two letters of recommendation with short research summary directly to Dr. Ajoy Kapat (ajoy.kapat@snu.edu.in).",
+      "fellowships": [
+        {
+          "label": "I. National Post Doctoral Fellowship",
+          "url": "https://www.serbonline.in/SERB/npdf?HomePage=New"
+        },
+        {
+          "label": "II. Research Associates",
+          "url": "https://csirhrdg.res.in/Home/Index/1/Default/2186/56"
+        }
+      ],
+      "heading": "Post-Doc Position:",
+      "intro": "Currently, no funded post-doctoral positions are available. However, group support with the research proposal and supporting letter to all the interested candidates, who are willing to apply for the following fellowships."
+    }
+  }
+}

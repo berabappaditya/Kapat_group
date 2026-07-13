@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+/.claude
+
 # testing
 /coverage
 
@@ -100,6 +102,9 @@ web_modules/
 
 # Yarn Integrity file
 .yarn-integrity
+
+# Sanity Studio runtime cache
+.sanity
 
 # dotenv environment variable files
 .env

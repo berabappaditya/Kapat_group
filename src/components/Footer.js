@@ -1,43 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import site from "../content/site.json";
+import { useContent } from "../lib/useContent";
+
+const FOOTER_QUERY = `*[_id == "siteSettings"][0]{
+  "heading": footerHeading, addressLine1, addressLine2, email, phone
+}`;
+const BRAND_QUERY = `*[_id == "siteSettings"][0]{title, subtitle}`;
 
 export default function Footer() {
-  const footMain = {
-    backgroundColor: "black",
-    textAlign: "center",
-    fontSize: "1.3vw",
-    fontWeight: "200",
-    color: "white",
-    padding: "3vh 0 5vh 0",
-  };
+  const footer = useContent(FOOTER_QUERY, site.footer);
+  const brand = useContent(BRAND_QUERY, site.brand);
+
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        backgroundColor: "#e8f1f4",
-      }}
-    >
-      <footer style={footMain} className="footer-child">
-        {" "}
-        <p style={{ color: "#008BFF", fontSize: "1.8rem", fontWeight: "500" }}>
-          Contact Us
-        </p>
-        Shiv Nadar University-School of Natural Science-Department of
-        Chemistry-NH - 91, Tehsil Dadri
+    <footer className="site-footer">
+      <p className="eyebrow">{footer.heading}</p>
+      <p>
+        {footer.addressLine1}
         <br />
-        Gautam Buddha Nagar-Uttar Pradesh - 201314-India; Email:
-        <Link
-          to={{
-            pathname: "ajoy.kapat@snu.edu.in",
-          }}
-          target="_blank"
-        >
-          {" "}
-          ajoy.kapat@snu.edu.in
-        </Link>
-        ; Ph: 9599626674
-      </footer>
-    </div>
+        {footer.addressLine2}
+      </p>
+      <p>
+        E: <a href={`mailto:${footer.email}`}>{footer.email}</a> &middot; Ph:{" "}
+        {footer.phone}
+      </p>
+      <p className="foot-copy">
+        {brand.title} &middot; {brand.subtitle}
+      </p>
+    </footer>
   );
 }
