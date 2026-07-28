@@ -73,12 +73,15 @@ docs.push({
   recognition: withKeys(pi.recognition),
 });
 
+const newsGroups = content("news.json");
+
 // --- Lists (order = current position in the JSON) -------------------------
-home.news.forEach((text, index) => {
+newsGroups.forEach((group, index) => {
   docs.push({
-    _id: `newsItem-${slug(text)}`,
-    _type: "newsItem",
-    text,
+    _id: `newsGroup-${slug(group.category)}`,
+    _type: "newsGroup",
+    category: group.category,
+    items: group.items,
     order: index,
   });
 });

@@ -100,7 +100,7 @@ All run from `studio/` and need `npx sanity login` once per machine.
 ```bash
 # Re-import the original seed content (overwrites the dataset!)
 node ../scripts/build-sanity-seed.js       # regenerate from src/content/*.json
-npx sanity dataset import ../scripts/sanity-seed.ndjson production --replace
+npx sanity dataset import ./scripts/sanity-seed.ndjson production --replace
 
 # Check/fix dataset visibility (must be public for the tokenless sync)
 npx sanity dataset visibility get production

@@ -10,8 +10,10 @@ function Facilities() {
   const facilities = useContent(FACILITIES_QUERY, facilitiesFallback);
   return (
     <div className="page">
-      <header className="page-head">
-        <div className="container">
+      <header className="group-hero">
+        <img src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1784917943/images-2_b93vx5.jpg" alt="Facilities" />
+        <div className="group-hero-veil" aria-hidden="true"></div>
+        <div className="group-hero-title container">
           <p className="eyebrow">Infrastructure</p>
           <h1 className="display">Facilities</h1>
         </div>

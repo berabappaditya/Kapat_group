@@ -3,17 +3,20 @@ import { Link } from "react-router-dom";
 import Carousel from "./Carousel";
 import home from "../content/home.json";
 import site from "../content/site.json";
+import newsData from "../content/news.json";
 import { useContent } from "../lib/useContent";
 
 const QUICK_LINK_PATHS = ["/research", "/publication", "/group", "/facilities"];
 
 const HERO_QUERY = `*[_id == "homePage"][0]{"lede": heroLede}`;
-const NEWS_QUERY = `*[_type == "newsItem"] | order(order asc)[].text`;
+const NEWS_QUERY = `*[_type == "newsGroup"] | order(order desc) { items }`;
 const POSITIONS_QUERY = `*[_id == "homePage"][0]{phd, postdoc, internship}`;
 
 function Home() {
   const hero = useContent(HERO_QUERY, home.hero);
-  const news = useContent(NEWS_QUERY, home.news);
+  // Flatten news groups to get the latest flat items
+  const rawNewsGroups = useContent(NEWS_QUERY, newsData);
+  const news = rawNewsGroups.flatMap(group => group.items || []);
   const openPositions = useContent(POSITIONS_QUERY, home.openPositions);
   const { phd, postdoc, internship } = openPositions;
   const quickLinks = site.nav.filter((item) =>
@@ -55,13 +58,18 @@ function Home() {
         <div data-reveal>
           <div className="section-head">
             <h2>Group News</h2>
-            <span className="head-tag">Latest first</span>
+            <span className="head-tag">Latest</span>
           </div>
           <ul className="news-list">
-            {news.map((item, index) => (
+            {news.slice(0, 5).map((item, index) => (
               <li key={index}>{item}.</li>
             ))}
           </ul>
+          <div style={{ marginTop: "1rem" }}>
+            <Link to="/group-news" className="btn btn-outline" style={{ display: "inline-block" }}>
+              View all news &rarr;
+            </Link>
+          </div>
         </div>
 
         <aside className="positions-wrap" data-reveal>
