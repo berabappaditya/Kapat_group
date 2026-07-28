@@ -15,6 +15,7 @@ import AboutPI from "./components/AboutPI";
 import Research from "./components/Research";
 import Publication from "./components/Publication";
 import Group from "./components/Group";
+import GroupNews from "./components/GroupNews";
 
 import Facilities from "./components/Facilities";
 
@@ -119,6 +120,7 @@ function App() {
 
           <Route path="/group" element={<Group view="members" />} />
           <Route path="/group/gallery" element={<Group view="gallery" />} />
+          <Route path="/group-news" element={<GroupNews />} />
           <Route
             path="/groupImg"
             element={<Navigate to="/group/gallery" replace />}

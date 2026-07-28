@@ -46,8 +46,10 @@ function Publication() {
 
   return (
     <div className="page">
-      <header className="page-head">
-        <div className="container">
+      <header className="group-hero">
+        <img src="https://res.cloudinary.com/ajoy-kapat/image/upload/fl_preserve_transparency/v1784918525/SNIoE-Library_xok3xo.jpg" alt="Publications" />
+        <div className="group-hero-veil" aria-hidden="true"></div>
+        <div className="group-hero-title container">
           <p className="eyebrow">{sectionTitle}</p>
           <h1 className="display">Publications</h1>
         </div>
