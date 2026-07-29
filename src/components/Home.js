@@ -60,14 +60,25 @@ function Home() {
             <h2>Group News</h2>
             <span className="head-tag">Latest</span>
           </div>
-          <ul className="news-list">
+
+          <div className="hn-feed">
             {news.slice(0, 5).map((item, index) => (
-              <li key={index}>{item}.</li>
+              <div className="hn-item" key={index}>
+                <span className="hn-num">0{index + 1}</span>
+                <div className="hn-content">
+                  <span className="hn-dot" aria-hidden="true" />
+                  <p>{item}</p>
+                </div>
+              </div>
             ))}
-          </ul>
-          <div style={{ marginTop: "1rem" }}>
-            <Link to="/group-news" className="btn btn-outline" style={{ display: "inline-block" }}>
-              View all news &rarr;
+          </div>
+
+          <div className="hn-cta-wrap">
+            <Link to="/group-news" className="hn-cta-btn">
+              <span>View all news</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </Link>
           </div>
         </div>
