@@ -19,6 +19,11 @@ function Group({ view = "members" }) {
   const photos = useContent(PHOTOS_QUERY, group.photos);
   const [zoomedIndex, setZoomedIndex] = React.useState(null);
 
+  // Reset zoom state whenever the user switches between Members and Gallery tabs
+  React.useEffect(() => {
+    setZoomedIndex(null);
+  }, [view]);
+
   const displayPhotos = React.useMemo(() => [...photos].reverse(), [photos]);
 
   React.useEffect(() => {
@@ -63,7 +68,7 @@ function Group({ view = "members" }) {
         </div>
       </nav>
 
-      <div className="container">
+      <div className="container" key={view}>
         {view === "members" ? (
           <>
             <div className="section-head" data-reveal>
