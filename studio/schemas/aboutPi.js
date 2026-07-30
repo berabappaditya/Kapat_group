@@ -47,17 +47,51 @@ export default {
     },
     {
       name: "recognition",
-      title: "Recognition & awards",
+      title: "National & International Recognition",
       type: "array",
       of: [
         {
           type: "object",
           fields: [
-            { name: "title", title: "Award", type: "string" },
+            { name: "title", title: "Award / Grant", type: "string" },
             { name: "year", title: "Year(s)", type: "string" },
           ],
           preview: {
             select: { title: "title", subtitle: "year" },
+          },
+        },
+      ],
+    },
+    {
+      name: "editorial",
+      title: "Editorial Appointments & Review Activities",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "title", title: "Activity / Role", type: "string" },
+            { name: "year", title: "Year", type: "string" },
+          ],
+          preview: {
+            select: { title: "title", subtitle: "year" },
+          },
+        },
+      ],
+    },
+    {
+      name: "invitedTalks",
+      title: "Invited Talks & Conference Participation",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "title", title: "Event / Role", type: "string" },
+            { name: "date", title: "Date (e.g. March 2026)", type: "string" },
+          ],
+          preview: {
+            select: { title: "title", subtitle: "date" },
           },
         },
       ],

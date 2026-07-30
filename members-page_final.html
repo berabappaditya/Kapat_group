@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>People — Molecular Catalysis Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F8FB;
+  --card:#FFFFFF;
+  --ink:#0F172A;
+  --muted:#64748B;
+  --line:#E5E9F0;
+  --indigo:#4F46E5;
+  --violet:#8B5CF6;
+  --cyan:#06B6D4;
+  --grad:linear-gradient(120deg,#4F46E5 0%,#8B5CF6 55%,#06B6D4 120%);
+  --ring:conic-gradient(from 210deg,#4F46E5,#8B5CF6,#06B6D4,#4F46E5);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:'Inter',sans-serif;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--indigo);color:#fff}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(18px,4vw,44px)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--indigo);outline-offset:3px;border-radius:4px}
+
+/* ---------------- nav ---------------- */
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.brand{font-family:'Sora',sans-serif;font-weight:700;font-size:16px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.brand .dot{width:26px;height:26px;border-radius:8px;background:var(--grad);display:inline-block;box-shadow:0 4px 12px -4px rgba(79,70,229,.6)}
+nav ul{display:flex;gap:6px;list-style:none}
+nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:8px 14px;border-radius:999px;transition:all .2s}
+nav a:hover{color:var(--ink);background:#EEF0F6}
+nav a.active{color:#fff;background:var(--ink)}
+@media (max-width:640px){nav ul{display:none}}
+
+/* ---------------- hero ---------------- */
+header.hero{position:relative;z-index:1;padding:clamp(44px,6.5vw,76px) 0 clamp(64px,8vw,96px)}
+
+/* ---------------- circular gradient background ---------------- */
+.orbs{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);will-change:transform}
+.o1{width:520px;height:520px;top:-180px;left:-160px;
+  background:radial-gradient(circle at 35% 35%,rgba(79,70,229,.20),rgba(139,92,246,.08) 55%,transparent 72%);
+  animation:drift 22s ease-in-out infinite alternate;}
+.o2{width:620px;height:620px;top:16%;right:-240px;
+  background:radial-gradient(circle at 40% 40%,rgba(6,182,212,.16),rgba(37,99,235,.07) 55%,transparent 72%);
+  animation:drift 26s ease-in-out infinite alternate-reverse;}
+.o3{width:560px;height:560px;bottom:-220px;left:22%;
+  background:radial-gradient(circle at 45% 45%,rgba(139,92,246,.14),rgba(219,39,119,.05) 55%,transparent 72%);
+  animation:drift 30s ease-in-out infinite alternate;}
+@keyframes drift{
+  from{transform:translate(0,0) scale(1)}
+  to{transform:translate(46px,-34px) scale(1.07)}
+}
+.hero .eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--indigo);background:#EEF0FF;border:1px solid #DFE3FF;
+  padding:6px 14px;border-radius:999px;margin-bottom:18px;
+}
+.hero .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--grad)}
+h1{
+  font-family:'Sora',sans-serif;font-weight:700;letter-spacing:-.03em;
+  font-size:clamp(36px,5.4vw,60px);line-height:1.06;
+}
+h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:520px;margin-top:16px;font-size:15.5px;color:var(--muted)}
+
+/* avatar cluster stat line */
+.cluster{display:flex;align-items:center;gap:14px;margin-top:24px}
+.stack{display:flex}
+.stack span{
+  width:34px;height:34px;border-radius:50%;border:2.5px solid var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Sora',sans-serif;font-weight:600;font-size:11px;color:#fff;
+}
+.stack span+span{margin-left:-10px}
+.stack .s1{background:linear-gradient(140deg,#4F46E5,#7C3AED)}
+.stack .s2{background:linear-gradient(140deg,#0891B2,#2563EB)}
+.stack .s3{background:linear-gradient(140deg,#7C3AED,#DB2777)}
+.stack .s4{background:linear-gradient(140deg,#059669,#0891B2)}
+.stack .s5{background:linear-gradient(140deg,#2563EB,#8B5CF6)}
+.cluster .txt{font-size:13px;font-weight:500;color:var(--muted)}
+.cluster .txt b{color:var(--ink);font-weight:600}
+
+/* ---------------- immersive hero with group photo background ---------------- */
+.herowrap{
+  position:relative;overflow:hidden;
+  border-radius:0 0 30px 30px;
+  background:
+    linear-gradient(108deg,rgba(8,13,28,.94) 0%,rgba(15,23,42,.82) 38%,rgba(30,27,75,.62) 72%,rgba(8,47,73,.55) 100%),
+    url("https://res.cloudinary.com/aditya-college-of-engineering-technology/image/upload/v1784484900/kapat_group_kcdbja.png") center 32%/cover no-repeat,
+    #0F172A;
+}
+/* soft cyan glow bleeding in from the right */
+.herowrap::after{
+  content:"";position:absolute;top:-30%;right:-15%;width:60%;height:160%;
+  background:radial-gradient(closest-side,rgba(6,182,212,.18),transparent 70%);
+  pointer-events:none;
+}
+.herowrap nav{border-bottom:1px solid rgba(255,255,255,.08)}
+.herowrap .brand{color:#fff}
+.herowrap nav a{color:#9AA7BF}
+.herowrap nav a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.herowrap nav a.active{color:#0F172A;background:#fff}
+.herowrap .eyebrow{
+  color:#C7D2FE;background:rgba(255,255,255,.08);
+  border-color:rgba(255,255,255,.16);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+.herowrap h1{color:#fff}
+.herowrap .hero p{color:#B6C2D9}
+.herowrap .cluster .txt{color:#8E9CB5}
+.herowrap .cluster .txt b{color:#fff}
+.herowrap .stack span{border-color:rgba(13,20,38,.9)}
+.shotchip{
+  position:absolute;right:22px;bottom:20px;z-index:2;
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(15,23,42,.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.16);border-radius:999px;
+  padding:7px 16px;font-size:12px;font-weight:600;color:#DCE4F2;
+}
+.shotchip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--grad)}
+@media (max-width:640px){
+  .herowrap{border-radius:0 0 20px 20px}
+  .shotchip{right:12px;bottom:12px;font-size:11px;padding:6px 13px}
+}
+
+/* ---------------- filter bar ---------------- */
+.bar{
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  position:sticky;top:12px;z-index:20;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--line);border-radius:999px;
+  padding:6px;margin:-27px 0 28px;width:max-content;max-width:100%;
+  box-shadow:0 8px 24px -16px rgba(15,23,42,.25);
+}
+.bar button{
+  font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;
+  padding:8px 18px;border-radius:999px;border:none;background:transparent;
+  color:var(--muted);cursor:pointer;transition:all .2s;
+}
+.bar button:hover{color:var(--ink)}
+.bar button.on{background:var(--ink);color:#fff;box-shadow:0 4px 10px -4px rgba(15,23,42,.5)}
+.bar .count{font-size:12.5px;font-weight:500;color:var(--muted);padding:0 14px 0 6px}
+
+/* ---------------- grid ---------------- */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;padding-bottom:10px}
+@media (max-width:840px){.grid{grid-template-columns:1fr}}
+
+/* ---------------- card ---------------- */
+.member{
+  background:var(--card);border:1px solid var(--line);border-radius:20px;
+  padding:24px 24px 20px;position:relative;
+  box-shadow:0 1px 2px rgba(15,23,42,.03);
+  opacity:0;transform:translateY(16px);
+  transition:opacity .55s ease,transform .55s ease,box-shadow .3s ease,border-color .3s ease;
+  transition-delay:var(--d,0s);
+}
+.member.vis{opacity:1;transform:none}
+.member[hidden]{display:none}
+.member:hover{
+  transform:translateY(-3px);
+  border-color:transparent;
+  box-shadow:0 1px 0 rgba(15,23,42,.02),0 22px 46px -22px rgba(79,70,229,.35);
+  transition-delay:0s;
+}
+.member::before{
+  content:"";position:absolute;top:0;left:24px;right:24px;height:2px;border-radius:2px;
+  background:var(--grad);opacity:0;transition:opacity .3s ease;
+}
+.member:hover::before{opacity:1}
+
+/* header row */
+.head{display:flex;gap:16px;align-items:center}
+.avatar{flex:0 0 auto;width:70px;height:70px;border-radius:50%;padding:3px;background:var(--ring);position:relative}
+.avatar .im{width:100%;height:100%;border-radius:50%;overflow:hidden;background:#EEF0F6;border:3px solid #fff}
+.avatar img,.avatar .ph{
+  width:100%;height:100%;object-fit:cover;display:block;
+  filter:saturate(.15);transition:filter .45s ease,transform .45s ease;
+}
+.member:hover .avatar img,.member:hover .avatar .ph{filter:saturate(1);transform:scale(1.06)}
+.ph{display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:21px;color:#fff}
+.ph.a{background:linear-gradient(140deg,#4F46E5,#7C3AED)}
+.ph.b{background:linear-gradient(140deg,#0891B2,#2563EB)}
+.ph.c{background:linear-gradient(140deg,#7C3AED,#DB2777)}
+.ph.d{background:linear-gradient(140deg,#059669,#0891B2)}
+.ph.e{background:linear-gradient(140deg,#2563EB,#8B5CF6)}
+
+.id{min-width:0}
+.id .name{
+  font-family:'Sora',sans-serif;font-weight:600;font-size:18.5px;letter-spacing:-.01em;line-height:1.25;
+  display:inline;background-image:var(--grad);background-repeat:no-repeat;
+  background-size:0% 2px;background-position:0 100%;
+  transition:background-size .35s ease;padding-bottom:2px;
+}
+.member:hover .id .name{background-size:100% 2px}
+.id .sub{font-size:13px;color:var(--muted);margin-top:3px}
+.id .tags{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+.tag{font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:999px}
+.tag.current{color:#fff;background:var(--grad)}
+.tag.alumni{color:var(--indigo);background:#EEF0FF;border:1px solid #DFE3FF}
+.tag.year{color:var(--muted);background:#F1F3F8}
+
+/* bio */
+.bio{
+  margin-top:15px;font-size:14px;color:#3B4657;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+}
+.member.open .bio{display:block;-webkit-line-clamp:unset}
+.quote{
+  display:none;margin-top:12px;font-size:13.5px;font-style:italic;color:var(--indigo);
+  background:linear-gradient(120deg,#EEF0FF,#F0FBFD);border-radius:12px;padding:12px 16px;
+}
+.member.open .quote{display:block}
+.more{
+  margin-top:10px;background:none;border:none;cursor:pointer;padding:0;
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:13px;font-weight:600;color:var(--indigo);
+}
+.more:hover{text-decoration:underline}
+.more .chev{display:inline-block;transition:transform .25s ease;font-size:11px}
+.member.open .more .chev{transform:rotate(180deg)}
+
+/* trajectory footer */
+.path{margin-top:15px;padding-top:15px;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:10px}
+.leg{display:flex;gap:12px;align-items:flex-start;position:relative;padding-left:22px}
+.leg::before{content:"";position:absolute;left:4px;top:7px;width:8px;height:8px;border-radius:50%;background:#CBD5E1}
+.leg.now::before{background:var(--grad);box-shadow:0 0 0 4px rgba(139,92,246,.15)}
+.leg:not(:last-child)::after{
+  content:"";position:absolute;left:7.5px;top:19px;bottom:-12px;width:1.5px;background:var(--line);
+}
+.leg .k{font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.leg .v{font-size:13.5px;font-weight:500;line-height:1.4}
+.leg.now .v{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:600}
+
+/* footer */
+footer{padding:44px 0 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+footer p{font-size:13px;color:var(--muted)}
+footer .join{
+  font-weight:600;color:#fff;background:var(--ink);text-decoration:none;
+  padding:10px 20px;border-radius:999px;font-size:13.5px;transition:transform .2s,box-shadow .2s;
+}
+footer .join:hover{transform:translateY(-2px);box-shadow:0 10px 24px -12px rgba(15,23,42,.5)}
+
+@media (prefers-reduced-motion:reduce){
+  .member{opacity:1;transform:none;transition:none}
+  .orb{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="orbs" aria-hidden="true">
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="orb o3"></div>
+</div>
+
+<div class="herowrap">
+<div class="wrap">
+  <nav>
+    <div class="brand"><span class="dot"></span>Molecular Catalysis Lab</div>
+    <ul>
+      <li><a href="#">Research</a></li>
+      <li><a href="#">Publications</a></li>
+      <li><a href="#" class="active">People</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow">Our Team</span>
+    <h1>Meet the minds behind<br>the <span class="g">molecules</span></h1>
+    <p>A group of chemists, spectroscopists, and theorists building new catalytic methods — and the alumni carrying that work around the world.</p>
+    <div class="cluster">
+      <div class="stack">
+        <span class="s1">AR</span><span class="s2">VK</span><span class="s3">MF</span><span class="s4">SS</span><span class="s5">RJ</span>
+      </div>
+      <div class="txt"><b>5 researchers</b> · alumni now at Caltech, Syngene &amp; beyond</div>
+    </div>
+  </header>
+</div>
+<span class="shotchip">The group · 2026</span>
+</div>
+
+<div class="wrap">
+
+  <div class="bar" role="tablist" aria-label="Filter members">
+    <button class="on" data-f="all">All</button>
+    <button data-f="current">Current</button>
+    <button data-f="alumni">Alumni</button>
+    <span class="count" id="count"></span>
+  </div>
+
+  <main class="grid" id="list">
+
+    <!-- ============ FEATURED: PI ============ -->
+    <article class="member" data-cat="current">
+      <div class="head">
+        <div class="avatar"><div class="im"><div class="ph b">AR</div></div></div>
+        <div class="id">
+          <h2 class="name">Dr. Ananya Raghunathan</h2>
+          <div class="sub">Principal Investigator</div>
+          <div class="tags"><span class="tag current">Current</span><span class="tag year">Since 2016</span></div>
+        </div>
+      </div>
+      <p class="bio">Ananya leads the group's efforts in earth-abundant metal catalysis. After a PhD at IISc Bangalore and postdoctoral work at ETH Zürich, she returned to India to build a lab asking a single stubborn question: can cheap metals be taught to do noble-metal chemistry? Her work spans mechanistic electrochemistry, ligand design, and in-situ spectroscopy.</p>
+      <button class="more" aria-expanded="false">Read more <span class="chev">▾</span></button>
+      <div class="path">
+        <div class="leg"><div><div class="k">Postdoc</div><div class="v">ETH Zürich, Switzerland</div></div></div>
+        <div class="leg now"><div><div class="k">Current Position</div><div class="v">Associate Professor · Dept. of Chemistry</div></div></div>
+      </div>
+    </article>
+
+    <!-- ============ MEMBER ============ -->
+    <article class="member" data-cat="current">
+      <div class="head">
+        <div class="avatar"><div class="im"><div class="ph c">VK</div></div></div>
+        <div class="id">
+          <h2 class="name">Vikram Kulkarni</h2>
+          <div class="sub">PhD Scholar</div>
+          <div class="tags"><span class="tag current">Current</span><span class="tag year">Since 2022</span></div>
+        </div>
+      </div>
+      <p class="bio">Vikram works at the intersection of photoredox catalysis and flow chemistry, designing continuous processes for late-stage C–H functionalization. He believes the best reactions are the ones you can run on a rooftop with sunlight — and he has the reactor prototypes to prove it. Off-hours he is the lab's unofficial coffee chemist and a competitive badminton player.</p>
+      <button class="more" aria-expanded="false">Read more <span class="chev">▾</span></button>
+      <div class="path">
+        <div class="leg"><div><div class="k">M.Sc.</div><div class="v">IIT Bombay, India</div></div></div>
+        <div class="leg now"><div><div class="k">Current Focus</div><div class="v">Photoredox flow catalysis</div></div></div>
+      </div>
+    </article>
+
+    <!-- ============ MEMBER ============ -->
+    <article class="member" data-cat="current">
+      <div class="head">
+        <div class="avatar"><div class="im"><div class="ph e">MF</div></div></div>
+        <div class="id">
+          <h2 class="name">Meera Fernandes</h2>
+          <div class="sub">Project Associate</div>
+          <div class="tags"><span class="tag current">Current</span><span class="tag year">Since 2024</span></div>
+        </div>
+      </div>
+      <p class="bio">Meera handles the group's computational arm, running DFT studies that explain why reactions work — or, more often, why they refuse to. Trained in theoretical chemistry at the University of Hyderabad, she is building the group's first machine-learned reactivity models and maintains a healthy skepticism of any barrier below 5 kcal/mol.</p>
+      <button class="more" aria-expanded="false">Read more <span class="chev">▾</span></button>
+      <div class="path">
+        <div class="leg"><div><div class="k">M.Sc.</div><div class="v">University of Hyderabad, India</div></div></div>
+        <div class="leg now"><div><div class="k">Current Focus</div><div class="v">DFT &amp; ML reactivity models</div></div></div>
+      </div>
+    </article>
+
+    <!-- ============ MEMBER ============ -->
+    <article class="member" data-cat="alumni">
+      <div class="head">
+        <div class="avatar"><div class="im">
+          <!-- replace with: <img src="photos/shreya.jpg" alt="Shreya Sivaramakrishnan"> -->
+          <div class="ph a">SS</div>
+        </div></div>
+        <div class="id">
+          <h2 class="name">Shreya Sivaramakrishnan</h2>
+          <div class="sub">B.Sc. (Research) Chemistry</div>
+          <div class="tags"><span class="tag alumni">Alumni</span><span class="tag year">2021–25</span></div>
+        </div>
+      </div>
+      <p class="bio">Shreya pursued her B.Sc. (Research) in Chemistry with a passion for scientific inquiry and sustainable development. Her research journey began in high school, leading her through electrochemistry, computational biology, and chemical biology across multiple internships and projects. As an OUR student she worked on metalloradical-based reduction reactions, and her final thesis focused on trifluoromethylation. Beyond the lab, she enjoys movies, connecting with people, and finding solace in nature treks and photography.</p>
+      <div class="quote">“Research is not just about finding answers; it's about asking the right questions that lead to a sustainable future.”</div>
+      <button class="more" aria-expanded="false">Read more <span class="chev">▾</span></button>
+      <div class="path">
+        <div class="leg"><div><div class="k">Internship</div><div class="v">California Institute of Technology, USA</div></div></div>
+        <div class="leg now"><div><div class="k">Current Position</div><div class="v">PhD Student · Caltech, USA</div></div></div>
+      </div>
+    </article>
+
+    <!-- ============ MEMBER ============ -->
+    <article class="member" data-cat="alumni">
+      <div class="head">
+        <div class="avatar"><div class="im"><div class="ph d">RJ</div></div></div>
+        <div class="id">
+          <h2 class="name">Rahul Joshi</h2>
+          <div class="sub">PhD, 2023</div>
+          <div class="tags"><span class="tag alumni">Alumni</span><span class="tag year">2018–23</span></div>
+        </div>
+      </div>
+      <p class="bio">Rahul's thesis established the group's nickel-hydride platform for alkene isomerization, work that produced three first-author papers and one memorably stubborn air-sensitive complex. A patient mentor to four batches of undergraduates, he set the standard for how the group documents its chemistry.</p>
+      <button class="more" aria-expanded="false">Read more <span class="chev">▾</span></button>
+      <div class="path">
+        <div class="leg"><div><div class="k">PhD Thesis</div><div class="v">Ni–H catalysed alkene isomerization</div></div></div>
+        <div class="leg now"><div><div class="k">Current Position</div><div class="v">Senior Scientist · Syngene International</div></div></div>
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Molecular Catalysis Lab</p>
+    <a class="join" href="#">Join the group →</a>
+  </footer>
+</div>
+
+<script>
+const btns=[...document.querySelectorAll('.bar button')];
+const cards=[...document.querySelectorAll('.member')];
+const count=document.getElementById('count');
+function apply(f){
+  let n=0;
+  cards.forEach(c=>{const show=f==='all'||c.dataset.cat===f;c.hidden=!show;if(show)n++;});
+  count.textContent=n+' member'+(n===1?'':'s');
+}
+btns.forEach(b=>b.addEventListener('click',()=>{
+  btns.forEach(x=>x.classList.remove('on'));b.classList.add('on');apply(b.dataset.f);
+}));
+apply('all');
+
+document.querySelectorAll('.more').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const card=btn.closest('.member');
+    const open=card.classList.toggle('open');
+    btn.firstChild.textContent=(open?'Show less ':'Read more ');
+    btn.setAttribute('aria-expanded',open);
+  });
+});
+
+/* staggered reveal */
+cards.forEach((c,i)=>c.style.setProperty('--d',(i%4)*0.08+'s'));
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});
+},{threshold:.1});
+cards.forEach(c=>io.observe(c));
+</script>
+</body>
+</html>

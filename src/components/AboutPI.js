@@ -3,7 +3,7 @@ import piFallback from "../content/about-pi.json";
 import { useContent } from "../lib/useContent";
 
 const PI_QUERY = `*[_id == "aboutPi"][0]{
-  name, "photo": photoUrl, bio, education, experience, recognition
+  name, "photo": photoUrl, bio, education, experience, recognition, editorial, invitedTalks
 }`;
 
 function AboutPI() {
@@ -68,6 +68,38 @@ function AboutPI() {
             </li>
           ))}
         </ul>
+
+        {pi.editorial && pi.editorial.length > 0 && (
+          <>
+            <div className="section-head" data-reveal>
+              <h2>Editorial Appointments &amp; Review Activities</h2>
+            </div>
+            <ul className="split-rows" data-reveal>
+              {pi.editorial.map((item, index) => (
+                <li key={index}>
+                  <span>{item.title}</span>
+                  <span className="row-year">{item.year}</span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+
+        {pi.invitedTalks && pi.invitedTalks.length > 0 && (
+          <>
+            <div className="section-head" data-reveal>
+              <h2>Invited Talks &amp; Conference Participation</h2>
+            </div>
+            <ul className="split-rows" data-reveal>
+              {pi.invitedTalks.map((item, index) => (
+                <li key={index}>
+                  <span>{item.title}</span>
+                  <span className="row-year">{item.date}</span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </div>
     </div>
   );
