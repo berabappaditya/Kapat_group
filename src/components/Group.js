@@ -38,12 +38,6 @@ function initials(name = "") {
   return parts[0][0].toUpperCase();
 }
 
-/** Cycle through 5 gradient classes a–e */
-const gradClasses = ["a", "b", "c", "d", "e"];
-function gradClass(idx) {
-  return gradClasses[idx % gradClasses.length];
-}
-
 /* --------------------------------------------------------------------------
    Section config — defines the sections shown in the Members tab
 -------------------------------------------------------------------------- */
@@ -88,7 +82,7 @@ const SECTIONS = [
 /* --------------------------------------------------------------------------
    MemberCard — portrait card + modal profile design
 -------------------------------------------------------------------------- */
-function MemberCard({ member, globalIdx, filterActive }) {
+function MemberCard({ member, globalIdx, num, filterActive }) {
   const [vis, setVis] = React.useState(false);
   const [modalOpen, setModalOpen] = React.useState(false);
   const cardRef = React.useRef(null);
@@ -146,33 +140,45 @@ function MemberCard({ member, globalIdx, filterActive }) {
         onKeyDown={(e) => e.key === "Enter" && setModalOpen(true)}
         aria-label={`View profile of ${member.name}`}
       >
-        {/* Photo banner */}
-        <div className="mg-photo-wrap">
+        {/* Portrait */}
+        <div className={`mg-photo-wrap${isFormer ? " former" : ""}`}>
           {member.img ? (
             <img src={member.img} alt={member.name} className="mg-photo-img" />
           ) : (
-            <div className={`mg-photo-ph mg-ph-${gradClass(globalIdx)}`}>
-              {initials(member.name)}
-            </div>
+            <div className="mg-photo-ph">{initials(member.name)}</div>
           )}
-          {/* hover overlay */}
+          {/* hover scrim */}
           <div className="mg-photo-overlay" aria-hidden="true">
-            <span className="mg-view-lbl">View Profile</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <span className="mg-view-lbl">
+              View Profile
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
           </div>
-          {/* status badge */}
-          <span className={`mg-badge ${isFormer ? "alumni" : "current"}`}>{tagLabel}</span>
         </div>
 
         {/* Card body */}
         <div className="mg-card-body">
-          <h3 className="mg-name">{member.name}</h3>
-          {member.role && <div className="mg-sub">{member.role}</div>}
-          {(member.joinYear || member.tenurePeriod) && (
-            <div className="mg-year-chip">{member.tenurePeriod || member.joinYear}</div>
-          )}
+          <div className="mg-name-row">
+            <h3 className="mg-name">{member.name}</h3>
+            {num != null && (
+              <span className="mg-num" aria-hidden="true">
+                {String(num).padStart(2, "0")}
+              </span>
+            )}
+          </div>
+          <div className="mg-role">{member.role || " "}</div>
+          <div className="mg-meta">
+            {(member.tenurePeriod || member.joinYear) && (
+              <span className="mg-year">
+                {member.tenurePeriod || member.joinYear}
+              </span>
+            )}
+            <span className={`mg-status ${isFormer ? "alumni" : "current"}`}>
+              {tagLabel}
+            </span>
+          </div>
         </div>
       </article>
 
@@ -199,13 +205,11 @@ function MemberCard({ member, globalIdx, filterActive }) {
 
             {/* Photo + identity hero */}
             <div className="mgm-hero">
-              <div className={`mgm-avatar-wrap mg-ph-${gradClass(globalIdx)}`}>
+              <div className="mgm-avatar-wrap">
                 {member.img ? (
                   <img src={member.img} alt={member.name} className="mgm-avatar-img" />
                 ) : (
-                  <div className={`mgm-ph mg-ph-${gradClass(globalIdx)}`}>
-                    {initials(member.name)}
-                  </div>
+                  <div className="mgm-ph">{initials(member.name)}</div>
                 )}
               </div>
               <div className="mgm-identity">
@@ -433,6 +437,7 @@ function Group({ view = "members" }) {
                           key={member.name + i}
                           member={member}
                           globalIdx={startIdx + i}
+                          num={i + 1}
                           filterActive={filter}
                         />
                       ))}
