@@ -86,10 +86,12 @@ const SECTIONS = [
 ];
 
 /* --------------------------------------------------------------------------
-   MemberCard — premium card design referencing members-page_final.html
+   MemberCard — portrait card + modal profile design
 -------------------------------------------------------------------------- */
 function MemberCard({ member, globalIdx, filterActive }) {
-  const [open, setOpen] = React.useState(false);
+  const [vis, setVis] = React.useState(false);
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const cardRef = React.useRef(null);
   const isFormer = member.category?.startsWith("former-");
   const tagLabel = isFormer ? "Alumni" : "Current";
   const tagClass = isFormer ? "mg-tag alumni" : "mg-tag current";
@@ -98,6 +100,30 @@ function MemberCard({ member, globalIdx, filterActive }) {
   const bio = member.details || "";
   const hasPath =
     member.currentPosition || member.internship || member.tenurePeriod || member.joinYear;
+
+  // Per-card IntersectionObserver — visibility tracked in React state
+  React.useEffect(() => {
+    if (!cardRef.current) return;
+    const io = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVis(true); io.disconnect(); } },
+      { threshold: 0.08 }
+    );
+    io.observe(cardRef.current);
+    return () => io.disconnect();
+  }, []);
+
+  // Lock body scroll & close on Escape when modal is open
+  React.useEffect(() => {
+    if (!modalOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => { if (e.key === "Escape") setModalOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [modalOpen]);
 
   // hidden by filter
   if (
@@ -108,96 +134,148 @@ function MemberCard({ member, globalIdx, filterActive }) {
   }
 
   return (
-    <article
-      className={`mg-card${open ? " open" : ""}`}
-      style={{ "--d": `${(globalIdx % 4) * 0.09}s` }}
-    >
-      {/* Top gradient accent bar */}
-      <div className="mg-card-accent" aria-hidden="true" />
-
-      {/* Header row: avatar + name block */}
-      <div className="mg-head">
-        <div className="mg-avatar">
-          <div className="mg-avatar-ring">
-            {member.img ? (
-              <img src={member.img} alt={member.name} className="mg-avatar-img" />
-            ) : (
-              <div className={`mg-ph mg-ph-${gradClass(globalIdx)}`}>
-                {initials(member.name)}
-              </div>
-            )}
+    <>
+      {/* ── Portrait card ── */}
+      <article
+        ref={cardRef}
+        className={`mg-card${vis ? " vis" : ""}`}
+        style={{ "--d": `${(globalIdx % 4) * 0.09}s` }}
+        onClick={() => setModalOpen(true)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === "Enter" && setModalOpen(true)}
+        aria-label={`View profile of ${member.name}`}
+      >
+        {/* Photo banner */}
+        <div className="mg-photo-wrap">
+          {member.img ? (
+            <img src={member.img} alt={member.name} className="mg-photo-img" />
+          ) : (
+            <div className={`mg-photo-ph mg-ph-${gradClass(globalIdx)}`}>
+              {initials(member.name)}
+            </div>
+          )}
+          {/* hover overlay */}
+          <div className="mg-photo-overlay" aria-hidden="true">
+            <span className="mg-view-lbl">View Profile</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </div>
+          {/* status badge */}
+          <span className={`mg-badge ${isFormer ? "alumni" : "current"}`}>{tagLabel}</span>
         </div>
 
-        <div className="mg-id">
+        {/* Card body */}
+        <div className="mg-card-body">
           <h3 className="mg-name">{member.name}</h3>
           {member.role && <div className="mg-sub">{member.role}</div>}
-          <div className="mg-tags">
-            <span className={tagClass}>{tagLabel}</span>
-            {(member.joinYear || member.tenurePeriod) && (
-              <span className="mg-tag year">
-                {member.tenurePeriod || member.joinYear}
-              </span>
+          {(member.joinYear || member.tenurePeriod) && (
+            <div className="mg-year-chip">{member.tenurePeriod || member.joinYear}</div>
+          )}
+        </div>
+      </article>
+
+      {/* ── Profile modal ── */}
+      {modalOpen && (
+        <div
+          className="mgm-backdrop"
+          onClick={() => setModalOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${member.name} profile`}
+        >
+          <div className="mgm-panel" onClick={(e) => e.stopPropagation()}>
+            {/* Close */}
+            <button
+              className="mgm-close"
+              onClick={() => setModalOpen(false)}
+              aria-label="Close profile"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+            </button>
+
+            {/* Photo + identity hero */}
+            <div className="mgm-hero">
+              <div className={`mgm-avatar-wrap mg-ph-${gradClass(globalIdx)}`}>
+                {member.img ? (
+                  <img src={member.img} alt={member.name} className="mgm-avatar-img" />
+                ) : (
+                  <div className={`mgm-ph mg-ph-${gradClass(globalIdx)}`}>
+                    {initials(member.name)}
+                  </div>
+                )}
+              </div>
+              <div className="mgm-identity">
+                <h2 className="mgm-name">{member.name}</h2>
+                {member.role && <p className="mgm-role">{member.role}</p>}
+                <div className="mgm-tags">
+                  <span className={tagClass}>{tagLabel}</span>
+                  {(member.joinYear || member.tenurePeriod) && (
+                    <span className="mg-tag year">{member.tenurePeriod || member.joinYear}</span>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Bio */}
+            {hasBio && (
+              <div className="mgm-section">
+                <div className="mgm-section-label">About</div>
+                <p className="mgm-bio">{bio}</p>
+              </div>
+            )}
+
+            {/* Trajectory */}
+            {hasPath && (
+              <div className="mgm-section">
+                <div className="mgm-section-label">Trajectory</div>
+                <div className="mgm-path">
+                  {member.internship && (
+                    <div className="mgm-leg">
+                      <div className="mgm-dot" />
+                      <div>
+                        <div className="mgm-leg-k">Internship</div>
+                        <div className="mgm-leg-v">{member.internship}</div>
+                      </div>
+                    </div>
+                  )}
+                  {member.joinYear && !isFormer && (
+                    <div className="mgm-leg">
+                      <div className="mgm-dot" />
+                      <div>
+                        <div className="mgm-leg-k">Joined</div>
+                        <div className="mgm-leg-v">{member.joinYear}</div>
+                      </div>
+                    </div>
+                  )}
+                  {member.tenurePeriod && isFormer && (
+                    <div className="mgm-leg">
+                      <div className="mgm-dot" />
+                      <div>
+                        <div className="mgm-leg-k">Tenure</div>
+                        <div className="mgm-leg-v">{member.tenurePeriod}</div>
+                      </div>
+                    </div>
+                  )}
+                  {member.currentPosition && (
+                    <div className="mgm-leg now">
+                      <div className="mgm-dot now" />
+                      <div>
+                        <div className="mgm-leg-k">Current Position</div>
+                        <div className="mgm-leg-v">{member.currentPosition}</div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
             )}
           </div>
         </div>
-      </div>
-
-      {/* Bio */}
-      {hasBio && (
-        <>
-          <p className="mg-bio">{bio}</p>
-          {bio.length > 240 && (
-            <button
-              className="mg-more"
-              aria-expanded={open}
-              onClick={() => setOpen((s) => !s)}
-            >
-              {open ? "Show less " : "Read more "}
-              <span className="mg-chev">▾</span>
-            </button>
-          )}
-        </>
       )}
-
-      {/* Trajectory path */}
-      {hasPath && (
-        <div className="mg-path">
-          {member.internship && (
-            <div className="mg-leg">
-              <div>
-                <div className="mg-leg-k">Internship</div>
-                <div className="mg-leg-v">{member.internship}</div>
-              </div>
-            </div>
-          )}
-          {member.joinYear && !isFormer && (
-            <div className="mg-leg">
-              <div>
-                <div className="mg-leg-k">Joined</div>
-                <div className="mg-leg-v">{member.joinYear}</div>
-              </div>
-            </div>
-          )}
-          {member.tenurePeriod && isFormer && (
-            <div className="mg-leg">
-              <div>
-                <div className="mg-leg-k">Tenure</div>
-                <div className="mg-leg-v">{member.tenurePeriod}</div>
-              </div>
-            </div>
-          )}
-          {member.currentPosition && (
-            <div className="mg-leg now">
-              <div>
-                <div className="mg-leg-k">Current Position</div>
-                <div className="mg-leg-v">{member.currentPosition}</div>
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-    </article>
+    </>
   );
 }
 
@@ -324,7 +402,7 @@ function Group({ view = "members" }) {
           </div>
 
           {/* Sections */}
-          <div ref={gridRef}>
+          <div>
             {(() => {
               // Build a flat index map for gradient cycling across all sections
               let runningIdx = 0;

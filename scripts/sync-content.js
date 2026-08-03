@@ -79,7 +79,10 @@ const QUERY = `{
     "pages": coalesce(pages, ""),
     "url": coalesce(url, "")
   },
-  "members": *[_type == "member"] | order(order asc){name, "details": bio, "img": photoUrl},
+  "members": *[_type == "member"] | order(order asc){
+    "id": _id, name, category, role, joinYear, tenurePeriod,
+    internship, currentPosition, "details": bio, "img": photoUrl
+  },
   "photos": *[_type == "groupPhoto"] | order(order asc){caption, "img": imageUrl}
 }`;
 
@@ -153,8 +156,15 @@ async function main() {
     });
   }
   if (result.members && result.members.length > 0) {
+    // GROQ returns null for absent fields; drop them so optional keys stay
+    // out of the JSON (the seed builder spreads them conditionally).
+    const members = result.members.map((member) =>
+      Object.fromEntries(
+        Object.entries(member).filter(([, value]) => value != null)
+      )
+    );
     writeJson("group.json", {
-      members: result.members,
+      members,
       photos: result.photos || [],
     });
   }

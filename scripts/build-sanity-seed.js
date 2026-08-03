@@ -88,11 +88,19 @@ newsGroups.forEach((group, index) => {
 
 group.members.forEach((member, index) => {
   docs.push({
-    _id: `member-${slug(member.name)}`,
+    // `id` is the real Sanity _id, carried through by sync-content.js so
+    // re-imports replace the live documents instead of duplicating them.
+    _id: member.id || `member-${slug(member.name)}`,
     _type: "member",
     name: member.name,
+    category: member.category,
+    ...(member.role ? { role: member.role } : {}),
+    ...(member.joinYear ? { joinYear: member.joinYear } : {}),
+    ...(member.tenurePeriod ? { tenurePeriod: member.tenurePeriod } : {}),
+    ...(member.internship ? { internship: member.internship } : {}),
+    ...(member.currentPosition ? { currentPosition: member.currentPosition } : {}),
     bio: member.details,
-    photoUrl: member.img,
+    ...(member.img ? { photoUrl: member.img } : {}),
     order: index,
   });
 });
