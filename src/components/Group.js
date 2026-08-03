@@ -233,17 +233,27 @@ function Group({ view = "members" }) {
   }, [zoomedIndex, displayPhotos.length]);
 
   // Intersect-observer reveal for member cards
+  // requestAnimationFrame defers setup until after the browser paints the
+  // newly-mounted cards — without it, navigating back from /gallery causes
+  // the observer to fire before cards exist in the DOM, leaving them invisible.
   const gridRef = React.useRef(null);
   React.useEffect(() => {
     if (!gridRef.current) return;
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("vis")),
-      { threshold: 0.08 }
-    );
-    const cards = gridRef.current.querySelectorAll(".mg-card");
-    cards.forEach((c) => io.observe(c));
-    return () => io.disconnect();
-  }, [members, filter]);
+    let io;
+    const rafId = requestAnimationFrame(() => {
+      if (!gridRef.current) return;
+      io = new IntersectionObserver(
+        (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("vis")),
+        { threshold: 0.08 }
+      );
+      const cards = gridRef.current.querySelectorAll(".mg-card");
+      cards.forEach((c) => io.observe(c));
+    });
+    return () => {
+      cancelAnimationFrame(rafId);
+      io?.disconnect();
+    };
+  }, [members, filter, view]);
 
   const MEMBER_HERO =
     "https://res.cloudinary.com/ajoy-kapat/image/upload/v1784918675/IMG-20241123-WA0055_n1o0s3.jpg";
