@@ -521,7 +521,10 @@ img {
   align-items: start;
 }
 
-/* ── Home News Feed ──────────────────────────────────────── */
+/* ── Home News Feed ──────────────────────────────────────────
+   Rows are separated by rules rather than gaps: Home.js measures the
+   feed by summing row heights, so a flex gap would skew the fit.
+------------------------------------------------------------- */
 .hn-feed {
   display: flex;
   flex-direction: column;
@@ -530,10 +533,7 @@ img {
 }
 
 .hn-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 0.9rem 0.75rem;
+  padding: 0.85rem 0.75rem;
   border-bottom: 1px solid var(--line);
   border-radius: 8px;
   transition: background 0.22s ease, transform 0.22s ease;
@@ -553,28 +553,36 @@ img {
   transform: translateX(4px);
 }
 
-.hn-num {
+/* Semester caption — printed once, above the first item of each semester */
+.hn-when {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.6rem;
   font-family: var(--font-display);
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--blue);
-  opacity: 0.45;
-  min-width: 1.6rem;
-  padding-top: 0.3rem;
-  line-height: 1;
-  user-select: none;
 }
 
-.hn-item:hover .hn-num {
-  opacity: 1;
+.hn-when::before {
+  content: "";
+  flex: none;
+  width: 22px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--navy), var(--cyan));
 }
 
-.hn-content {
+.hn-item + .hn-item .hn-when {
+  margin-top: 0.4rem;
+}
+
+.hn-line {
   display: flex;
   align-items: flex-start;
   gap: 0.65rem;
-  flex: 1;
   min-width: 0;
 }
 
@@ -593,7 +601,7 @@ img {
   box-shadow: 0 0 0 3px rgba(0, 194, 255, 0.25);
 }
 
-.hn-content p {
+.hn-line p {
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.65;
@@ -745,14 +753,28 @@ img {
 }
 
 /* ---------------------------------------------------------------------------
-   About PI — fading photo hero (navy band)
+   About PI — navy band, text beside a framed portrait plate
 --------------------------------------------------------------------------- */
 .pi-hero {
   position: relative;
-  background-color: var(--navy-deep);
+  background: linear-gradient(150deg, var(--navy) 0%, var(--navy-deep) 78%);
   color: #ffffff;
   overflow: hidden;
   margin-bottom: clamp(2.5rem, 6vh, 4rem);
+}
+
+/* Faint cyan dot-grid, as on every other navy band */
+.pi-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(0, 255, 255, 0.18) 1px,
+    transparent 1.4px
+  );
+  background-size: 26px 26px;
+  opacity: 0.22;
+  pointer-events: none;
 }
 
 .pi-hero::after {
@@ -770,37 +792,47 @@ img {
   );
 }
 
-.pi-hero-photo {
-  position: absolute;
-  inset: 0 0 0 34%;
-  background-size: cover;
-  background-position: center 20%;
-  background-repeat: no-repeat;
-  filter: grayscale(1) contrast(1.05) brightness(0.9);
-}
-
-.pi-hero-photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(1, 26, 88, 0.98) 0%,
-    rgba(1, 30, 100, 0.85) 20%,
-    rgba(1, 37, 125, 0.45) 52%,
-    rgba(1, 26, 88, 0.12) 100%
-  );
-}
-
 .pi-hero-inner {
   position: relative;
   z-index: 2;
-  padding-top: clamp(3.5rem, 10vh, 6.5rem);
-  padding-bottom: clamp(3.5rem, 10vh, 6.5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  padding-top: clamp(3rem, 8vh, 5rem);
+  padding-bottom: clamp(3rem, 8vh, 5rem);
 }
 
 .pi-hero-text {
   max-width: 52ch;
+}
+
+/* Portrait plate — a cyan rule frame offset behind the photo, echoing the
+   backing plate on the home page's Open Positions panel */
+.pi-portrait {
+  position: relative;
+  margin: 0;
+  width: clamp(180px, 20vw, 250px);
+  animation: fadeUp 750ms ease 260ms both;
+}
+
+.pi-portrait::before {
+  content: "";
+  position: absolute;
+  inset: 15px -15px -15px 15px;
+  border: 1px solid rgba(0, 255, 255, 0.55);
+  pointer-events: none;
+}
+
+.pi-portrait img {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 18%;
+  filter: grayscale(0.2) contrast(1.03);
+  box-shadow: 0 26px 60px -30px rgba(0, 8, 32, 0.85);
 }
 
 .pi-hero-text > * {
@@ -902,6 +934,11 @@ img {
   align-items: center;
   border-top: 1px solid var(--line);
   padding: clamp(2.5rem, 6vh, 4rem) 0;
+}
+
+/* The hero already closes the top of the page — no rule needed above the first */
+.research-item:first-child {
+  border-top: none;
 }
 
 .research-item:nth-child(even) .research-media {
@@ -1572,23 +1609,16 @@ img {
     order: 0;
   }
 
-  .pi-hero-photo {
-    position: relative;
-    inset: auto;
-    height: 320px;
-  }
-
-  .pi-hero-photo::after {
-    background: linear-gradient(
-      to bottom,
-      rgba(1, 26, 88, 0.15) 0%,
-      rgba(1, 26, 88, 0.35) 55%,
-      var(--navy-deep) 100%
-    );
-  }
-
   .pi-hero-inner {
-    padding-top: 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.75rem;
+    justify-items: start;
+  }
+
+  /* Portrait leads on a narrow screen, name and bio follow */
+  .pi-portrait {
+    order: -1;
+    width: clamp(150px, 40vw, 200px);
   }
 
   .quick-strip {
@@ -1886,280 +1916,384 @@ img {
   }
 }
 
-/* --- Group News Timeline Styles --- */
-/* ============================================================
-   GROUP NEWS — Premium Timeline
-   ============================================================ */
-
-/* Stats bar */
-.gn-stats-bar {
-  background: var(--navy-deep);
-  padding: 0.9rem 0;
-  border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+/* ===========================================================================
+   GROUP NEWS — semester archive
+   Years anchor a sticky rail; each semester is a ruled block beside it.
+   --gn-nav is set from the live nav height by GroupNews.js.
+=========================================================================== */
+.gn-page {
+  --gn-nav: 72px;
 }
 
-.gn-stats-inner {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  justify-content: center;
+/* ---- Sticky year bar (sits directly under the site nav) ---- */
+.gn-jump {
+  position: sticky;
+  top: var(--gn-nav);
+  z-index: 30;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
 }
 
-.gn-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.1rem;
-  padding: 0.25rem 2.5rem;
-}
-
-.gn-stat-num {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: #fff;
-  line-height: 1;
-}
-
-.gn-stat-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.gn-stat-div {
-  width: 1px;
-  height: 2.5rem;
-  background: rgba(255, 255, 255, 0.12);
-  flex-shrink: 0;
-}
-
-/* Main container */
-.gn-container {
-  padding: 5rem 0 6rem;
-}
-
-/* Timeline spine */
-.gn-timeline {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding-left: 2.5rem;
-}
-
-.gn-timeline::before {
-  content: "";
-  position: absolute;
-  left: 10px;
-  top: 8px;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(
-    to bottom,
-    var(--blue),
-    rgba(0, 229, 255, 0.6),
-    transparent
-  );
-  border-radius: 2px;
-}
-
-/* Each section row */
-.gn-section {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
-  padding-bottom: 3.5rem;
-}
-
-/* Glowing timeline dot */
-.gn-dot {
-  position: absolute;
-  left: -2.5rem;
-  top: 0.55rem;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  z-index: 1;
-  border: 3px solid var(--bg);
-  transition: transform 0.3s ease;
-}
-
-.gn-section:hover .gn-dot {
-  transform: scale(1.35);
-}
-
-/* Section body (grows to fill) */
-.gn-section-body {
-  flex: 1;
-  min-width: 0;
-}
-
-/* Category header row */
-.gn-category-header {
+.gn-jump-inner {
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  margin-bottom: 1.5rem;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
 }
 
-.gn-category-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 1.1rem;
-  border-radius: 100px;
+.gn-jump-label {
+  flex: none;
   font-family: var(--font-display);
-  font-size: 0.85rem;
+  font-size: 0.64rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-.gn-category-badge:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+.gn-jump-years {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
-.gn-category-icon {
-  font-size: 1rem;
+.gn-jump-years::-webkit-scrollbar {
+  display: none;
 }
 
-.gn-header-line {
-  height: 1.5px;
-  flex-grow: 1;
-  border-radius: 2px;
-  opacity: 0.5;
+.gn-jump-year {
+  flex: none;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
-/* News cards list */
-.gn-cards {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.gn-jump-year:hover {
+  color: var(--ink);
+  background: rgba(10, 59, 181, 0.06);
+}
+
+.gn-jump-year.on {
+  color: #ffffff;
+  background: var(--navy);
+  box-shadow: 0 5px 14px -6px var(--navy-shadow);
+}
+
+.gn-jump-count {
+  flex: none;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Archive body ---- */
+.gn-wrap {
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(3.5rem, 8vw, 6rem);
+}
+
+.gn-year {
+  display: grid;
+  grid-template-columns: minmax(0, 190px) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  padding-bottom: clamp(2.5rem, 6vw, 4rem);
+  scroll-margin-top: calc(var(--gn-nav) + 4.5rem);
+}
+
+.gn-year + .gn-year {
+  border-top: 1px solid var(--line);
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+}
+
+.gn-year-rail {
+  position: sticky;
+  top: calc(var(--gn-nav) + 5.5rem);
+  align-self: start;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.65rem;
+  min-width: 0;
 }
 
-/* Individual news card */
-.gn-card {
-  position: relative;
+.gn-year-num {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.6vw, 4rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--navy);
+}
+
+/* Undated legacy groups get a word, not a numeral */
+.gn-year-num.alt {
+  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.gn-year-tick {
+  width: 54px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--navy), var(--cyan));
+}
+
+.gn-year-meta {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.gn-year-body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 3.5vw, 2.5rem);
+  min-width: 0;
+}
+
+/* ---- One semester ---- */
+.gn-sem {
+  min-width: 0;
+}
+
+.gn-sem-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.gn-sem-title {
+  flex: none;
+  margin: 0;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.gn-sem-flag {
+  flex: none;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(120deg, var(--navy), var(--blue));
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+.gn-sem-rule {
+  flex: 1;
+  min-width: 1rem;
+  height: 1px;
+  background: var(--line);
+}
+
+.gn-sem-count {
+  flex: none;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+.gn-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.gn-entry {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  background: var(--surface);
-  border-radius: 12px;
-  padding: 1.1rem 1.4rem;
-  box-shadow: 0 2px 12px var(--navy-shadow);
-  border: 1px solid var(--line);
-  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
-  cursor: default;
-  animation: gnCardIn 0.45s ease both;
+  gap: 0.9rem;
+  padding: 0.85rem 0.9rem 0.85rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.22s ease, padding-left 0.22s ease;
 }
 
-@keyframes gnCardIn {
-  from {
-    opacity: 0;
-    transform: translateX(-12px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+.gn-entry:hover {
+  background: linear-gradient(
+    to right,
+    rgba(10, 59, 181, 0.045),
+    transparent 75%
+  );
+  padding-left: 1.05rem;
 }
 
-.gn-card::before {
+.gn-entry-mark {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  margin-top: 0.62rem;
+  background: var(--blue);
+  transform: rotate(45deg);
+  transition: transform 0.22s ease;
+}
+
+.gn-entry:hover .gn-entry-mark {
+  transform: rotate(45deg) scale(1.3);
+}
+
+.gn-entry p {
+  margin: 0;
+  font-size: 0.97rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+/* ---- The current semester rides a navy plate (cyan is legal here) ---- */
+.gn-sem.latest {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  border-top: 2px solid var(--cyan);
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+  box-shadow: 0 26px 60px -34px rgba(1, 37, 125, 0.55);
+}
+
+.gn-sem.latest::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(10,59,181,0.03), transparent 60%);
+  background-image: radial-gradient(
+    rgba(0, 255, 255, 0.16) 1px,
+    transparent 1.4px
+  );
+  background-size: 26px 26px;
+  opacity: 0.25;
   pointer-events: none;
 }
 
-.gn-card:hover {
-  transform: translateX(6px);
-  box-shadow: 0 8px 28px var(--navy-shadow);
-  border-color: var(--blue);
+.gn-sem.latest > * {
+  position: relative;
 }
 
-/* Left accent dot */
-.gn-card-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  margin-top: 0.45rem;
-  transition: transform 0.25s ease;
+.gn-sem.latest .gn-sem-title {
+  color: #ffffff;
 }
 
-.gn-card:hover .gn-card-dot {
-  transform: scale(1.4);
+.gn-sem.latest .gn-sem-flag {
+  background: var(--cyan);
+  color: var(--navy-deep);
 }
 
-.gn-card p {
-  margin: 0;
-  color: var(--ink);
-  font-size: 0.97rem;
-  line-height: 1.7;
-  font-family: var(--font-body);
+.gn-sem.latest .gn-sem-rule {
+  background: rgba(0, 255, 255, 0.28);
 }
 
-/* End cap */
-.gn-end-cap {
-  display: flex;
-  justify-content: flex-start;
-  padding-left: 0;
-  margin-left: -2.5rem;
-  margin-top: -1rem;
+.gn-sem.latest .gn-sem-count {
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.gn-end-cap span {
+.gn-sem.latest .gn-list {
+  border-top-color: rgba(255, 255, 255, 0.16);
+}
+
+.gn-sem.latest .gn-entry {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.gn-sem.latest .gn-entry:hover {
+  background: linear-gradient(
+    to right,
+    rgba(0, 255, 255, 0.08),
+    transparent 75%
+  );
+}
+
+.gn-sem.latest .gn-entry-mark {
+  background: var(--cyan);
+}
+
+.gn-sem.latest .gn-entry p {
+  color: #dbe4fb;
+}
+
+/* ---- Closing line ---- */
+.gn-foot {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  background: var(--navy-deep);
-  color: var(--cyan);
-  border-radius: 50%;
-  font-size: 0.65rem;
-  box-shadow: 0 0 0 4px var(--bg), 0 0 16px var(--cyan-glow);
+  gap: 1.1rem;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-/* Responsive */
+.gn-foot-rule {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--line));
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .gn-year {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.35rem;
+  }
+
+  .gn-year-rail {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .gn-year-num {
+    font-size: clamp(2rem, 9vw, 2.6rem);
+  }
+
+  .gn-year-tick {
+    flex: 1;
+    width: auto;
+    max-width: 90px;
+  }
+}
+
 @media (max-width: 640px) {
-  .gn-timeline {
-    padding-left: 1.75rem;
-  }
-  .gn-dot {
-    left: -1.75rem;
-    width: 14px;
-    height: 14px;
-  }
-  .gn-timeline::before {
-    left: 7px;
-  }
-  .gn-stat {
-    padding: 0.25rem 1.2rem;
-  }
-  .gn-stat-num {
-    font-size: 1.2rem;
-  }
-  .gn-category-header {
-    flex-wrap: wrap;
-  }
-  .gn-header-line {
+  .gn-jump-label,
+  .gn-jump-count {
     display: none;
+  }
+
+  .gn-entry {
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+  }
+
+  .gn-entry:hover {
+    padding-left: 0.6rem;
+  }
+
+  .gn-sem.latest {
+    padding: 1.15rem;
   }
 }
 
@@ -2392,8 +2526,8 @@ img {
 /* ---- Card grid ---- */
 .mg-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(196px, 1fr));
+  gap: 20px;
 }
 
 /* ── Portrait card — editorial "index plate" ── */
@@ -2449,11 +2583,11 @@ img {
   transform: scaleX(1);
 }
 
-/* Portrait — 4:5, grounded by a soft navy veil + inner hairline */
+/* Portrait — square, grounded by a soft navy veil + inner hairline */
 .mg-photo-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   background: linear-gradient(165deg, #eef1f9, #e2e8f5);
   overflow: hidden;
 }
@@ -2471,6 +2605,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 28%;
   display: block;
   filter: saturate(0.94);
   transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
@@ -2581,35 +2716,19 @@ img {
   padding: 15px 16px 16px;
 }
 
-.mg-name-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 10px;
-}
-
 .mg-name {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 15.5px;
+  font-size: 15px;
   letter-spacing: -0.01em;
-  line-height: 1.3;
+  line-height: 1.32;
   color: var(--ink);
   margin: 0;
-  min-width: 0;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.mg-num {
-  flex: none;
-  font-family: var(--font-display);
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  font-variant-numeric: tabular-nums;
-  color: rgba(10, 59, 181, 0.5);
+  min-height: 2.64em; /* two lines — keeps the meta rule level across a row */
 }
 
 .mg-role {

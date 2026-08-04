@@ -10,8 +10,10 @@ function Research() {
   const research = useContent(RESEARCH_QUERY, researchFallback);
   return (
     <div className="page">
-      <header className="page-head">
-        <div className="container">
+      <header className="group-hero">
+        <img src="https://res.cloudinary.com/ajoy-kapat/image/upload/v1784917984/images-6_wiaxby.jpg" alt="Research" />
+        <div className="group-hero-veil" aria-hidden="true"></div>
+        <div className="group-hero-title container">
           <p className="eyebrow">What we work on</p>
           <h1 className="display">Research</h1>
         </div>

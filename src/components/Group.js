@@ -82,7 +82,7 @@ const SECTIONS = [
 /* --------------------------------------------------------------------------
    MemberCard — portrait card + modal profile design
 -------------------------------------------------------------------------- */
-function MemberCard({ member, globalIdx, num, filterActive }) {
+function MemberCard({ member, globalIdx, filterActive }) {
   const [vis, setVis] = React.useState(false);
   const [modalOpen, setModalOpen] = React.useState(false);
   const cardRef = React.useRef(null);
@@ -160,14 +160,7 @@ function MemberCard({ member, globalIdx, num, filterActive }) {
 
         {/* Card body */}
         <div className="mg-card-body">
-          <div className="mg-name-row">
-            <h3 className="mg-name">{member.name}</h3>
-            {num != null && (
-              <span className="mg-num" aria-hidden="true">
-                {String(num).padStart(2, "0")}
-              </span>
-            )}
-          </div>
+          <h3 className="mg-name">{member.name}</h3>
           <div className="mg-role">{member.role || " "}</div>
           <div className="mg-meta">
             {(member.tenurePeriod || member.joinYear) && (
@@ -437,7 +430,6 @@ function Group({ view = "members" }) {
                           key={member.name + i}
                           member={member}
                           globalIdx={startIdx + i}
-                          num={i + 1}
                           filterActive={filter}
                         />
                       ))}

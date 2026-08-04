@@ -11,12 +11,6 @@ function AboutPI() {
   return (
     <div className="page">
       <header className="pi-hero">
-        <div
-          className="pi-hero-photo"
-          style={{ backgroundImage: `url(${pi.photo})` }}
-          role="img"
-          aria-label={pi.name}
-        ></div>
         <div className="container pi-hero-inner">
           <div className="pi-hero-text">
             <p className="eyebrow">Principal Investigator</p>
@@ -29,6 +23,10 @@ function AboutPI() {
               <p key={index}>{para}</p>
             ))}
           </div>
+
+          <figure className="pi-portrait">
+            <img src={pi.photo} alt={pi.name} />
+          </figure>
         </div>
       </header>
 

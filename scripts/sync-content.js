@@ -62,7 +62,7 @@ const QUERY = `{
       "internship": internship{heading, text, email}
     }
   },
-  "news": *[_type == "newsItem"] | order(order asc){text},
+  "newsGroups": *[_type == "newsGroup"] | order(order asc){category, items},
   "aboutPi": *[_id == "aboutPi"][0]{
     name,
     "photo": photoUrl,
@@ -127,11 +127,25 @@ async function main() {
     writeJson("home.json", {
       hero: result.home.hero,
       carousel: result.home.carousel || [],
-      news: (result.news || []).map((n) => n.text),
       openPositions: result.home.openPositions,
     });
   } else {
     console.warn("[sync-content] homePage missing in dataset — kept home.json");
+  }
+
+  // --- news.json -----------------------------------------------------------
+  // Written in the dataset's own order; src/lib/newsOrder.js is what decides
+  // the display order, from the semester label rather than this file.
+  if (result.newsGroups && result.newsGroups.length > 0) {
+    writeJson(
+      "news.json",
+      result.newsGroups.map((group) => ({
+        category: group.category,
+        items: group.items || [],
+      }))
+    );
+  } else {
+    console.warn("[sync-content] no newsGroup documents — kept news.json");
   }
 
   // --- about-pi.json ---------------------------------------------------------
