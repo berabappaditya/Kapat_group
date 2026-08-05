@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Live Demonstration at Shiv Nadar University Day 2025",
+    "place": "SNIoE Campus",
+    "date": "2025",
+    "description": "",
+    "images": [
+      {
+        "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1784918911/WhatsApp_Image_2025-04-10_at_7.56.43_PM_1_nrctvv.jpg",
+        "w": 4000,
+        "h": 1638
+      },
+      {
+        "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1784918943/WhatsApp_Image_2025-04-10_at_7.56.44_PM_g08ipn.jpg",
+        "w": 4000,
+        "h": 1638
+      }
+    ]
+  },
+  {
+    "title": "Live Demonstration at the CII Global Summit 2025 on Industry–Academia Partnership",
+    "place": "India Habitat Centre, New Delhi",
+    "date": "5 December 2025",
+    "description": "We gave a live demonstration during the CII Global Summit on Industry–Academia Partnership on 5 December 2025 at the India Habitat Centre, New Delhi, organised by the Office of the Principal Scientific Adviser to the Government of India.",
+    "images": [
+      {
+        "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785920074/GS-1_kibkkp.jpg",
+        "w": 3943,
+        "h": 2957
+      },
+      {
+        "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785920078/GS-2_ont1vn.png",
+        "w": 1812,
+        "h": 1152
+      }
+    ]
+  },
+  {
+    "title": "Live Demonstration at the Industry–Partners Summit 2026",
+    "place": "SNIoE, Delhi NCR",
+    "date": "2026",
+    "description": "",
+    "images": [
+      {
+        "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785921965/IPS-2_2026_kn8kdc.jpg",
+        "w": 1280,
+        "h": 960
+      },
+      {
+        "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785921950/IPS-1-2026_xavg9o.jpg",
+        "w": 3024,
+        "h": 4032
+      }
+    ]
+  }
+]

@@ -74,10 +74,19 @@ const QUERY = `{
   "research": *[_type == "researchArea"] | order(order asc){title, details, "img": imageUrl},
   "facilities": *[_type == "facility"] | order(order asc){name, "img": imageUrl},
   "publications": *[_type == "publication"] | order(order asc){
-    title, authors, journal, year,
+    title, authors,
+    "journal": coalesce(journal, ""),
+    "year": coalesce(year, ""),
     "volume": coalesce(volume, ""),
     "pages": coalesce(pages, ""),
-    "url": coalesce(url, "")
+    "url": coalesce(url, ""),
+    "status": coalesce(status, ""),
+    "coverImg": coalesce(coverUrl, ""),
+    "graphicImg": coalesce(graphicUrl, ""),
+    "note": coalesce(note, "")
+  },
+  "patents": *[_type == "patent"] | order(order asc){
+    title, authors, milestones, "img": coalesce(imageUrl, "")
   },
   "members": *[_type == "member"] | order(order asc){
     "id": _id, name, category, role, joinYear, tenurePeriod,
@@ -168,6 +177,9 @@ async function main() {
       sectionTitle: existing.sectionTitle,
       items: result.publications,
     });
+  }
+  if (result.patents && result.patents.length > 0) {
+    writeJson("patents.json", result.patents);
   }
   if (result.members && result.members.length > 0) {
     // GROQ returns null for absent fields; drop them so optional keys stay

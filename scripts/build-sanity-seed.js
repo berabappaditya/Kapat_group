@@ -21,6 +21,7 @@ const pi = content("about-pi.json");
 const research = content("research.json");
 const facilities = content("facilities.json");
 const publications = content("publications.json");
+const patents = content("patents.json");
 const group = content("group.json");
 
 const slug = (text) =>
@@ -126,6 +127,22 @@ publications.items.forEach((pub, index) => {
     volume: pub.volume,
     pages: pub.pages,
     ...(pub.url ? { url: pub.url } : {}),
+    ...(pub.status ? { status: pub.status } : {}),
+    ...(pub.coverImg ? { coverUrl: pub.coverImg } : {}),
+    ...(pub.graphicImg ? { graphicUrl: pub.graphicImg } : {}),
+    ...(pub.note ? { note: pub.note } : {}),
+    order: index,
+  });
+});
+
+patents.forEach((patent, index) => {
+  docs.push({
+    _id: `patent-${slug(patent.title)}`,
+    _type: "patent",
+    title: patent.title,
+    authors: patent.authors,
+    milestones: patent.milestones,
+    ...(patent.img ? { imageUrl: patent.img } : {}),
     order: index,
   });
 });

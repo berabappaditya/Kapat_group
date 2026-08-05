@@ -1,0 +1,52 @@
+{
+  "groups": [
+    {
+      "level": "Undergraduate",
+      "courses": [
+        {
+          "code": "CHY 122",
+          "name": "Basic Organic Chemistry-I",
+          "kind": "Practical"
+        },
+        {
+          "code": "CHY 221",
+          "name": "Basic Organic Chemistry-II",
+          "kind": "Practical"
+        },
+        {
+          "code": "CHY 222",
+          "name": "Chemistry of Carbonyl Compounds"
+        },
+        {
+          "code": "",
+          "name": "Application of Analytical NMR & MS",
+          "kind": "Tutorial"
+        }
+      ]
+    },
+    {
+      "level": "Postgraduate",
+      "courses": [
+        {
+          "code": "CHY 502",
+          "name": "Synthetic Organic Chemistry"
+        },
+        {
+          "code": "CHY 527",
+          "name": "Reaction Mechanism-I"
+        },
+        {
+          "code": "CHY 602",
+          "name": "Organic Name Reaction-II"
+        }
+      ]
+    }
+  ],
+  "coordinator": {
+    "role": "Final Year Research Project Coordinator",
+    "programmes": [
+      "Bachelor of Science (Research)",
+      "Master of Science (Research) & PhD"
+    ]
+  }
+}

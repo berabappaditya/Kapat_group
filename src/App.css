@@ -936,19 +936,21 @@ img {
   padding: clamp(2.5rem, 6vh, 4rem) 0;
 }
 
-/* The hero already closes the top of the page — no rule needed above the first */
-.research-item:first-child {
+/* The section head already opens the run — no rule needed above the first */
+.research-item:first-of-type {
   border-top: none;
 }
 
-.research-item:nth-child(even) .research-media {
+.research-item:nth-of-type(even) .research-media {
   order: -1;
 }
 
-.research-item h2 {
+.research-item h3 {
+  font-family: var(--font-display);
   font-size: clamp(1.2rem, 2vw, 1.5rem);
   font-weight: 700;
-  margin-bottom: 1.25rem;
+  color: var(--ink);
+  margin: 0 0 1.25rem 0;
 }
 
 .research-item p {
@@ -977,6 +979,363 @@ img {
 
 .research-item:hover .research-media img {
   transform: scale(1.02);
+}
+
+/* ---------------------------------------------------------------------------
+   Research page — the three subsections (interest / teaching / outreach)
+--------------------------------------------------------------------------- */
+
+/* Jump strip — sits under the hero, links to the sections below */
+.rs-jump {
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.7);
+  margin-bottom: clamp(2rem, 5vh, 3.25rem);
+}
+
+.rs-jump-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+}
+
+.rs-jump-link {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.rs-jump-link:hover,
+.rs-jump-link:focus-visible {
+  color: var(--navy);
+  border-color: rgba(10, 59, 181, 0.4);
+  background-color: rgba(10, 59, 181, 0.05);
+}
+
+/* Subsection wrapper + head */
+.rs-section {
+  margin-bottom: clamp(3.5rem, 9vh, 6rem);
+}
+
+.rs-section:last-child {
+  margin-bottom: 0;
+}
+
+.rs-head {
+  position: relative;
+  padding-top: 1.5rem;
+  margin-bottom: clamp(1.75rem, 4vh, 2.5rem);
+  border-top: 1px solid var(--line);
+  /* clears the sticky navbar when a jump link lands here */
+  scroll-margin-top: 96px;
+}
+
+/* Navy→cyan cap on the rule, as on .section-head */
+.rs-head::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 56px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--navy), var(--cyan));
+}
+
+.rs-head .eyebrow {
+  margin-bottom: 0.5rem;
+}
+
+.rs-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* ---- ii) Teaching --------------------------------------------------------- */
+.tc-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.tc-group {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  box-shadow: 0 18px 40px -30px var(--navy-shadow);
+}
+
+.tc-group-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0.9rem;
+  margin-bottom: 0.4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.tc-group-title {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin: 0;
+}
+
+.tc-group-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  margin-left: auto;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: rgba(10, 59, 181, 0.06);
+  border: 1px solid rgba(10, 59, 181, 0.18);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.tc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tc-course {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.tc-course:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.tc-code {
+  flex: none;
+  width: 5.5rem;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--navy);
+}
+
+.tc-name {
+  color: var(--ink);
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+/* Practical / Tutorial qualifier */
+.tc-kind {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(10, 59, 181, 0.06);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+  white-space: nowrap;
+}
+
+/* Coordinator role — navy plate, so cyan is allowed */
+.tc-role {
+  position: relative;
+  margin-top: clamp(1.25rem, 3vw, 2rem);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(150deg, var(--navy) 0%, var(--navy-deep) 82%);
+}
+
+.tc-role::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(0, 255, 255, 0.18) 1px,
+    transparent 1.4px
+  );
+  background-size: 26px 26px;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.tc-role-label {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin: 0 0 0.9rem 0;
+}
+
+.tc-role-list {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 2.5rem;
+}
+
+.tc-role-list li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.tc-role-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+}
+
+/* ---- iii) Public Outreach ------------------------------------------------- */
+.po-events {
+  display: grid;
+  gap: clamp(2rem, 5vh, 3.25rem);
+}
+
+.po-event {
+  --po-pad: clamp(1.25rem, 2.6vw, 1.9rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 46px -32px var(--navy-shadow);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.po-event:hover {
+  border-color: rgba(1, 37, 125, 0.28);
+  box-shadow: 0 26px 56px -30px rgba(1, 37, 125, 0.3);
+}
+
+.po-body {
+  padding: var(--po-pad) var(--po-pad) calc(var(--po-pad) * 0.75);
+}
+
+.po-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.po-place,
+.po-date {
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 11px;
+  border-radius: 999px;
+}
+
+.po-place {
+  color: #ffffff;
+  background: linear-gradient(120deg, var(--navy), var(--blue));
+}
+
+.po-date {
+  color: var(--blue);
+  background: rgba(10, 59, 181, 0.07);
+  border: 1px solid rgba(10, 59, 181, 0.18);
+  font-variant-numeric: tabular-nums;
+}
+
+.po-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 0;
+}
+
+.po-desc {
+  margin: 0.85rem 0 0 0;
+  max-width: var(--measure);
+  color: #33406b;
+}
+
+/* Justified figure row: flex-grow tracks each image's aspect ratio, so every
+   figure in a row resolves to the same height with no cropping. */
+.po-figs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  /* same inset as .po-body — the figure row lines up with the text above it */
+  padding: 0 var(--po-pad) var(--po-pad);
+}
+
+.po-fig {
+  flex: var(--ar, 1) 1 0;
+  min-width: min(260px, 100%);
+  aspect-ratio: var(--ar, 1);
+  margin: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background: linear-gradient(165deg, #eef1f9, #e2e8f5);
+}
+
+.po-fig img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.po-event:hover .po-fig img {
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .po-fig img,
+  .po-event:hover .po-fig img {
+    transition: none;
+    transform: none;
+  }
 }
 
 /* ---------------------------------------------------------------------------
@@ -1088,191 +1447,355 @@ img {
 }
 
 /* ---------------------------------------------------------------------------
-   Publications — branching timeline
+   Publications — entry cards (cover + citation + graphical abstract)
 --------------------------------------------------------------------------- */
-.timeline {
-  position: relative;
-  margin-top: clamp(2.5rem, 6vh, 4rem);
-  padding-bottom: 1.5rem;
+.pb-list {
+  margin-top: clamp(2rem, 5vh, 3rem);
 }
 
-/* The spine */
-.timeline::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 3px;
-  margin-left: -1.5px;
-  border-radius: 2px;
-  background: linear-gradient(
-    to bottom,
-    var(--navy) 0%,
-    var(--blue) 55%,
-    var(--cyan) 100%
-  );
-}
-
-/* Year chip sitting on the spine */
-.tl-year {
-  position: relative;
-  z-index: 2;
+/* Year / "Submitted" divider */
+.pb-year {
   display: flex;
-  justify-content: center;
-  padding: 2.6rem 0 0.4rem 0;
+  align-items: center;
+  gap: 1rem;
+  margin: clamp(2rem, 5vh, 3rem) 0 1.5rem;
 }
 
-.timeline .tl-year:first-child {
-  padding-top: 0;
-}
-
-.tl-year span {
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #ffffff;
-  background: linear-gradient(160deg, var(--navy), var(--navy-deep));
-  border: 1px solid rgba(0, 255, 255, 0.4);
-  border-radius: 999px;
-  padding: 0.45rem 1.25rem;
-  box-shadow: 0 0 0 5px var(--bg), 0 10px 24px var(--navy-shadow);
-}
-
-/* Cards hang off the spine, alternating sides. Items are full-width with
-   one padded side so branches/dots anchor at the same 50% reference as the
-   spine — different anchor chains round to different device pixels. */
-.tl-item {
-  position: relative;
-  width: 100%;
-  margin-top: 2.2rem;
-  animation: fadeUp 550ms ease both;
-}
-
-.tl-item.left {
-  padding-right: calc(50% + 56px);
-}
-
-.tl-item.right {
-  padding-left: calc(50% + 56px);
-}
-
-.tl-item .pub-card {
+.pb-list > .pb-year:first-child {
   margin-top: 0;
 }
 
-/* Curved elbow branch from the spine into the card */
-.tl-branch {
-  position: absolute;
-  top: -18px;
-  width: 56px;
-  height: 58px;
-  pointer-events: none;
-  transition: border-color 250ms ease;
+.pb-year span {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(120deg, var(--navy), var(--blue));
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
 }
 
-/* Elbow lines center their 2px stroke exactly on the spine's 50% axis */
-.tl-item.right .tl-branch {
-  left: 50%;
-  margin-left: -1px;
-  width: 57px;
-  border-left: 2px solid rgba(10, 59, 181, 0.5);
-  border-bottom: 2px solid rgba(10, 59, 181, 0.5);
-  border-bottom-left-radius: 26px;
-}
-
-.tl-item.left .tl-branch {
-  right: 50%;
-  margin-right: -1px;
-  width: 57px;
-  border-right: 2px solid rgba(10, 59, 181, 0.5);
-  border-bottom: 2px solid rgba(10, 59, 181, 0.5);
-  border-bottom-right-radius: 26px;
-}
-
-/* Node dot where the branch leaves the spine */
-.tl-branch::before {
+.pb-year::after {
   content: "";
-  position: absolute;
-  top: -6px;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background-color: var(--cyan);
-  border: 2.5px solid var(--navy);
-  box-shadow: 0 0 0 3px var(--bg);
-  transition: box-shadow 250ms ease;
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(10, 59, 181, 0.35),
+    rgba(10, 59, 181, 0)
+  );
 }
 
-/* Dot center = elbow's stroke center = spine center */
-.tl-item.right .tl-branch::before {
-  left: -6.4px;
-}
-
-.tl-item.left .tl-branch::before {
-  right: -6.4px;
-}
-
-.tl-item:hover .tl-branch {
-  border-color: var(--blue);
-}
-
-.tl-item:hover .tl-branch::before {
-  box-shadow: 0 0 0 3px var(--bg), 0 0 14px var(--cyan-glow);
-}
-
-.pub-card {
-  background-color: var(--surface);
+.pb-card {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 2rem);
+  align-items: center;
+  background: var(--surface);
   border: 1px solid var(--line);
-  margin-top: 1.75rem;
-  transition: transform 220ms ease, border-color 220ms ease,
-    box-shadow 220ms ease;
+  border-radius: 16px;
+  padding: clamp(1.1rem, 2.4vw, 1.6rem);
+  margin-bottom: 1.25rem;
+  box-shadow: 0 18px 44px -34px var(--navy-shadow);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
-.pub-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(10, 59, 181, 0.4);
-  box-shadow: 0 16px 44px var(--navy-shadow);
+.pb-card.no-cover {
+  grid-template-columns: minmax(0, 1fr);
 }
 
-.pub-ribbon {
+.pb-card:hover {
+  border-color: rgba(1, 37, 125, 0.28);
+  box-shadow: 0 26px 54px -32px rgba(1, 37, 125, 0.32);
+  transform: translateY(-2px);
+}
+
+/* Journal cover — a printed plate, so it gets a hairline and a shadow */
+.pb-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 12px 28px -18px rgba(1, 37, 125, 0.5);
+}
+
+.pb-head {
   display: flex;
   align-items: baseline;
-  gap: 0.75rem;
-  background-color: rgba(1, 37, 125, 0.05);
-  border-bottom: 1px solid var(--line);
-  padding: 0.55rem 1.25rem;
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--navy);
+  flex-wrap: wrap;
+  gap: 0.5rem 0.85rem;
+  margin-bottom: 0.6rem;
 }
 
-.pub-ribbon .pub-index {
+.pb-num {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 6px;
+  background: rgba(10, 59, 181, 0.07);
+  border: 1px solid rgba(10, 59, 181, 0.18);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
   color: var(--blue);
 }
 
-.pub-body {
-  padding: 1.25rem 1.25rem 1.35rem 1.25rem;
+.pb-cite {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
 }
 
-.pub-body h3 {
-  font-family: var(--font-body);
-  font-size: 1.08rem;
+.pb-cite i {
+  color: var(--ink);
   font-weight: 600;
-  line-height: 1.5;
-  margin-bottom: 0.5rem;
 }
 
-.pub-body .pub-authors {
+/* Unpublished work reads as a state, not a citation */
+.pb-status {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  background: rgba(10, 59, 181, 0.07);
+  border: 1px dashed rgba(10, 59, 181, 0.4);
+  padding: 4px 11px;
+  border-radius: 999px;
+}
+
+.pb-title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 0.5rem 0;
+}
+
+.pb-authors {
   margin: 0;
   color: var(--muted);
-  font-size: 0.98rem;
+  font-size: 0.96rem;
+  line-height: 1.55;
 }
 
-.pub-body .pub-authors b {
+.pb-authors b {
   color: var(--ink);
+  font-weight: 700;
+}
+
+.pb-doi {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 0.85rem;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(10, 59, 181, 0.3);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.pb-doi:hover {
+  color: var(--navy);
+  border-color: var(--navy);
+}
+
+/* Graphical abstract — sits directly under the citation. The card is already
+   white and the scheme PNGs are transparent, so it needs no mount. */
+.pb-graphic {
+  margin: 1.1rem 0 0 0;
+}
+
+.pb-graphic img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Highlight note — cyan tick on a tinted rail */
+.pb-note {
+  position: relative;
+  margin: 1rem 0 0 0;
+  padding: 0.6rem 0.9rem 0.6rem 1.1rem;
+  border-radius: 0 8px 8px 0;
+  background: rgba(10, 59, 181, 0.05);
+  color: var(--navy);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.pb-note::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, var(--navy), var(--blue));
+}
+
+/* ---------------------------------------------------------------------------
+   Patents
+--------------------------------------------------------------------------- */
+.pt-list {
+  display: grid;
+  gap: clamp(1.25rem, 3vh, 2rem);
+}
+
+.pt-card {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  align-items: start;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(1.1rem, 2.4vw, 1.6rem);
+  box-shadow: 0 18px 44px -34px var(--navy-shadow);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pt-card:hover {
+  border-color: rgba(1, 37, 125, 0.28);
+  box-shadow: 0 26px 54px -32px rgba(1, 37, 125, 0.32);
+}
+
+.pt-cert {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px -18px rgba(1, 37, 125, 0.5);
+}
+
+.pt-cert img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pt-num {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.pt-title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 0.5rem 0;
+}
+
+.pt-authors {
+  margin: 0 0 1.25rem 0;
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.pt-authors b {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* Filing history — a vertical rail with a node per step */
+.pt-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.pt-steps::before {
+  content: "";
+  position: absolute;
+  left: 4.5px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    var(--blue),
+    rgba(10, 59, 181, 0.15)
+  );
+}
+
+.pt-steps li {
+  position: relative;
+  padding: 0 0 0.7rem 1.6rem;
+  color: #33406b;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.pt-steps li:last-child {
+  padding-bottom: 0;
+}
+
+.pt-steps li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--blue);
+}
+
+/* The final step is the current state of the filing */
+.pt-steps li:last-child::before {
+  background: var(--blue);
+  box-shadow: 0 0 0 3px rgba(10, 59, 181, 0.15);
+}
+
+@media (max-width: 700px) {
+  .pb-card,
+  .pt-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pb-cover,
+  .pt-cert {
+    max-width: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pb-card,
+  .pb-card:hover {
+    transition: none;
+    transform: none;
+  }
 }
 
 /* ---------------------------------------------------------------------------
@@ -1605,7 +2128,7 @@ img {
     );
   }
 
-  .research-item:nth-child(even) .research-media {
+  .research-item:nth-of-type(even) .research-media {
     order: 0;
   }
 
@@ -1624,47 +2147,6 @@ img {
   .quick-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-top: -2.5rem;
-  }
-
-  /* Timeline collapses to a left rail; every card branches rightward.
-     Rail and branches share the 13.5px axis so they stay pixel-locked. */
-  .timeline::before {
-    left: 13.5px;
-    margin-left: -1.5px;
-  }
-
-  .tl-year {
-    justify-content: flex-start;
-  }
-
-  .tl-item,
-  .tl-item.left,
-  .tl-item.right {
-    width: 100%;
-    padding-left: 44px;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .tl-item.left .tl-branch,
-  .tl-item.right .tl-branch {
-    left: 13.5px;
-    right: auto;
-    margin-left: -1px;
-    margin-right: 0;
-    width: 32px;
-    border-right: 0;
-    border-bottom-right-radius: 0;
-    border-left: 2px solid rgba(10, 59, 181, 0.5);
-    border-bottom: 2px solid rgba(10, 59, 181, 0.5);
-    border-bottom-left-radius: 22px;
-  }
-
-  .tl-item.left .tl-branch::before,
-  .tl-item.right .tl-branch::before {
-    left: -4.5px;
-    right: auto;
   }
 
   .member-grid {

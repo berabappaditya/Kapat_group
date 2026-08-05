@@ -6,6 +6,7 @@ import newsGroup from "./newsGroup";
 import member from "./member";
 import groupPhoto from "./groupPhoto";
 import publication from "./publication";
+import patent from "./patent";
 import researchArea from "./researchArea";
 import facility from "./facility";
 
@@ -18,6 +19,7 @@ export const schemaTypes = [
   member,
   groupPhoto,
   publication,
+  patent,
   researchArea,
   facility,
 ];
