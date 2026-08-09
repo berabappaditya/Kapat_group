@@ -69,7 +69,9 @@ const QUERY = `{
     bio,
     "education": education[]{date, detail},
     "experience": experience[]{period, position},
-    "recognition": recognition[]{title, year}
+    "recognition": recognition[]{title, year},
+    "editorial": editorial[]{title, year},
+    "invitedTalks": invitedTalks[]{title, date}
   },
   "research": *[_type == "researchArea"] | order(order asc){title, details, "img": imageUrl},
   "facilities": *[_type == "facility"] | order(order asc){name, "img": imageUrl},

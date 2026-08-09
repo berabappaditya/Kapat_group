@@ -1,7 +1,37 @@
 {
   "bio": [
-    "Dr. Ajoy Kapat received his B.Sc. in Chemistry (Honours) from the University of Calcutta and his M.Sc. from the Indian Institute of Technology Madras, before earning his PhD in Organic Chemistry from the University of Bern, Switzerland, in 2011.",
-    "Following postdoctoral appointments at Princeton University and RWTH Aachen University, and a research position at the Indian Association for the Cultivation of Science, he began his independent career in 2019 as Assistant Professor in the Department of Chemistry, School of Natural Science, Shiv Nadar University — where his group develops asymmetric, cascade and metalloradical catalysis."
+    "Dr. Ajoy Kapat received his B.Sc. (Honours) in Chemistry from the University of Calcutta and his M.Sc. in Chemistry from the Indian Institute of Technology Madras. He subsequently earned his Ph.D. in Organic Chemistry from the University of Bern, Switzerland, in 2011. Following his doctoral studies, he pursued postdoctoral research at Princeton University, USA, and later at RWTH Aachen University, Germany, where he further strengthened his expertise in modern synthetic organic chemistry and catalysis.",
+    "In 2019, Dr. Kapat embarked on his independent academic career as an Assistant Professor in the Department of Chemistry, School of Natural Sciences, Shiv Nadar Institution of Eminence (formerly Shiv Nadar University). His research programme focuses on the development of innovative catalytic methodologies, with particular emphasis on asymmetric catalysis, cascade transformations, and metalloradical catalysis. Through the integration of mechanistic insights and synthetic strategy, his group seeks to advance sustainable and efficient approaches for the construction of structurally complex and biologically relevant molecules, addressing contemporary challenges in organic synthesis and catalysis."
+  ],
+  "editorial": [
+    {
+      "title": "Certificate of Appreciation from the ACS as a peer reviewer",
+      "year": "2026"
+    },
+    {
+      "title": "Certificate of Appreciation from the ACS as a peer reviewer",
+      "year": "2025"
+    },
+    {
+      "title": "Editorial Board Member, Scientific Archives of Dental Sciences",
+      "year": "2024"
+    },
+    {
+      "title": "Certificate of Appreciation from the ACS as a peer reviewer",
+      "year": "2024"
+    },
+    {
+      "title": "Certificate of Appreciation from Elsevier as a peer reviewer",
+      "year": "2024"
+    },
+    {
+      "title": "Certificate of Appreciation from the ACS as a peer reviewer",
+      "year": "2023"
+    },
+    {
+      "title": "Certificate of Appreciation from the ACS as a peer reviewer",
+      "year": "2022"
+    }
   ],
   "education": [
     {
@@ -20,11 +50,11 @@
   "experience": [
     {
       "period": "01/2025 – ongoing",
-      "position": "Associate Professor, Department of Chemistry, School of Natural Science, Shiv Nadar University, India."
+      "position": "Associate Professor, Department of Chemistry, School of Natural Sciences, Shiv Nadar Institution of Eminence, India."
     },
     {
       "period": "07/2019 – 12/2024",
-      "position": "Assistant Professor, Department of Chemistry, School of Natural Science, Shiv Nadar University, India."
+      "position": "Assistant Professor, Department of Chemistry, School of Natural Sciences, Shiv Nadar Institution of Eminence, India."
     },
     {
       "period": "04/2019 - 06/2019",
@@ -45,6 +75,68 @@
     {
       "period": "09/2011 – 03/2012",
       "position": "Assistant –I, Department of Chemistry and Biochemistry at University of Bern, Switzerland."
+    },
+    {
+      "period": "08/2006 – 08/2007",
+      "position": "Junior Research Fellow, Department of Chemistry, IIT Madras, India."
+    }
+  ],
+  "invitedTalks": [
+    {
+      "date": "March 2026",
+      "title": "Invited Delegate, ICESR 2026, IISc Bangalore"
+    },
+    {
+      "date": "February 2026",
+      "title": "Invited Delegate, IP3 2026, SNIoE Delhi NCR"
+    },
+    {
+      "date": "January 2026",
+      "title": "Convenor, MAGSuC 2026, SNIoE Delhi NCR"
+    },
+    {
+      "date": "January 2026",
+      "title": "Invited Delegate, Industry Partners Summit 2026, Shiv Nadar Foundation"
+    },
+    {
+      "date": "December 2025",
+      "title": "Invited Delegate, CII Global Summit on Industry-Academia Partnership, Office of the Principal Scientific Adviser to the Government of India"
+    },
+    {
+      "date": "November 2025",
+      "title": "Invited Delegate, iCBMIc 2025, SNIoE Delhi NCR"
+    },
+    {
+      "date": "November 2024",
+      "title": "Organiser, MAGSOS 2024, SNIoE Delhi NCR"
+    },
+    {
+      "date": "November 2024",
+      "title": "Invited Delegate, SAGAMORE 2024, SNIoE Delhi NCR"
+    },
+    {
+      "date": "October 2024",
+      "title": "Invited Delegate, India Chem 2024, Ministry of Chemicals & Fertilizers, Department of Chemicals & Pharmaceuticals, Government of India"
+    },
+    {
+      "date": "July 2024",
+      "title": "Invited Lecture, ICREST 2024, Jamia Millia Islamia, Delhi"
+    },
+    {
+      "date": "June 2024",
+      "title": "Invited Session Chairperson, Bern-SRC 2024, University of Bern, Switzerland"
+    },
+    {
+      "date": "March 2024",
+      "title": "Invited Lecture, OCS-ECR 2024, IIT Jammu"
+    },
+    {
+      "date": "March 2024",
+      "title": "Invited Delegate, ETCS 2024, IIT Kharagpur"
+    },
+    {
+      "date": "February 2024",
+      "title": "Organiser, MAGSOS 2024, SNIoE Delhi NCR"
     }
   ],
   "name": "Dr. Ajoy Kapat",

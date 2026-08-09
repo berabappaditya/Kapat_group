@@ -72,6 +72,8 @@ docs.push({
   education: withKeys(pi.education),
   experience: withKeys(pi.experience),
   recognition: withKeys(pi.recognition),
+  ...(pi.editorial ? { editorial: withKeys(pi.editorial) } : {}),
+  ...(pi.invitedTalks ? { invitedTalks: withKeys(pi.invitedTalks) } : {}),
 });
 
 const newsGroups = content("news.json");

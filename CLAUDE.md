@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Static website for the Kapat Research Group (chemistry lab at Shiv Nadar University), built with Create React App. No backend — all site content is hardcoded in JS data files.
+Static website for the Kapat Research Group (chemistry lab at Shiv Nadar Institution of Eminence), built with Create React App. No backend — all site content is hardcoded in JS data files.
 
 ## Commands
 

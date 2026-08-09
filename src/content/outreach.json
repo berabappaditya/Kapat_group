@@ -1,6 +1,28 @@
 [
   {
-    "title": "Live Demonstration at Shiv Nadar University Day 2025",
+    "title": "Covered by leading national newspapers — The Better India and India Today",
+    "place": "Press coverage",
+    "date": "2024 – 2025",
+    "description": "",
+    "images": [
+      {
+        "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785946809/Better_India_caa6eo.png",
+        "w": 1008,
+        "h": 1102,
+        "label": "The Better India",
+        "link": "https://x.com/thebetterindia/status/1926647042098479120"
+      },
+      {
+        "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785946807/India_today_qi8cgm.png",
+        "w": 1582,
+        "h": 896,
+        "label": "India Today",
+        "link": "https://www.indiatoday.in/health/story/3d-printing-your-tooth-how-an-indian-breakthrough-has-changed-dentistry-2623310-2024-10-28"
+      }
+    ]
+  },
+  {
+    "title": "Live Demonstration at Shiv Nadar Institution of Eminence Day 2025",
     "place": "SNIoE Campus",
     "date": "2025",
     "description": "",

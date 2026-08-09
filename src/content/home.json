@@ -1,6 +1,6 @@
 {
   "hero": {
-    "lede": "We develop asymmetric, cascade and metalloradical catalysis for the streamlined synthesis of complex molecules — at the Department of Chemistry, Shiv Nadar University."
+    "lede": "We develop asymmetric, cascade and metalloradical catalysis for the streamlined synthesis of complex molecules — at the Department of Chemistry, Shiv Nadar Institution of Eminence."
   },
   "carousel": [
     {
@@ -25,23 +25,27 @@
   "openPositions": {
     "internship": {
       "email": "ajoy.kapat@snu.edu.in",
-      "heading": "Short Term Research Internship Position:",
+      "heading": "Short Term Research Internship Position & M.Sc Thesis Work:",
       "text": "Candidates are requested to send their updated CV directly to Dr. Ajoy Kapat"
     },
     "phd": {
       "email": "ajoy.kapat@snu.edu.in",
       "heading": "PhD Position:",
-      "text": "Currently, there are three openings for doctoral study in the area of asymmetric catalysis, cascade catalysis & metalloradical catalysis, interested candidates are requested to send their updated CV with short research summary directly to Dr. Ajoy Kapat"
+      "text": "Currently, there are openings for doctoral study in the area of asymmetric catalysis, cascade catalysis & metalloradical catalysis, interested candidates are requested to send their updated CV with short research summary directly to Dr. Ajoy Kapat"
     },
     "postdoc": {
       "closing": "All the eligible candidates are requested to send their updated CV, two letters of recommendation with short research summary directly to Dr. Ajoy Kapat (ajoy.kapat@snu.edu.in).",
       "fellowships": [
         {
-          "label": "I. National Post Doctoral Fellowship",
-          "url": "https://www.serbonline.in/SERB/npdf?HomePage=New"
+          "label": "National Post-Doctoral Fellowship",
+          "url": "https://anrfonline.in/ANRF/npdf"
         },
         {
-          "label": "II. Research Associates",
+          "label": "DBT Research Associateship",
+          "url": "https://rcb.res.in/DBTRA"
+        },
+        {
+          "label": "Research Associates",
           "url": "https://csirhrdg.res.in/Home/Index/1/Default/2186/56"
         }
       ],

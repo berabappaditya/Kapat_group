@@ -140,15 +140,52 @@ function Research() {
                     aspect ratio, so every image in a row lands the same height
                     and nothing is cropped. */}
                 <div className="po-figs">
-                  {event.images.map((image) => (
-                    <figure
-                      className="po-fig"
-                      key={image.img}
-                      style={{ "--ar": image.w / image.h }}
-                    >
-                      <img src={image.img} alt={event.title} loading="lazy" />
-                    </figure>
-                  ))}
+                  {event.images.map((image) => {
+                    const inner = (
+                      <>
+                        <img
+                          src={image.img}
+                          alt={
+                            image.label
+                              ? `${image.label} — ${event.title}`
+                              : event.title
+                          }
+                          loading="lazy"
+                        />
+                        {image.label && (
+                          <span className="po-fig-label">
+                            {image.label}
+                            {image.link && (
+                              <svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                <path d="M6 3h7v7M13 3L4 12" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"/>
+                              </svg>
+                            )}
+                          </span>
+                        )}
+                      </>
+                    );
+
+                    return (
+                      <figure
+                        className="po-fig"
+                        key={image.img}
+                        style={{ "--ar": image.w / image.h }}
+                      >
+                        {image.link ? (
+                          <a
+                            className="po-fig-link"
+                            href={image.link}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {inner}
+                          </a>
+                        ) : (
+                          inner
+                        )}
+                      </figure>
+                    );
+                  })}
                 </div>
               </article>
             ))}

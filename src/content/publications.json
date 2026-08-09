@@ -2,7 +2,7 @@
   "sectionTitle": "Peer-reviewed research",
   "items": [
     {
-      "authors": "Lokesh Kumar Gupta, N. M. Rao, Ajoy Kapat*",
+      "authors": "Lokesh Gupta, Naga M. R. Vampugani, Ajoy Kapat*",
       "coverImg": "",
       "graphicImg": "",
       "journal": "",
@@ -15,7 +15,7 @@
       "year": ""
     },
     {
-      "authors": "A. Ahmad, L. Gupta, A. Shelke, P. Singh, A. Kapat*",
+      "authors": "A. Ahmad, L. Gupta, A. B. Shelke, P. B. Singh, A. Kapat*",
       "coverImg": "",
       "graphicImg": "",
       "journal": "",
@@ -41,9 +41,9 @@
       "year": "2025"
     },
     {
-      "authors": "A. Ahmad, S. A. Siddiqui, P. Tyagi, K. D. Dubey*, A. Kapat*",
+      "authors": "A. Ahmad, S. A. Siddiqui, P. Tyagi, L. Gupta, K. D. Dubey,* and A. Kapat*",
       "coverImg": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785908433/Image-Publication-16_pjga0j.png",
-      "graphicImg": "",
+      "graphicImg": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785946787/TOC-Publication-16_pfr8z4.png",
       "journal": "J. Org. Chem.",
       "note": "This work was highlighted by Organic Chemistry Portal.",
       "pages": "3580-3589",
@@ -54,7 +54,7 @@
       "year": "2025"
     },
     {
-      "authors": "N. M. Rao, A. Shelke, P. B. Singh, A. Ahmad, A. Kapat*",
+      "authors": "N. M. R. Vampugani, A. B. Shelke, P. B. Singh, A. Ahmad, A. Kapat*",
       "coverImg": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785908434/Image-Publication-15_ywncjg.png",
       "graphicImg": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785946781/TOC-Publication-15_cedoel.png",
       "journal": "J. Org. Chem.",

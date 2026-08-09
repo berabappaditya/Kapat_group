@@ -24,10 +24,6 @@
     "name": "EPR Facility"
   },
   {
-    "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1784923182/EPR-Lab_e22ews.jpg",
-    "name": "EPR Facility"
-  },
-  {
     "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1784923187/HPLC_rzt8yk.png",
     "name": "HPLC facility"
   },
@@ -36,19 +32,11 @@
     "name": "Flash Column Chromatography"
   },
   {
-    "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1784923187/HPLC_rzt8yk.png",
-    "name": "HPLC facility"
-  },
-  {
     "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744672/Analytical_HPLC_hr8diy.jpg",
     "name": "Analytical HPLC (Waters)"
   },
   {
     "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1650744674/Prep_HPLC_ceburx.jpg",
     "name": "Preparative HPLC"
-  },
-  {
-    "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1653560776/EPR-JEOL_X320_vlixlk.jpg",
-    "name": "EPR Spectrometer (JES – X320: arriving)"
   }
 ]
