@@ -24,6 +24,13 @@ function SectionHead({ id, eyebrow, title }) {
   );
 }
 
+// Research area titles are authored as "a) Natural Product Based Drug
+// Design:" — the pillar layout supplies its own numeral, so the lettered
+// prefix and trailing colon are stripped for display only.
+function pillarTitle(title = "") {
+  return title.replace(/^[a-z]\)\s*/i, "").replace(/:\s*$/, "");
+}
+
 function Research() {
   const research = useContent(RESEARCH_QUERY, researchFallback);
 
@@ -58,17 +65,27 @@ function Research() {
             title="Research Interest"
           />
 
-          {research.map((item, index) => (
-            <section className="research-item" key={index} data-reveal>
-              <div>
-                <h3>{item.title}</h3>
-                <p>{item.details}</p>
-              </div>
-              <div className="research-media">
-                <img src={item.img} alt={item.title} />
-              </div>
-            </section>
-          ))}
+          <div className="ri-pillars">
+            {research.map((item, index) => {
+              const title = pillarTitle(item.title);
+              return (
+                <article className="ri-pillar" key={index} data-reveal>
+                  <div className="ri-pillar-text">
+                    <span className="ri-pillar-num" aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <p className="eyebrow">Research Focus</p>
+                    <h3 className="ri-pillar-title">{title}</h3>
+                    <div className="ri-pillar-rule" aria-hidden="true"></div>
+                    <p className="ri-pillar-body">{item.details}</p>
+                  </div>
+                  <figure className="ri-pillar-media">
+                    <img src={item.img} alt={title} loading="lazy" />
+                  </figure>
+                </article>
+              );
+            })}
+          </div>
         </section>
 
         {/* ======================================================= ii) Teaching */}

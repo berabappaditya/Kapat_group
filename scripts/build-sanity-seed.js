@@ -139,6 +139,20 @@ group.photos.forEach((photo, index) => {
   });
 });
 
+// Same document type, separated by `category`. Group photos deliberately
+// omit the field — sync-content.js coalesces a missing category to "group",
+// so the 40 existing documents need no rewrite.
+(group.conferencePhotos || []).forEach((photo, index) => {
+  docs.push({
+    _id: uniqueId("conferencePhoto", photo.caption),
+    _type: "groupPhoto",
+    category: "conference",
+    caption: photo.caption,
+    imageUrl: photo.img,
+    order: index,
+  });
+});
+
 publications.items.forEach((pub, index) => {
   docs.push({
     _id: uniqueId("publication", pub.title),

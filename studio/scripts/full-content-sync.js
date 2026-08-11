@@ -26,6 +26,8 @@ const docs = readFileSync(seedPath, "utf8")
 // 2026-07-28 with a random _id, duplicating caption+image of the
 // deterministic-id "groupPhoto-group-photo-2026-jul-25" doc already in the
 // seed above. Same pattern as the two facility duplicates removed earlier.
+// Already deleted; kept here because deleting a missing document is a no-op,
+// so this stays safe to re-run and documents what was removed.
 const STRAY_IDS = ["47fee234-bd49-4bca-9597-cc338b33292b"];
 
 const client = getCliClient({ apiVersion: "2023-08-01" });

@@ -18,7 +18,13 @@ const MEMBERS_QUERY = `*[_type == "member"] | order(order asc){
   internship
 }`;
 
-const PHOTOS_QUERY = `*[_type == "groupPhoto"] | order(order asc){
+/* Both gallery sections are `groupPhoto` documents, split by `category`.
+   Photos predating the field have none, so the group query coalesces. */
+const PHOTOS_QUERY = `*[_type == "groupPhoto" && coalesce(category, "group") == "group"] | order(order asc){
+  caption, "img": imageUrl
+}`;
+
+const CONFERENCE_PHOTOS_QUERY = `*[_type == "groupPhoto" && category == "conference"] | order(order asc){
   caption, "img": imageUrl
 }`;
 
@@ -282,6 +288,10 @@ function MemberCard({ member, globalIdx, filterActive }) {
 function Group({ view = "members" }) {
   const members = useContent(MEMBERS_QUERY, group.members);
   const photos = useContent(PHOTOS_QUERY, group.photos);
+  const conferencePhotos = useContent(
+    CONFERENCE_PHOTOS_QUERY,
+    group.conferencePhotos || []
+  );
   const [zoomedIndex, setZoomedIndex] = React.useState(null);
   const [filter, setFilter] = React.useState("all");
 
@@ -291,7 +301,17 @@ function Group({ view = "members" }) {
     setFilter("all");
   }, [view]);
 
+  // Group photos are authored oldest-first, so they're flipped to lead with
+  // the most recent. Conference photos are authored in display order.
   const displayPhotos = React.useMemo(() => [...photos].reverse(), [photos]);
+
+  // One flat list behind the lightbox, in the order the sections render, so
+  // the arrow keys walk straight from the last group photo into the
+  // conference set instead of each grid keeping its own index space.
+  const lightboxPhotos = React.useMemo(
+    () => [...displayPhotos, ...conferencePhotos],
+    [displayPhotos, conferencePhotos]
+  );
 
   // Keyboard nav for photo modal
   React.useEffect(() => {
@@ -299,13 +319,13 @@ function Group({ view = "members" }) {
       if (zoomedIndex === null) return;
       if (e.key === "Escape") setZoomedIndex(null);
       else if (e.key === "ArrowLeft")
-        setZoomedIndex((i) => (i - 1 + displayPhotos.length) % displayPhotos.length);
+        setZoomedIndex((i) => (i - 1 + lightboxPhotos.length) % lightboxPhotos.length);
       else if (e.key === "ArrowRight")
-        setZoomedIndex((i) => (i + 1) % displayPhotos.length);
+        setZoomedIndex((i) => (i + 1) % lightboxPhotos.length);
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [zoomedIndex, displayPhotos.length]);
+  }, [zoomedIndex, lightboxPhotos.length]);
 
   // Intersect-observer reveal for member cards
   // requestAnimationFrame defers setup until after the browser paints the
@@ -448,7 +468,8 @@ function Group({ view = "members" }) {
           <div className="section-head" data-reveal>
             <h2>Group Photos</h2>
             <span className="head-tag">
-              {photos.length} {photos.length === 1 ? "photo" : "photos"}
+              {displayPhotos.length}{" "}
+              {displayPhotos.length === 1 ? "photo" : "photos"}
             </span>
           </div>
           <div className="gallery-grid">
@@ -460,7 +481,11 @@ function Group({ view = "members" }) {
                 className="gallery-figure"
               >
                 <div className="gallery-img-wrapper">
-                  <img src={photo.img} alt={photo.caption || "Group photo"} />
+                  <img
+                    src={photo.img}
+                    alt={photo.caption || "Group photo"}
+                    loading="lazy"
+                  />
                   <div className="gallery-img-overlay">
                     <span>View</span>
                   </div>
@@ -469,6 +494,41 @@ function Group({ view = "members" }) {
               </figure>
             ))}
           </div>
+
+          {conferencePhotos.length > 0 && (
+            <>
+              <div className="section-head" data-reveal>
+                <h2>Conference Photos</h2>
+                <span className="head-tag">
+                  {conferencePhotos.length}{" "}
+                  {conferencePhotos.length === 1 ? "photo" : "photos"}
+                </span>
+              </div>
+              <div className="gallery-grid">
+                {conferencePhotos.map((photo, idx) => (
+                  <figure
+                    key={photo.img}
+                    data-reveal
+                    /* Offset into the shared lightbox list */
+                    onClick={() => setZoomedIndex(displayPhotos.length + idx)}
+                    className="gallery-figure"
+                  >
+                    <div className="gallery-img-wrapper">
+                      <img
+                        src={photo.img}
+                        alt={photo.caption || "Conference photo"}
+                        loading="lazy"
+                      />
+                      <div className="gallery-img-overlay">
+                        <span>View</span>
+                      </div>
+                    </div>
+                    <figcaption>{photo.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       )}
 
@@ -480,7 +540,7 @@ function Group({ view = "members" }) {
             onClick={(e) => {
               e.stopPropagation();
               setZoomedIndex(
-                (zoomedIndex - 1 + displayPhotos.length) % displayPhotos.length
+                (zoomedIndex - 1 + lightboxPhotos.length) % lightboxPhotos.length
               );
             }}
             aria-label="Previous photo"
@@ -500,12 +560,12 @@ function Group({ view = "members" }) {
               &times;
             </button>
             <img
-              src={displayPhotos[zoomedIndex].img}
-              alt={displayPhotos[zoomedIndex].caption || "Group photo"}
+              src={lightboxPhotos[zoomedIndex].img}
+              alt={lightboxPhotos[zoomedIndex].caption || "Group photo"}
             />
-            {displayPhotos[zoomedIndex].caption && (
+            {lightboxPhotos[zoomedIndex].caption && (
               <p className="photo-modal-caption">
-                {displayPhotos[zoomedIndex].caption}
+                {lightboxPhotos[zoomedIndex].caption}
               </p>
             )}
           </div>
@@ -514,7 +574,7 @@ function Group({ view = "members" }) {
             className="modal-nav next"
             onClick={(e) => {
               e.stopPropagation();
-              setZoomedIndex((zoomedIndex + 1) % displayPhotos.length);
+              setZoomedIndex((zoomedIndex + 1) % lightboxPhotos.length);
             }}
             aria-label="Next photo"
           >

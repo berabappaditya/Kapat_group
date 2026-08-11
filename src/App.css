@@ -927,58 +927,127 @@ img {
 /* ---------------------------------------------------------------------------
    Research
 --------------------------------------------------------------------------- */
-.research-item {
+.ri-pillars {
+  display: flex;
+  flex-direction: column;
+}
+
+.ri-pillar {
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
-  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 11fr) minmax(0, 9fr);
+  gap: clamp(2.5rem, 5vw, 4.5rem);
   align-items: center;
   border-top: 1px solid var(--line);
-  padding: clamp(2.5rem, 6vh, 4rem) 0;
+  padding: clamp(2.75rem, 6vh, 4.5rem) 0;
 }
 
 /* The section head already opens the run — no rule needed above the first */
-.research-item:first-of-type {
+.ri-pillar:first-of-type {
   border-top: none;
+  padding-top: 0;
 }
 
-.research-item:nth-of-type(even) .research-media {
+.ri-pillar:nth-of-type(even) .ri-pillar-media {
   order: -1;
 }
 
-.research-item h3 {
+/* Oversized ghost numeral — a magazine-feature device, not a list index:
+   these are the programme's three fixed pillars, not a filtered/paginated
+   set, so a permanent 01/02/03 reads as structure rather than clutter. */
+.ri-pillar-num {
+  display: block;
   font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
-  font-weight: 700;
-  color: var(--ink);
-  margin: 0 0 1.25rem 0;
+  font-weight: 800;
+  font-size: clamp(3.75rem, 7vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: rgba(10, 59, 181, 0.1);
+  margin: 0 0 -0.55rem -0.1rem;
+  user-select: none;
 }
 
-.research-item p {
+.ri-pillar-text .eyebrow {
+  margin-bottom: 0.4rem;
+}
+
+.ri-pillar-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Short navy→cyan accent bar — the same capped-rule motif as .rs-head and
+   .mg-meta, kept brief so the cyan sliver at its tip never reads as body
+   color on this white surface. */
+.ri-pillar-rule {
+  width: 56px;
+  height: 3px;
+  margin: 1.15rem 0 1.4rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--navy), var(--blue) 55%, var(--cyan));
+}
+
+.ri-pillar-body {
   max-width: var(--measure);
   color: #33406b;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  margin: 0;
 }
 
-.research-media {
+.ri-pillar-media {
+  position: relative;
+  margin: 0;
   overflow: hidden;
-  background-color: var(--surface);
+  border-radius: 16px;
   border: 1px solid var(--line);
-  padding: 0.6rem;
-  transition: border-color 250ms ease, box-shadow 250ms ease;
+  background: linear-gradient(165deg, #eef1f9, #e2e8f5);
+  box-shadow: 0 22px 50px -32px rgba(1, 37, 125, 0.4);
+  transition: border-color 300ms ease, box-shadow 300ms ease, transform 300ms ease;
 }
 
-.research-media img {
+/* Signature rule, permanently on — ties every scheme/figure on the page
+   back to the same navy→cyan mark used across the site's cards. */
+.ri-pillar-media::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 2;
+  background: linear-gradient(90deg, var(--navy), var(--blue) 55%, var(--cyan));
+}
+
+.ri-pillar-media img {
   display: block;
   width: 100%;
-  transition: transform 450ms ease;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.research-item:hover .research-media {
-  border-color: rgba(10, 59, 181, 0.45);
-  box-shadow: 0 16px 44px var(--navy-shadow);
+.ri-pillar:hover .ri-pillar-media {
+  border-color: rgba(1, 37, 125, 0.28);
+  box-shadow: 0 30px 60px -30px rgba(1, 37, 125, 0.45);
+  transform: translateY(-4px);
 }
 
-.research-item:hover .research-media img {
-  transform: scale(1.02);
+.ri-pillar:hover .ri-pillar-media img {
+  transform: scale(1.045);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ri-pillar-media,
+  .ri-pillar-media img,
+  .ri-pillar:hover .ri-pillar-media {
+    transition: none;
+    transform: none;
+  }
 }
 
 /* ---------------------------------------------------------------------------
@@ -2154,7 +2223,7 @@ img {
 --------------------------------------------------------------------------- */
 @media only screen and (max-width: 900px) {
   .home-cols,
-  .research-item {
+  .ri-pillar {
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -2171,8 +2240,12 @@ img {
     );
   }
 
-  .research-item:nth-of-type(even) .research-media {
+  .ri-pillar:nth-of-type(even) .ri-pillar-media {
     order: 0;
+  }
+
+  .ri-pillar-num {
+    font-size: 3.25rem;
   }
 
   .pi-hero-inner {

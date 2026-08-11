@@ -94,7 +94,8 @@ const QUERY = `{
     "id": _id, name, category, role, joinYear, tenurePeriod,
     internship, currentPosition, "details": bio, "img": photoUrl
   },
-  "photos": *[_type == "groupPhoto"] | order(order asc){caption, "img": imageUrl}
+  "photos": *[_type == "groupPhoto" && coalesce(category, "group") == "group"] | order(order asc){caption, "img": imageUrl},
+  "conferencePhotos": *[_type == "groupPhoto" && category == "conference"] | order(order asc){caption, "img": imageUrl}
 }`;
 
 const readJson = (file) =>
@@ -194,6 +195,7 @@ async function main() {
     writeJson("group.json", {
       members,
       photos: result.photos || [],
+      conferencePhotos: result.conferencePhotos || [],
     });
   }
 
