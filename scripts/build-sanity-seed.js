@@ -31,6 +31,21 @@ const slug = (text) =>
     .replace(/^-+|-+$/g, "")
     .slice(0, 60);
 
+// `dataset import --replace` fails outright if two documents share an _id —
+// two entries with the same title/caption/name (e.g. a duplicated gallery
+// photo) would otherwise slug to the same id and break every future import.
+// Suffixing repeats keeps the id deterministic for a given source order
+// while guaranteeing uniqueness.
+const usedIds = new Set();
+const uniqueId = (prefix, text) => {
+  const base = `${prefix}-${slug(text)}`;
+  let id = base;
+  let n = 2;
+  while (usedIds.has(id)) id = `${base}-${n++}`;
+  usedIds.add(id);
+  return id;
+};
+
 const key = (index) => `k${index}`;
 const withKeys = (items) =>
   items.map((item, index) => ({ _key: key(index), ...item }));
@@ -81,7 +96,7 @@ const newsGroups = content("news.json");
 // --- Lists (order = current position in the JSON) -------------------------
 newsGroups.forEach((group, index) => {
   docs.push({
-    _id: `newsGroup-${slug(group.category)}`,
+    _id: uniqueId("newsGroup", group.category),
     _type: "newsGroup",
     category: group.category,
     items: group.items,
@@ -89,11 +104,17 @@ newsGroups.forEach((group, index) => {
   });
 });
 
+// Real Sanity _ids are claimed first so a same-name member's slug fallback
+// (below) can never collide with one.
+group.members.forEach((member) => {
+  if (member.id) usedIds.add(member.id);
+});
+
 group.members.forEach((member, index) => {
   docs.push({
     // `id` is the real Sanity _id, carried through by sync-content.js so
     // re-imports replace the live documents instead of duplicating them.
-    _id: member.id || `member-${slug(member.name)}`,
+    _id: member.id || uniqueId("member", member.name),
     _type: "member",
     name: member.name,
     category: member.category,
@@ -110,7 +131,7 @@ group.members.forEach((member, index) => {
 
 group.photos.forEach((photo, index) => {
   docs.push({
-    _id: `groupPhoto-${slug(photo.caption)}`,
+    _id: uniqueId("groupPhoto", photo.caption),
     _type: "groupPhoto",
     caption: photo.caption,
     imageUrl: photo.img,
@@ -120,7 +141,7 @@ group.photos.forEach((photo, index) => {
 
 publications.items.forEach((pub, index) => {
   docs.push({
-    _id: `publication-${slug(pub.title)}`,
+    _id: uniqueId("publication", pub.title),
     _type: "publication",
     title: pub.title,
     authors: pub.authors,
@@ -139,7 +160,7 @@ publications.items.forEach((pub, index) => {
 
 patents.forEach((patent, index) => {
   docs.push({
-    _id: `patent-${slug(patent.title)}`,
+    _id: uniqueId("patent", patent.title),
     _type: "patent",
     title: patent.title,
     authors: patent.authors,
@@ -151,7 +172,7 @@ patents.forEach((patent, index) => {
 
 research.forEach((area, index) => {
   docs.push({
-    _id: `researchArea-${slug(area.title)}`,
+    _id: uniqueId("researchArea", area.title),
     _type: "researchArea",
     title: area.title,
     details: area.details,
@@ -162,7 +183,7 @@ research.forEach((area, index) => {
 
 facilities.forEach((facility, index) => {
   docs.push({
-    _id: `facility-${slug(facility.name)}`,
+    _id: uniqueId("facility", facility.name),
     _type: "facility",
     name: facility.name,
     imageUrl: facility.img,

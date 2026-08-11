@@ -81,8 +81,8 @@ const newsGroups = [
     category: "Monsoon Semester 2024",
     order: 3,
     items: [
-      "Asrar presented a poster at the Modern Aspects of Green and Sustainable Organic Synthesis (MAGSOS) Conference from 26th–29th November 2024, organised by the Department of Chemistry, Shiv Nadar Institution of Eminence, Delhi-NCR.",
-      "Lokesh, Ajay & Prashant attended the Modern Aspects of Green and Sustainable Organic Synthesis (MAGSOS) conference from 26th–29th November 2024.",
+      "Asrar presented a poster at the Modern Aspects of Green and Sustainable Organic Synthesis (MAGSOS ) Conference from 26th–29th November 2024, organised by the Department of Chemistry, Shiv Nadar Institution of Eminence, Delhi-NCR.",
+      "Lokesh, Ajay & Prashant attended the Modern Aspects of Green and Sustainable Organic Synthesis (MAGSOS ) conference from 26th–29th November 2024.",
       "Asrar presented a poster at the International Conference on Renewable Energy and Sustainable Technology (ICREST), Jamia Millia Islamia, 4th–6th July 2024, India.",
       "Asrar presented a poster at the 30th International Conference on Organometallic Chemistry, JP Palace, Agra, 14th–18th July 2024.",
       "The evaluation committee has awarded Mansi's OUR project a very good grade.",
