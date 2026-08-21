@@ -8,6 +8,11 @@ const RESEARCH_QUERY = `*[_type == "researchArea"] | order(order asc){
   title, details, "img": imageUrl
 }`;
 
+const OUTREACH_QUERY = `*[_type == "outreachEvent"] | order(order asc){
+  title, place, date, description,
+  "images": images[]{"img": imageUrl, "w": width, "h": height, label, link}
+}`;
+
 /* In-page jump targets, in render order */
 const SECTIONS = [
   { id: "research-interest", label: "Research Interest" },
@@ -33,6 +38,7 @@ function pillarTitle(title = "") {
 
 function Research() {
   const research = useContent(RESEARCH_QUERY, researchFallback);
+  const outreachEvents = useContent(OUTREACH_QUERY, outreach);
 
   return (
     <div className="page">
@@ -140,7 +146,7 @@ function Research() {
           />
 
           <div className="po-events">
-            {outreach.map((event) => (
+            {outreachEvents.map((event) => (
               <article className="po-event" key={event.title} data-reveal>
                 <div className="po-body">
                   <div className="po-meta">

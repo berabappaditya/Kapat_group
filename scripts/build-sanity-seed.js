@@ -22,6 +22,7 @@ const research = content("research.json");
 const facilities = content("facilities.json");
 const publications = content("publications.json");
 const patents = content("patents.json");
+const outreach = content("outreach.json");
 const group = content("group.json");
 
 const slug = (text) =>
@@ -201,6 +202,27 @@ facilities.forEach((facility, index) => {
     _type: "facility",
     name: facility.name,
     imageUrl: facility.img,
+    order: index,
+  });
+});
+
+outreach.forEach((event, index) => {
+  docs.push({
+    _id: uniqueId("outreachEvent", event.title),
+    _type: "outreachEvent",
+    title: event.title,
+    place: event.place,
+    date: event.date,
+    description: event.description,
+    images: withKeys(
+      event.images.map((image) => ({
+        imageUrl: image.img,
+        width: image.w,
+        height: image.h,
+        ...(image.label ? { label: image.label } : {}),
+        ...(image.link ? { link: image.link } : {}),
+      }))
+    ),
     order: index,
   });
 });

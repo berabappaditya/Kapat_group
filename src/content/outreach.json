@@ -1,78 +1,105 @@
 [
   {
-    "title": "Covered by leading national newspapers — The Better India and India Today",
-    "place": "Press coverage",
     "date": "2024 – 2025",
     "description": "",
     "images": [
       {
-        "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785946809/Better_India_caa6eo.png",
-        "w": 1008,
         "h": 1102,
+        "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785946809/Better_India_caa6eo.png",
         "label": "The Better India",
-        "link": "https://x.com/thebetterindia/status/1926647042098479120"
+        "link": "https://x.com/thebetterindia/status/1926647042098479120",
+        "w": 1008
       },
       {
-        "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785946807/India_today_qi8cgm.png",
-        "w": 1582,
         "h": 896,
+        "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785946807/India_today_qi8cgm.png",
         "label": "India Today",
-        "link": "https://www.indiatoday.in/health/story/3d-printing-your-tooth-how-an-indian-breakthrough-has-changed-dentistry-2623310-2024-10-28"
+        "link": "https://www.indiatoday.in/health/story/3d-printing-your-tooth-how-an-indian-breakthrough-has-changed-dentistry-2623310-2024-10-28",
+        "w": 1582
       }
-    ]
+    ],
+    "place": "Press coverage",
+    "title": "Covered by leading national newspapers — The Better India and India Today"
   },
   {
-    "title": "Live Demonstration at Shiv Nadar Institution of Eminence Day 2025",
-    "place": "SNIoE Campus",
     "date": "2025",
     "description": "",
     "images": [
       {
+        "h": 1638,
         "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1784918911/WhatsApp_Image_2025-04-10_at_7.56.43_PM_1_nrctvv.jpg",
-        "w": 4000,
-        "h": 1638
+        "label": null,
+        "link": "",
+        "w": 4000
       },
       {
+        "h": 1638,
         "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1784918943/WhatsApp_Image_2025-04-10_at_7.56.44_PM_g08ipn.jpg",
-        "w": 4000,
-        "h": 1638
+        "label": null,
+        "link": "",
+        "w": 4000
       }
-    ]
+    ],
+    "place": "SNIoE Campus",
+    "title": "Live Demonstration at Shiv Nadar Institution of Eminence Day 2025"
   },
   {
-    "title": "Live Demonstration at the CII Global Summit 2025 on Industry–Academia Partnership",
-    "place": "India Habitat Centre, New Delhi",
     "date": "5 December 2025",
     "description": "We gave a live demonstration during the CII Global Summit on Industry–Academia Partnership on 5 December 2025 at the India Habitat Centre, New Delhi, organised by the Office of the Principal Scientific Adviser to the Government of India.",
     "images": [
       {
+        "h": 2957,
         "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785920074/GS-1_kibkkp.jpg",
-        "w": 3943,
-        "h": 2957
+        "label": null,
+        "link": "",
+        "w": 3943
       },
       {
+        "h": 1152,
         "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785920078/GS-2_ont1vn.png",
-        "w": 1812,
-        "h": 1152
+        "label": null,
+        "link": "",
+        "w": 1812
       }
-    ]
+    ],
+    "place": "India Habitat Centre, New Delhi",
+    "title": "Live Demonstration at the CII Global Summit 2025 on Industry–Academia Partnership"
   },
   {
-    "title": "Live Demonstration at the Industry–Partners Summit 2026",
-    "place": "SNIoE, Delhi NCR",
     "date": "2026",
     "description": "",
     "images": [
       {
+        "h": 960,
         "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785921965/IPS-2_2026_kn8kdc.jpg",
-        "w": 1280,
-        "h": 960
+        "label": null,
+        "link": "",
+        "w": 1280
       },
       {
+        "h": 4032,
         "img": "https://res.cloudinary.com/ajoy-kapat/image/upload/v1785921950/IPS-1-2026_xavg9o.jpg",
-        "w": 3024,
-        "h": 4032
+        "label": null,
+        "link": "",
+        "w": 3024
       }
-    ]
+    ],
+    "place": "SNIoE, Delhi NCR",
+    "title": "Live Demonstration at the Industry–Partners Summit 2026"
+  },
+  {
+    "date": "10 March 2026",
+    "description": "An editorial feature on the Kapat Lab's radical chemistry and catalysis research, from drug-inspired synthesis to light-driven polymer formation.",
+    "images": [
+      {
+        "h": 841,
+        "img": "https://snu.edu.in/site/assets/files/24404/ajoy_kopat-05.1200x0.1600x0.webp",
+        "label": "SNIoE Blog",
+        "link": "https://snu.edu.in/blogs/guiding-restless-molecules-into-meaningful-materials/",
+        "w": 1200
+      }
+    ],
+    "place": "SNIoE Blog",
+    "title": "Guiding Restless Molecules into Meaningful Materials"
   }
 ]

@@ -9,6 +9,7 @@ import publication from "./publication";
 import patent from "./patent";
 import researchArea from "./researchArea";
 import facility from "./facility";
+import outreachEvent from "./outreachEvent";
 
 export const schemaTypes = [
   siteSettings,
@@ -22,4 +23,5 @@ export const schemaTypes = [
   patent,
   researchArea,
   facility,
+  outreachEvent,
 ];

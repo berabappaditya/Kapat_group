@@ -90,6 +90,10 @@ const QUERY = `{
   "patents": *[_type == "patent"] | order(order asc){
     title, authors, milestones, "img": coalesce(imageUrl, "")
   },
+  "outreach": *[_type == "outreachEvent"] | order(order asc){
+    title, place, date, description,
+    "images": images[]{"img": imageUrl, "w": width, "h": height, label, "link": coalesce(link, "")}
+  },
   "members": *[_type == "member"] | order(order asc){
     "id": _id, name, category, role, joinYear, tenurePeriod,
     internship, currentPosition, "details": bio, "img": photoUrl
@@ -183,6 +187,9 @@ async function main() {
   }
   if (result.patents && result.patents.length > 0) {
     writeJson("patents.json", result.patents);
+  }
+  if (result.outreach && result.outreach.length > 0) {
+    writeJson("outreach.json", result.outreach);
   }
   if (result.members && result.members.length > 0) {
     // GROQ returns null for absent fields; drop them so optional keys stay
