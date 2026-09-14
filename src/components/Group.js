@@ -59,6 +59,16 @@ const SECTIONS = [
     filterTag: "current",
   },
   {
+    key: "msc",
+    label: "Current M.Sc. Students",
+    filterTag: "current",
+  },
+  {
+    key: "summer-fellow",
+    label: "Current Summer Research Fellows",
+    filterTag: "current",
+  },
+  {
     key: "former-msc",
     label: "Former M.Sc. Students",
     filterTag: "alumni",
@@ -84,6 +94,7 @@ const SECTIONS = [
     filterTag: "alumni",
   },
 ];
+
 
 /* --------------------------------------------------------------------------
    MemberCard — portrait card + modal profile design

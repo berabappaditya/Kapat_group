@@ -9,11 +9,13 @@ export default {
       title: "Category",
       type: "string",
       description:
-        "graduate | undergraduate | former-msc | former-undergrad | former-jrf | former-postdoc | former-summer",
+        "graduate | undergraduate | msc | summer-fellow | former-msc | former-undergrad | former-jrf | former-postdoc | former-summer",
       options: {
         list: [
           { title: "Current — Graduate Student", value: "graduate" },
           { title: "Current — Undergraduate Student", value: "undergraduate" },
+          { title: "Current — M.Sc. Student", value: "msc" },
+          { title: "Current — Summer Research Fellow", value: "summer-fellow" },
           { title: "Former — M.Sc. Student", value: "former-msc" },
           { title: "Former — Undergraduate Student", value: "former-undergrad" },
           { title: "Former — JRF", value: "former-jrf" },
