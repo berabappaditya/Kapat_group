@@ -9,17 +9,22 @@ export default {
       title: "Category",
       type: "string",
       description:
-        "graduate | undergraduate | msc | summer-fellow | former-msc | former-undergrad | former-jrf | former-postdoc | former-summer",
+        "graduate | undergraduate | msc | postdoc | project-assistant | research-associate | summer-fellow | former-msc | former-undergrad | former-jrf | former-postdoc | former-project-assistant | former-research-associate | former-summer",
       options: {
         list: [
           { title: "Current — Graduate Student", value: "graduate" },
           { title: "Current — Undergraduate Student", value: "undergraduate" },
           { title: "Current — M.Sc. Student", value: "msc" },
+          { title: "Current — Postdoctoral Fellow", value: "postdoc" },
+          { title: "Current — Project Assistant", value: "project-assistant" },
+          { title: "Current — Research Associate", value: "research-associate" },
           { title: "Current — Summer Research Fellow", value: "summer-fellow" },
           { title: "Former — M.Sc. Student", value: "former-msc" },
           { title: "Former — Undergraduate Student", value: "former-undergrad" },
           { title: "Former — JRF", value: "former-jrf" },
           { title: "Former — Postdoctoral Fellow", value: "former-postdoc" },
+          { title: "Former — Project Assistant", value: "former-project-assistant" },
+          { title: "Former — Research Associate", value: "former-research-associate" },
           { title: "Former — Summer Fellow", value: "former-summer" },
         ],
       },

@@ -64,6 +64,21 @@ const SECTIONS = [
     filterTag: "current",
   },
   {
+    key: "postdoc",
+    label: "Current Postdoctoral Fellows",
+    filterTag: "current",
+  },
+  {
+    key: "project-assistant",
+    label: "Current Project Assistants",
+    filterTag: "current",
+  },
+  {
+    key: "research-associate",
+    label: "Current Research Associates",
+    filterTag: "current",
+  },
+  {
     key: "summer-fellow",
     label: "Current Summer Research Fellows",
     filterTag: "current",
@@ -81,6 +96,16 @@ const SECTIONS = [
   {
     key: "former-postdoc",
     label: "Former Postdoctoral Fellows",
+    filterTag: "alumni",
+  },
+  {
+    key: "former-project-assistant",
+    label: "Former Project Assistants",
+    filterTag: "alumni",
+  },
+  {
+    key: "former-research-associate",
+    label: "Former Research Associates",
     filterTag: "alumni",
   },
   {
